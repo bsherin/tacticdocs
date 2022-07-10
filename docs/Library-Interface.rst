@@ -3,7 +3,7 @@ Library Interface
 
 This Library interface is what you see when you use to manage the resources in your library,
 such as the data you upload, and the tiles you create or import. It is also from here that you can launch viewers
-and editors of those resources. Here it is, with the :guilabel:`Tiles`  pane selected. (note here)
+and editors of those resources. Here it is, with the :guilabel:`Tiles`  pane selected.
 
 .. figure:: images/bplibrary_interface2.png
 
