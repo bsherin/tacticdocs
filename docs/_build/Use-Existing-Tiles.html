@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Use Existing Tiles &#8212; Tactic .1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Create A Simple Tile" href="Create-Simple-Tile.html" />
+    <link rel="prev" title="Code Resources" href="Working-With-Code-Resources.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="use-existing-tiles">
+<h1>Use Existing Tiles<a class="headerlink" href="#use-existing-tiles" title="Permalink to this headline">¶</a></h1>
+<p>This quick tutorial will walk you through starting a project using existing tiles.
+If you haven’t already done so, you might want to first go through <a class="reference external" href="Gettting-Started.html">Getting Started</a> and
+the <a class="reference external" href="Main-Interface.html">Main Interface</a>.</p>
+<p>Start by going to the collections pane of your library and loading the genesis collection. Then go to the
+<span class="guilabel">word menu</span> and create a WordFreqDist tile. The WordFreqDist tile’s purpose is to count and display the
+frequencies of individual words in the collection.</p>
+<figure class="align-default">
+<img alt="_images/genesis_and_wordfreqdist.png" src="_images/genesis_and_wordfreqdist.png" />
+</figure>
+<section id="setting-options">
+<h2>Setting Options<a class="headerlink" href="#setting-options" title="Permalink to this headline">¶</a></h2>
+<p>Now click on the gear icon to flip over the tile and expose its options.</p>
+<a class="reference internal image-reference" href="_images/wfd_options.png"><img alt="_images/wfd_options.png" class="align-center" src="_images/wfd_options.png" style="width: 384.3px; height: 386.1px;" /></a>
+<p>Next you’ll want to click on each of the three options and set it appropriately. The first option,
+<span class="guilabel">column_source</span> is a column_select option. For that option, you’ll want to select the column named
+“text,” since that is the column that has text we want to process.</p>
+<p>The <span class="guilabel">tokenizer</span> option is a function_select
+option; it allows us to select a function from our code resources. In this case, the choices have been narrowed
+by the tile’s creator to only include code resources with the “tokenizer” tag. For this one I’m going to select
+“bruces_alpha_only” because it’s my personal favorite tokenizer. The last option is a list_select option; it lets
+you select one of the list resources from your library. In this case the list will be used as a stop list. This
+is a list of words that will be ignored by our analysis. I’m going to select “stop-words_english_2_en.txt”.</p>
+<p>After making all of these choices, you can slick the <span class="guilabel">submit</span> button, and the tile will do its work.
+The results should look something like this.</p>
+<a class="reference internal image-reference" href="_images/wfd_after_run.png"><img alt="_images/wfd_after_run.png" class="align-center" src="_images/wfd_after_run.png" style="width: 384.3px; height: 385.2px;" /></a>
+</section>
+<section id="piping-data-between-tiles">
+<h2>Piping Data Between Tiles<a class="headerlink" href="#piping-data-between-tiles" title="Permalink to this headline">¶</a></h2>
+<p>Now comes the even more exciting part. In addition to displaying these frequencies on the front of the tile
+the WordFreqDist tile also saves the results internally (as NLTK Frequency distributions) and exports them.
+Other tiles can then access them as pipes.</p>
+<p>Now we’ll plot the data from WordFreqDist. Drop in a FreqDistPlotter tile from the <span class="guilabel">plot menu</span>. As shown in
+in the figure below, this tile has two options. The first is a pipe_select option. This type of option allows you
+to select an attribute that is exported by another tile. If you click on this option, you’ll see that there are only
+two choices, corresponding to the two frequency distributions exported by WordFreqDist. Select one of these.</p>
+<a class="reference internal image-reference" href="_images/fdp_options.png"><img alt="_images/fdp_options.png" class="align-center" src="_images/fdp_options.png" style="width: 384.3px; height: 351.90000000000003px;" /></a>
+<p>The second option is just an integers, which specifies how many data points to plot. If have entered 20, which
+will lead the tile to plot the data corresponding to the 20 most frequent words. Go ahead and click submit. The
+results should be a plot something like this:</p>
+<a class="reference internal image-reference" href="_images/fdp_output.png"><img alt="_images/fdp_output.png" class="align-center" src="_images/fdp_output.png" style="width: 410.40000000000003px; height: 355.5px;" /></a>
+</section>
+<section id="plotting-with-other-libraries">
+<h2>Plotting with other libraries<a class="headerlink" href="#plotting-with-other-libraries" title="Permalink to this headline">¶</a></h2>
+<p>The above FreqDistPlotter tiles uses the MatPlotLib library to produce the plot.
+Tactic includes other libraries that you can use to draw plots. The tile FreqDistBokeh uses
+the Bokeh library to produce the plot. It’s easier to add interactive properties to Bokeh. If you want
+to try this yourself, you’ll first have to go back to the tiles pane of your Library, then highlight the FreqDistBokeh
+tile and click the load button to load it. Then you can add the tile from the plot menu.</p>
+<p>Similarly, D3FreqDistPlotter uses D3 to produce the plot. D3 is a javascript library, which means Tactic
+has to do include special mechanisms for the production of D3 plots. You can read <a class="reference external" href="D3-Tiles.html">here</a>.</p>
+<img alt="_images/bokeh_and_d3.png" class="align-center" src="_images/bokeh_and_d3.png" />
+</section>
+<section id="saving-your-project">
+<h2>Saving your project<a class="headerlink" href="#saving-your-project" title="Permalink to this headline">¶</a></h2>
+<p>When you’re all done, you can save your project by going to the <span class="guilabel">Project menu</span>. Once you’ve done so,
+you can reload this project from the projects pane of your library.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tactic</a></h1>
+
+
+
+<p class="blurb">A text mining environment for qualitative researchers</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=bsherin&repo=tactic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Using Tactic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Version-History-And-Compare.html">History and Compare</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How To</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use Existing Tiles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-options">Setting Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#piping-data-between-tiles">Piping Data Between Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-with-other-libraries">Plotting with other libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#saving-your-project">Saving your project</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Create-Simple-Tile.html">Create A Simple Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WordFreqDist-Explained.html">WordFreqDist Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classifying-With-NLTK.html">Classifying with NLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Data-From-APIs.html">Getting Data From APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Working-With-Code-Resources.html" title="previous chapter">Code Resources</a></li>
+      <li>Next: <a href="Create-Simple-Tile.html" title="next chapter">Create A Simple Tile</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Bruce Sherin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Use-Existing-Tiles.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

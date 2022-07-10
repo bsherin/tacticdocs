@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Library Interface &#8212; Tactic .1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Uploading Data" href="Uploading-Data.html" />
+    <link rel="prev" title="Settings and Themes" href="Account-Interface.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="library-interface">
+<h1>Library Interface<a class="headerlink" href="#library-interface" title="Permalink to this headline">¶</a></h1>
+<p>This Library interface is what you see when you use to manage the resources in your library,
+such as the data you upload, and the tiles you create or import. It is also from here that you can launch viewers
+and editors of those resources. Here it is, with the <span class="guilabel">Tiles</span>  pane selected.</p>
+<figure class="align-default">
+<img alt="_images/bplibrary_interface2.png" src="_images/bplibrary_interface2.png" />
+</figure>
+<p>Here’s a little tour:</p>
+<section id="the-sidebar">
+<h2>The sidebar<a class="headerlink" href="#the-sidebar" title="Permalink to this headline">¶</a></h2>
+<p>There are four Library panes accessible from the sidebar on the left, each one corresponding to one of the categories of resources.
+They are, from top to bottom:</p>
+<ol class="arabic simple">
+<li><p>Data Collections. This is your raw data.</p></li>
+<li><p>Projects. This is where you access your in-progress projects. You can also create new notebooks here.</p></li>
+<li><p>Tiles. Your tile modules.</p></li>
+<li><p>Lists. Your lists, obviously.</p></li>
+<li><p>Code resources. These are explained a bit <a class="reference external" href="Working-With-Code-Resources.html">here.</a></p></li>
+</ol>
+</section>
+<section id="the-menubar">
+<h2>The menubar<a class="headerlink" href="#the-menubar" title="Permalink to this headline">¶</a></h2>
+<p>Across the top is each library pane is a menubar with a number of menus These differ in function depending on
+what resource you are managing. I think these will mostly be self-explanatory.
+They do things such as let you view a resource, delete it, combine resources, etc.</p>
+</section>
+<section id="the-tag-tree">
+<h2>The tag tree<a class="headerlink" href="#the-tag-tree" title="Permalink to this headline">¶</a></h2>
+<p>Just to the right of the sidebar is the tag tree. You can learn more about how this tree gets populated
+<a class="reference external" href="Working-With-Tags.html">here.</a> Clicking on a tag in the tree filters the list of resources you see in the table.</p>
+<p>One thing that might not be obvious is that you can <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Right</kbd>-<kbd class="kbd docutils literal notranslate">Click</kbd></kbd> (or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">Click</kbd></kbd>) on a tag to get
+a context menu that will let you edit or delete a single tag.</p>
+</section>
+<section id="the-central-table">
+<h2>The central table<a class="headerlink" href="#the-central-table" title="Permalink to this headline">¶</a></h2>
+<p>This is where you view your list of resources. You can select a resource here.</p>
+<p>You can also select multiple rows. A subset of the toolbar functions can operate on multiple resources.
+Also, you can edit the metatdata for multiple
+resources in this way. This is useful, for example, to set a bunch of resources to have the same tags.</p>
+<p>You can type in the search field above the table to filter the list of resources. Also, for some resource types,
+there are switches that allow you to search <span class="guilabel">inside</span> a resource or search the <span class="guilabel">metadata</span>
+associated with resources.</p>
+<p>You can also <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Right</kbd>-<kbd class="kbd docutils literal notranslate">Click</kbd></kbd> (or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">Click</kbd></kbd>) on a row in the table to access a context menu. The available
+functions replicate a subset of the functions available in the menubar.</p>
+</section>
+<section id="the-omnibar">
+<h2>The omnibar<a class="headerlink" href="#the-omnibar" title="Permalink to this headline">¶</a></h2>
+<p>Typing <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Space</kbd></kbd> brings up the omnibar. Start typing to select from a list of resources in the current tab.
+Then press enter to select and view a resource. All hail the awesome <a class="reference external" href="https://blueprintjs.com/docs/#select/omnibar">omnibar.</a></p>
+</section>
+<section id="the-metadata-editor">
+<h2>The metadata editor<a class="headerlink" href="#the-metadata-editor" title="Permalink to this headline">¶</a></h2>
+<p>Finally, on the ride side of the library interface is a panel where you can view and edit the metadata associated with
+the selected resource.</p>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
+<p>Actually, I forgot something else. There are a few handy keyboard shortcuts in the Library:</p>
+<p><kbd class="kbd docutils literal notranslate">Tab</kbd></p>
+<blockquote>
+<div><p>Cycle forward through the sidebar panes. (For these purposes, the Libray is treated as a single pane.)</p>
+</div></blockquote>
+<p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">Tab</kbd></kbd></p>
+<blockquote>
+<div><p>Cycle backward through the sidebar panes.</p>
+</div></blockquote>
+<p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Arrow</kbd>-<kbd class="kbd docutils literal notranslate">Up</kbd></kbd>, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Arrow</kbd>-<kbd class="kbd docutils literal notranslate">Down</kbd></kbd></p>
+<blockquote>
+<div><p>Move the selected row up or down.</p>
+</div></blockquote>
+<p><kbd class="kbd docutils literal notranslate">space</kbd>, <kbd class="kbd docutils literal notranslate">enter</kbd></p>
+<blockquote>
+<div><p>View the selected resource.</p>
+</div></blockquote>
+<p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Space</kbd></kbd></p>
+<blockquote>
+<div><p>Show the omnibar.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tactic</a></h1>
+
+
+
+<p class="blurb">A text mining environment for qualitative researchers</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=bsherin&repo=tactic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Using Tactic</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Library Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-sidebar">The sidebar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-menubar">The menubar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-tag-tree">The tag tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-central-table">The central table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-omnibar">The omnibar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-metadata-editor">The metadata editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Version-History-And-Compare.html">History and Compare</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How To</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Use-Existing-Tiles.html">Use Existing Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Create-Simple-Tile.html">Create A Simple Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WordFreqDist-Explained.html">WordFreqDist Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classifying-With-NLTK.html">Classifying with NLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Data-From-APIs.html">Getting Data From APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Account-Interface.html" title="previous chapter">Settings and Themes</a></li>
+      <li>Next: <a href="Uploading-Data.html" title="next chapter">Uploading Data</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Bruce Sherin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Library-Interface.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

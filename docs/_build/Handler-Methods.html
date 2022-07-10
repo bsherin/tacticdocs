@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Handler Methods &#8212; Tactic .1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Code Resources" href="Working-With-Code-Resources.html" />
+    <link rel="prev" title="D3 Tiles" href="D3-Tiles.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="handler-methods">
+<h1>Handler Methods<a class="headerlink" href="#handler-methods" title="Permalink to this headline">¶</a></h1>
+<p>Various events lead to the calling of handler methods in a tile.
+For example, if a user changes the size of a tile, a <code class="docutils literal notranslate"><span class="pre">TileSizeChange</span></code> event is generated, which
+in turn leads to the calling of the handler <code class="docutils literal notranslate"><span class="pre">handle_size_change()</span></code>. The <code class="docutils literal notranslate"><span class="pre">TileBase</span></code> class
+has default handlers for all of these events, but some of them don’t do anything.</p>
+<p>Your tile can choose to include its methods to handle these events.
+For example, you might do something like this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handle_size_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">new_html</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw_plot</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">display_status</span><span class="p">(</span><span class="n">new_html</span><span class="p">)</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+<p>In the case of the <code class="docutils literal notranslate"><span class="pre">handle_size_handler</span></code>, no additional arguments are passed. But as noted below,
+some handlers are passed arguments.</p>
+<section id="clicks-on-tile-front">
+<h2>Clicks on Tile Front<a class="headerlink" href="#clicks-on-tile-front" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Many of the handler calls are generated when the user interacts with the front of a tile.
+This can happen if, for example, you have displayed a button on the front of the tile.</p>
+<p>In addition to passing information specific to the event, many of these handlers
+are also passed the name of the currently visible document as well as the currently selected
+row in that document.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_button_click">
+<span class="sig-name descname"><span class="pre">handle_button_click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active_row_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_button_click" title="Permalink to this definition">¶</a></dt>
+<dd><p>A call to this handler is generated when the the user clicks a button within the body
+of a tile. <code class="docutils literal notranslate"><span class="pre">value</span></code> is the button value. The default handler has no effect.</p>
+<p>For example, your <code class="docutils literal notranslate"><span class="pre">render_content</span></code> method could add a button to the html it displays
+like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">the_html</span> <span class="o">+=</span> <span class="s2">&quot;&lt;button value=&#39;</span><span class="si">{0}</span><span class="s2">&#39;&gt;</span><span class="si">{1}</span><span class="s2">&lt;/button&gt;&quot;</span><span class="o">.</span><span class="n">format</span> <span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_select_change">
+<span class="sig-name descname"><span class="pre">handle_select_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active_row_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_select_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>This handler is called when the user changes the value of a select element
+in the body of the tile. <code class="docutils literal notranslate"><span class="pre">value</span></code> is the value selected. <cite>select_name</cite> is the value
+of the <code class="docutils literal notranslate"><span class="pre">name</span></code> property assigned in the html for your select component. The default
+handle does nothing</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_form_submit">
+<span class="sig-name descname"><span class="pre">handle_form_submit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">form_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active_row_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_form_submit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the user clicks submit in a form within the body of a tile.
+<code class="docutils literal notranslate"><span class="pre">form_data</span></code> is a dictionary in which the keys are the names of
+elements in the form, and the values are their current values. Note
+that one of these entries will correspond to the submit button
+itself. The default handler does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_textarea_change">
+<span class="sig-name descname"><span class="pre">handle_textarea_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_textarea_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the user the user changes the contents of a textarea DOM
+element on the front of the tile. <code class="docutils literal notranslate"><span class="pre">value</span></code> is the new content of
+the textarea. The default handler does nothing.</p>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="dynamic-options">
+<h2>Dynamic Options<a class="headerlink" href="#dynamic-options" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt class="sig sig-object py" id="modify_options">
+<span class="sig-name descname"><span class="pre">modify_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#modify_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sometimes you might want the options in a tile to vary based on some conditions.
+For example, you might want some options to appear or disappear based on the value
+of another boolean option. This can be accomplished by adding a <code class="docutils literal notranslate"><span class="pre">modify_options</span></code> method
+to your tile.</p>
+<p><code class="docutils literal notranslate"><span class="pre">modify_options</span></code> is run any time the form on the back of a tile is (re)generated. This includes
+any time that an individual option is changed on the back of a tile. It must
+return the options, suitably revised. Refer to <a class="reference external" href="Tile-Structure.html">Tile Structure</a> to see what
+how the options list should look.</p>
+<p>You can add a “visible” key to an item in the option list. If you do, this will determine whether the
+option is visible. (If there is no such key, the option will be visible.) You can also hide an option
+simply by not including it in the revised options.</p>
+<p>Here’s an example pattern:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">opt_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt_name</span><span class="p">):</span>
+    <span class="n">reqs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;folds&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">cross_validate</span><span class="p">,</span>
+        <span class="s2">&quot;test_fraction&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="p">:</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cross_validate</span><span class="p">,</span>
+        <span class="s2">&quot;svc_balance&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;SVC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;neighbors&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;KNeighbors&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;neighbor_weights&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;KNeighbors&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;max_iter&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;MLP&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;max_ngram&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="p">:</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_type</span> <span class="o">==</span> <span class="s2">&quot;wordvec&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vocab_size&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="p">:</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_type</span> <span class="o">==</span> <span class="s2">&quot;wordvec&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;wordvec_model&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_type</span> <span class="o">==</span> <span class="s2">&quot;wordvec&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">opt_name</span> <span class="ow">in</span> <span class="n">reqs</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">reqs</span><span class="p">[</span><span class="n">opt_name</span><span class="p">]()</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">modify_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">new_options</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">:</span>
+        <span class="n">opt</span><span class="p">[</span><span class="s2">&quot;visible&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_requirements</span><span class="p">(</span><span class="n">opt</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="n">new_options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_options</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_option_change">
+<span class="sig-name descname"><span class="pre">handle_option_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_option_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the user changes an individual option on the back of a tile. <code class="docutils literal notranslate"><span class="pre">opt_name</span></code>
+is the name of the option and <code class="docutils literal notranslate"><span class="pre">value</span></code> is the new value.</p>
+</dd></dl>
+
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tactic</a></h1>
+
+
+
+<p class="blurb">A text mining environment for qualitative researchers</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=bsherin&repo=tactic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Using Tactic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Version-History-And-Compare.html">History and Compare</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Handler Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#clicks-on-tile-front">Clicks on Tile Front</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-options">Dynamic Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How To</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Use-Existing-Tiles.html">Use Existing Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Create-Simple-Tile.html">Create A Simple Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WordFreqDist-Explained.html">WordFreqDist Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classifying-With-NLTK.html">Classifying with NLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Data-From-APIs.html">Getting Data From APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="D3-Tiles.html" title="previous chapter">D3 Tiles</a></li>
+      <li>Next: <a href="Working-With-Code-Resources.html" title="next chapter">Code Resources</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Bruce Sherin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Handler-Methods.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

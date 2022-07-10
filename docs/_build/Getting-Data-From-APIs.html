@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting Data From APIs &#8212; Tactic .1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Running a Tactic Server" href="Running-your-own-Tactic-server.html" />
+    <link rel="prev" title="Classifying with NLTK" href="Classifying-With-NLTK.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="getting-data-from-apis">
+<h1>Getting Data From APIs<a class="headerlink" href="#getting-data-from-apis" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will walk you through getting data from some prominent online APIs.</p>
+<p>Throughout the tutorial, I will be showing samples of code that I used in my notebook.
+This notebook is accessible from the repository and has the name “getting_data_from_online_apis”. If you don’t know how
+to access the repository, you can read about it on the <a class="reference external" href="Getting-Started.html#first-steps-with-collections">Getting Started</a> page.</p>
+<p>In case you want more information afterwards, here’s some links that were helpful to me while making this:</p>
+<p><strong>Twitter:</strong>
+<a class="reference external" href="https://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/">Mining Twitter Data with Python</a> and <a class="reference external" href="https://www.geeksforgeeks.org/extraction-of-tweets-using-tweepy/">Extraction of Tweets using Tweepy</a></p>
+<p><strong>Reddit:</strong>
+<a class="reference external" href="https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c">How to Use the Reddit API in Python</a></p>
+<section id="twitter">
+<h2>Twitter<a class="headerlink" href="#twitter" title="Permalink to this headline">¶</a></h2>
+<p>The first step in getting data from Twitter is going <a class="reference external" href="http://apps.twitter.com">here</a> and creating an app.
+If you don’t already have a developer account, you’ll have to apply for that first.</p>
+<figure class="align-default">
+<img alt="_images/small_create_app_arrow.jpeg" src="_images/small_create_app_arrow.jpeg" />
+</figure>
+<p>Once you have created your app, make sure that you are back at the <a class="reference external" href="http://apps.twitter.com">Twitter apps</a> page and
+select the “Details” button to the right of your app. Then, navigate to the “Keys and Tokens” section to get your API
+keys and access tokens (I know, big surprise there). You will need these in a moment.</p>
+<p>Now it’s time to head over to <a class="reference external" href="https://tactic.northwestern.edu/">Tactic</a> and create a new notebook. We will be using
+the library Tweepy, which you can read more about <a class="reference external" href="https://docs.tweepy.org/en/stable/">here</a>.</p>
+<p>In your notebook, execute these commands once:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="n">consumer_key</span> <span class="o">=</span> <span class="s2">&quot;your_consumer_key&quot;</span>
+<span class="n">consumer_secret</span> <span class="o">=</span> <span class="s2">&quot;your_consumer_secret&quot;</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;your_access_token&quot;</span>
+<span class="n">access_token_secret</span> <span class="o">=</span> <span class="s2">&quot;your_access_secret&quot;</span>
+<span class="c1"># Creating the authentication object</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">)</span>
+<span class="c1"># Setting your access token and secret</span>
+<span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="n">access_token_secret</span><span class="p">)</span>
+<span class="c1"># Creating the API object while passing in auth information</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is how you do a search:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">language</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;#Disneyland&quot;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="n">language</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">&#39;extended&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you don’t use tweet_mode=’extended’ then the text of long tweets will be truncated.</p>
+</div>
+<p>This will return a list of a results. To extract the information you need, you’ll want the ._json property.
+This will give you a dictionary:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">post</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_json</span>
+<span class="n">post</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="c1"># look here if you want to access a different attribute of the tweet</span>
+<span class="n">post</span><span class="p">[</span><span class="s2">&quot;full_text&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You just found the top tweet for #Disneyland, but how about you try to do something a little more complicated.
+Let’s say you wanted to make a table to look at the most common words tweeted with different MLB teams’ hashtags.
+This can be done with the help of Tactic and Tweepy along with two other libraries: pandas and NLTK. Pandas can be used
+for turning a dictionary into a table, and NLTK has many useful commands for analyzing the text.</p>
+<p>The first step is to make a function that returns the 50 most common words used in the top 100 posts containing a
+particular hashtag:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">def</span> <span class="nf">get_common_from_hashtag</span><span class="p">(</span><span class="n">hashtag</span><span class="p">):</span>
+    <span class="n">search</span> <span class="o">=</span>  <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">hashtag</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">&#39;extended&#39;</span><span class="p">)</span>
+    <span class="n">top_100</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">top_100</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">search</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_json</span><span class="p">[</span><span class="s2">&quot;full_text&quot;</span><span class="p">])</span>
+    <span class="c1"># makes a list of the contents of the top 100 tweets with the hashtag</span>
+    <span class="n">top_100_united</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">top_100</span><span class="p">)):</span>
+        <span class="n">top_100_united</span> <span class="o">+=</span> <span class="n">top_100</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1"># unites the list of the tweets into one long string</span>
+    <span class="n">top_100_united</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">top_100_united</span><span class="p">)</span>
+    <span class="c1"># word_tokenize turns raw text into a list where each item is a separate token</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">FreqDist</span><span class="p">(</span><span class="n">top_100_united</span><span class="p">)</span>
+    <span class="c1"># FreqDist counts the frequency of each word</span>
+    <span class="n">most_common</span> <span class="o">=</span> <span class="n">freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="c1"># lists the 50 most common words each in a tuple with their number of instances</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="n">most_common</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Now we can use this function to create a dictionary where each MLB team corresponds to a list of their 50 most common words:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mlb_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cubs&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#CubTogether&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;yankees&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#SquadUp&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;pirates&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#LetsGoBucs&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;diamondbacks&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#RattleOn&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;cardinals&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#STLFLY&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;reds&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#ATOBTTR&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;white sox&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#ChangeTheGame&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;marlins&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#JuntosMiami&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;phillies&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#phillies&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;royals&quot;</span> <span class="p">:</span> <span class="n">get_common_from_hashtag</span><span class="p">(</span><span class="s2">&quot;#TogetherRoyal&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I’m pretty sure these hashtags change every season, so you’ll need to look up what hashtags to use if you are
+reading this beyond the 2021 season.</p>
+</div>
+<p>You now are able to turn this dictionary into a table using pandas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">mlb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">mlb_dict</span><span class="p">)</span>
+<span class="c1"># from_dict turns a dictionary into a dataframe</span>
+</pre></div>
+</div>
+<p>If you want to view your table, click on the “exports” button located in the top right of your notebook and then
+select “mlb_df.”</p>
+<figure class="align-default">
+<img alt="_images/exports_with_arrow.jpeg" src="_images/exports_with_arrow.jpeg" />
+</figure>
+<p>Lastly you can save your table to your library using the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ndoc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_document</span><span class="p">(</span><span class="n">mlb_df</span><span class="p">,</span> <span class="s2">&quot;mlb_common_words&quot;</span><span class="p">)</span>
+<span class="n">ncol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_collection_object</span><span class="p">(</span><span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;mlb_common_words&quot;</span><span class="p">:</span> <span class="n">ndoc</span><span class="p">})</span>
+<span class="n">ncol</span><span class="o">.</span><span class="n">add_to_library</span><span class="p">(</span><span class="s2">&quot;mlb_common_words&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You now should be able to see your table in your library. Obviously, this isn’t perfect, and we could add filters
+to exclude tokens such as ! and $, but hopefully this gives you a general idea of how to use Tactic and Tweepy.</p>
+</section>
+<section id="propublica">
+<h2>ProPublica<a class="headerlink" href="#propublica" title="Permalink to this headline">¶</a></h2>
+<p>ProPublica makes substantial data available for free with a few APIs. Before you can use any of these APIs, though, you
+need to request a key. Luckily, it’s very quick and easy:</p>
+<p>First, visit the ProPublica APIs page <a class="reference external" href="https://www.propublica.org/datastore/apis">here</a> and click on one of the APIs you’d like to use (in
+this example we will be using the Congress API).</p>
+<figure class="align-default">
+<img alt="_images/apis_page_arrow.jpeg" src="_images/apis_page_arrow.jpeg" />
+</figure>
+<p>Then, fill out the information under “request an API key” and click “submit.”</p>
+<figure class="align-default">
+<img alt="_images/propublica_signup_arrow.jpeg" src="_images/propublica_signup_arrow.jpeg" />
+</figure>
+<p>Once you have your key, you can open up a Tactic notebook and run this code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">my_propub_key</span> <span class="o">=</span> <span class="s2">&quot;your_propub_key&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X-API-Key&#39;</span><span class="p">:</span> <span class="n">my_propub_key</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now you are ready to use the API. Using these commands you can get a dictionary with information about the 115th senate’s members:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">propublica_query</span> <span class="o">=</span> <span class="s2">&quot;https://api.propublica.org/congress/v1/115/senate/members.json&quot;</span>
+<span class="n">first_request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">propublica_query</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">first_request</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="c1"># pretty much all the important info is in &quot;results&quot;</span>
+</pre></div>
+</div>
+<p>You can make a list of the members in this senate with the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">members_list</span> <span class="o">=</span> <span class="n">first_request</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;members&quot;</span><span class="p">]</span>
+<span class="c1"># This is a list of dictionaries</span>
+<span class="c1"># Each dictionary has information about a particular member of congress</span>
+<span class="c1"># We just want their name</span>
+<span class="n">congress_members</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">members_list</span><span class="p">):</span>
+    <span class="n">congress_members</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">members_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;first_name&quot;</span><span class="p">]</span>
+                           <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">members_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;last_name&quot;</span><span class="p">])</span>
+<span class="c1"># this iterates through each item in members_list and adds the congress member&#39;s name to the list</span>
+<span class="n">congress_members</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You can also access recent votes using this API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">propublica_query</span> <span class="o">=</span> <span class="s2">&quot;https://api.propublica.org/congress/v1/house/votes/recent.json&quot;</span>
+<span class="n">second_request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">propublica_query</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">second_request</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">][</span><span class="s2">&quot;votes&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>One nice thing about this API is that not only tells us the total vote, but it also tells us how many members of
+each party voted in favor and against. So, you can do things like finding which votes got a substantial amount of bipartisan support:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_if_bipartisan</span><span class="p">(</span><span class="n">vote</span><span class="p">):</span>
+<span class="c1"># find if both the majority Democrats and Republicans voted in favor</span>
+<span class="k">if</span> <span class="n">vote</span><span class="p">[</span><span class="s2">&quot;democratic&quot;</span><span class="p">][</span><span class="s2">&quot;majority_position&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Yes&quot;</span><span class="p">:</span>
+    <span class="n">dem_support</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">if</span> <span class="n">vote</span><span class="p">[</span><span class="s2">&quot;republican&quot;</span><span class="p">][</span><span class="s2">&quot;majority_position&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Yes&quot;</span><span class="p">:</span>
+    <span class="n">rep_support</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">if</span> <span class="n">dem_support</span> <span class="ow">and</span> <span class="n">rep_support</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="n">votes</span> <span class="o">=</span> <span class="n">second_request</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">][</span><span class="s2">&quot;votes&quot;</span><span class="p">]</span>
+<span class="n">bipartisan_votes</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># this will be our list of bipartisan votes</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">votes</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">find_if_bipartisan</span><span class="p">(</span><span class="n">votes</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+        <span class="n">bipartisan_votes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">votes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
+
+<span class="n">bipartisan_votes</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For me, only one vote (out of the 20 most recent votes that it gives you) turned out to be bipartisan, so it’s very
+possible that bipartisan_votes returns an empty string and you didn’t make a mistake.</p>
+</div>
+<p>There’s a lot more you can do with these APIs, but this should be enough information for you to get started using Tactic
+and ProPublica’s APIs. You can read more about ProPublica’s APIs by going <a class="reference external" href="https://www.propublica.org/datastore/apis">here</a>, selecting the API that you are interested in,
+and then clicking “view documentation.”</p>
+<figure class="align-default">
+<img alt="_images/propub_view_doc.jpeg" src="_images/propub_view_doc.jpeg" />
+</figure>
+</section>
+<section id="reddit">
+<h2>Reddit<a class="headerlink" href="#reddit" title="Permalink to this headline">¶</a></h2>
+<p>Reddit contains a massive amount of data, which in the right hands can be very useful. It can be a little tricky to
+figure out at first, but once you get going it won’t be too hard. The first step in using Reddit’s API is registering for an
+access token <a class="reference external" href="https://www.propublica.org/datastore/apis">here</a>. At the bottom of the screen, select “are you a developer? create an app…”</p>
+<figure class="align-default">
+<img alt="_images/reddit_create_app_arrow.jpeg" src="_images/reddit_create_app_arrow.jpeg" />
+</figure>
+<p>Then, fill out the information below and click “create app.”</p>
+<figure class="align-default">
+<img alt="_images/reddit_create_application_arrow.jpeg" src="_images/reddit_create_application_arrow.jpeg" />
+</figure>
+<p>Now you should be given your keys. Your client ID is located below the words “personal use script” and your secret
+token is to the right of the word “secret.”</p>
+<figure class="align-default">
+<img alt="_images/reddit_keys_labeled.jpeg" src="_images/reddit_keys_labeled.jpeg" />
+</figure>
+<p>Once you have your keys you can open up a Tactic notebook and enter the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="s1">&#39;CLIENT_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;SECRET_TOKEN&#39;</span><span class="p">)</span>
+
+<span class="c1"># here you pass your login information</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;grant_type&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;YOUR_ACCOUNTS_USERNAME&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;YOUR_ACCOUNTS_PASSWORD&#39;</span><span class="p">}</span>
+
+<span class="c1"># Creates your header which gives Reddit a little info about your app</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;YOUR_BOTS_NAME&#39;</span><span class="p">}</span>
+
+<span class="c1"># sends a request for an OAuth token</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;https://www.reddit.com/api/v1/access_token&#39;</span><span class="p">,</span>
+                    <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="c1"># pulls access_token value from the request</span>
+<span class="n">TOKEN</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;access_token&#39;</span><span class="p">]</span>
+
+<span class="c1"># adds authorization to your headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">headers</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;bearer </span><span class="si">{</span><span class="n">TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The OAuth expires after about 2 hours and at that point you’ll need to request a new one and update your headers.</p>
+</div>
+<p>Now that you have set up your authorization, you are ready to send requests. You can get “hot” posts from a
+subreddit, such as r/science, using this request:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://oauth.reddit.com/r/science/hot&quot;</span><span class="p">,</span>
+                   <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">})</span>
+<span class="c1"># the limit param allows you to search for more than 25 posts</span>
+<span class="c1"># the maximum number of posts you can search for is 100</span>
+</pre></div>
+</div>
+<p>Then you can create a list of the posts’ titles on the subreddit:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;children&quot;</span><span class="p">]:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">post</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;title&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>If you want to access the text of a post by its index, you can also do that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;selftext&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>However, a lot of posts on r/science are links, which will not contain any text.</p>
+<p>There is another subreddit called r/AskScience; this subreddit’s posts are mostly questions about science. Let’s see
+if there are any common words used in the titles. Just like in the Twitter tutorial, you will be using the NLTK library:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://oauth.reddit.com/r/askscience/hot&quot;</span><span class="p">,</span>
+                   <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">})</span>
+
+<span class="n">posts_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;children&quot;</span><span class="p">]:</span>
+    <span class="n">posts_text</span> <span class="o">+=</span> <span class="n">post</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="c1"># creates one long string combining the titles of the 100 posts</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Library</span><span class="o">.</span><span class="n">functions</span><span class="p">[</span><span class="s2">&quot;bruces_alpha_only&quot;</span><span class="p">]</span>
+<span class="c1"># Tactic allows you to save code samples to your account and access them later</span>
+<span class="c1"># you can view these samples and add more on the code tab of the Tactic library</span>
+<span class="c1"># every Tactic account automatically has some code samples added to it</span>
+<span class="c1"># one of these code samples, bruces_alpha_only, turns a string into a list of words</span>
+
+<span class="n">posts_tokenized</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">posts_text</span><span class="p">)</span>
+<span class="c1"># turns the string into a list of tokens contained in a list</span>
+<span class="n">posts_tokenized_filtered</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">stopwords</span> <span class="o">=</span> <span class="n">Library</span><span class="o">.</span><span class="n">lists</span><span class="p">[</span><span class="s2">&quot;stop-words_english_1_en.txt&quot;</span><span class="p">]</span>
+<span class="c1"># all Tactic accounts have a few lists automatically added to their account</span>
+<span class="c1"># you can view these lists and add more on the lists tab of the Tactic library</span>
+<span class="c1"># stopwords is a list of insignificant words like he, she, the, it</span>
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">posts_tokenized</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="p">:</span>
+        <span class="n">posts_tokenized_filtered</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+<span class="c1"># removes some of the non-word characters and insignificant words from the list</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="n">FreqDist</span><span class="p">(</span><span class="n">posts_tokenized_filtered</span><span class="p">)</span>
+<span class="c1"># FreqDist counts how many times each word in a string occurs</span>
+<span class="n">freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="c1"># returns the 20 most common words in freq</span>
+</pre></div>
+</div>
+<p>There is a whole bunch of stuff that you can do with the Reddit’s API that I couldn’t include. If you want to read more
+about it, you can view its documentation <a class="reference external" href="https://www.reddit.com/dev/api/">here</a>.</p>
+</section>
+<section id="wikipedia">
+<h2>Wikipedia<a class="headerlink" href="#wikipedia" title="Permalink to this headline">¶</a></h2>
+<p>Unlike the other APIs used in this tutorial, you do not need a key or access token to use Wikipedia’s API. So, you can
+go straight into a Tactic notebook and run this code to set up your API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wikipediaapi</span>
+<span class="n">wiki_api</span> <span class="o">=</span> <span class="n">wikipediaapi</span><span class="o">.</span><span class="n">Wikipedia</span><span class="p">(</span>
+        <span class="n">language</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="c1"># articles will be in English</span>
+        <span class="n">extract_format</span><span class="o">=</span><span class="n">wikipediaapi</span><span class="o">.</span><span class="n">ExtractFormat</span><span class="o">.</span><span class="n">WIKI</span> <span class="c1"># we want the wiki format of the article</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, you can access the text of an article, such as the <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_United_States_political_catchphrases">List of United States political catchphrases</a>, like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">article_title</span> <span class="o">=</span> <span class="s2">&quot;List_of_United_States_political_catchphrases&quot;</span> <span class="c1"># you have to use underscores instead of spaces</span>
+
+<span class="n">catchphrase_wiki</span> <span class="o">=</span> <span class="n">wiki_api</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">article_title</span><span class="p">)</span> <span class="c1"># gets the article but in wiki format</span>
+<span class="n">catchphrase_txt</span> <span class="o">=</span> <span class="n">catchphrase_wiki</span><span class="o">.</span><span class="n">text</span> <span class="c1"># gets the text out of the wiki formatted article</span>
+<span class="n">catchphrase_txt</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If you wanted to extract the quotes from the whole text of the article, you could do so using the library re (short
+for regular expressions). Re allows you to create an expression that describes the pattern of a string to the computer.
+For instance, you might want to tell the computer, “Please go through this text and find every instance of a quotation
+mark followed by some number of characters and then another quotation mark.” However, this can get a little more complicated
+because the computer might look at a quotation mark and also classify that as one of the characters that comes before
+a quotation mark. The expression you can use to represent this is \”.+?\”. The \” at the start and end represent that
+the string starts and ends with a quotation mark. You only need to use the backslash so the quotation mark isn’t read as
+the end of the string. The . represents every character (except for newline) and then the + means one or more instances
+of that dot can occur. In this situation, the ? represents that the .+ is not “greedy.” This means that instead of
+reading a second quotation mark as one of the instances of the .+, it is read as the second \” which is what you want.
+Here’s the regular expression in action:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">catchphrases</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">.+?</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">catchphrase_txt</span><span class="p">)</span>
+<span class="c1"># finds every instance of the regexp in catchphrase_txt and stores it in catchphrases</span>
+<span class="k">for</span> <span class="n">phrase</span> <span class="ow">in</span> <span class="n">catchphrases</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Regular expressions are incredibly useful for extracting data from long bodies of text. If you want to learn more about
+them, you can read their documentation <a class="reference external" href="https://docs.python.org/3/library/re.html">here</a>. Also, if you want to read more about Wikipedia’s API you can do so <a class="reference external" href="https://pypi.org/project/Wikipedia-API/">here</a>.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tactic</a></h1>
+
+
+
+<p class="blurb">A text mining environment for qualitative researchers</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=bsherin&repo=tactic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Using Tactic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Version-History-And-Compare.html">History and Compare</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How To</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Use-Existing-Tiles.html">Use Existing Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Create-Simple-Tile.html">Create A Simple Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WordFreqDist-Explained.html">WordFreqDist Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classifying-With-NLTK.html">Classifying with NLTK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Data From APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#twitter">Twitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#propublica">ProPublica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reddit">Reddit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wikipedia">Wikipedia</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Classifying-With-NLTK.html" title="previous chapter">Classifying with NLTK</a></li>
+      <li>Next: <a href="Running-your-own-Tactic-server.html" title="next chapter">Running a Tactic Server</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Bruce Sherin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Getting-Data-From-APIs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

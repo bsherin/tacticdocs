@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>D3 Tiles &#8212; Tactic .1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Handler Methods" href="Handler-Methods.html" />
+    <link rel="prev" title="Matplotlib Tiles" href="Matplotlib-Tiles.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="d3-tiles">
+<h1>D3 Tiles<a class="headerlink" href="#d3-tiles" title="Permalink to this headline">¶</a></h1>
+<p>Tactic includes support for building tiles that display interactive <a class="reference external" href="https://www.d3js.org">D3
+visualizations</a>. Really, the machinery is more
+general than the ability to draw D3 visualizations; it provides a way to
+write general javascript code to render the content of a tile.</p>
+<p>Every Matplotlib tile must have the minimum elements shown here:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@user_tile</span>
+<span class="k">class</span> <span class="nc">MyTile</span><span class="p">(</span><span class="n">D3Tile</span><span class="p">):</span>
+
+ <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">main_id</span><span class="p">,</span> <span class="n">tile_id</span><span class="p">,</span> <span class="n">tile_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="o">....</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">jscript</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;function (selector, w, h, arg_dict) {</span>
+<span class="s2">    }&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">render_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">arg_dict</span>
+</pre></div>
+</div>
+<p>Unlike other tiles, D3 tiles must subclass <code class="docutils literal notranslate"><span class="pre">D3tile</span></code>. Every D3Tile must
+initialize an instance variable, <code class="docutils literal notranslate"><span class="pre">self.jscript</span></code>. This must contain the
+text of a javascript function of the form
+<code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">(selector,</span> <span class="pre">w,</span> <span class="pre">h,</span> <span class="pre">arg_dict)</span> <span class="pre">{}</span></code>. <code class="docutils literal notranslate"><span class="pre">selector</span></code> is a string
+that gives access to the html element where the content of the tile
+should be placed. <code class="docutils literal notranslate"><span class="pre">w</span></code> and <code class="docutils literal notranslate"><span class="pre">h</span></code> are the width and height of the area
+to be drawn into. <code class="docutils literal notranslate"><span class="pre">arg_dict</span></code> is a dictionary of arguments passed by
+<code class="docutils literal notranslate"><span class="pre">render_content</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">render_content</span></code> can do other work, but it must return a dictionary
+that will be passed to the javascript function in the variable
+<code class="docutils literal notranslate"><span class="pre">arg_dict</span></code>. If <code class="docutils literal notranslate"><span class="pre">arg_dict</span></code> contains a key <code class="docutils literal notranslate"><span class="pre">styles</span></code>, then the
+associated value will be added to the html of the tile within
+<code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code> tags.</p>
+<p>Most of the time, you will <a class="reference external" href="Tile-Creator.html#creating-d3-tiles">create and edit D3 tiles in the Tile
+Creator</a>. That hides some of the
+ugliness.</p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tactic</a></h1>
+
+
+
+<p class="blurb">A text mining environment for qualitative researchers</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=bsherin&repo=tactic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Using Tactic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Version-History-And-Compare.html">History and Compare</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How To</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Use-Existing-Tiles.html">Use Existing Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Create-Simple-Tile.html">Create A Simple Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WordFreqDist-Explained.html">WordFreqDist Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classifying-With-NLTK.html">Classifying with NLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Data-From-APIs.html">Getting Data From APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Matplotlib-Tiles.html" title="previous chapter">Matplotlib Tiles</a></li>
+      <li>Next: <a href="Handler-Methods.html" title="next chapter">Handler Methods</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Bruce Sherin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/D3-Tiles.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

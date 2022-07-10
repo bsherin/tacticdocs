@@ -1,0 +1,9 @@
+
+.figure {
+    border: .25px solid #ccc;
+}
+
+a.inimage {
+    border-bottom: none;
+    vertical-align: text-bottom;
+}

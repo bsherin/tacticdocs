@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Log and Notebook &#8212; Tactic .1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Working With Tags" href="Working-With-Tags.html" />
+    <link rel="prev" title="The Main Interface" href="Main-interface.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="the-log-and-notebook">
+<h1>The Log and Notebook<a class="headerlink" href="#the-log-and-notebook" title="Permalink to this headline">¶</a></h1>
+<p>As mentioned in the section on the <a class="reference external" href="Main-interface.html">Main Interface</a>,
+there is a component at the bottom of the screen called the Log. Tiles
+can send information to the Log, and some error messages will show up
+there. The Log is also designed to be used more like a full-fledged
+python notebook.</p>
+<p>Furthermore, you can create projects that consist of nothing more
+than a Notebook of this sort. There are two ways to create one of these
+Notebook projects. First, from within the Main Interface, you can go to
+the Project menu and select <span class="guilabel">open-console-as-notebook</span>. This will
+start a Notebook project using the current contents of the Log.</p>
+<p>The second way to create a Notebook project is from the Library
+manager. Activate the projects pane. Then select <span class="guilabel">New notebook</span>
+from the <span class="guilabel">Open</span> menu.</p>
+<img alt="_images/bpnew_notebook2.png" src="_images/bpnew_notebook2.png" />
+<p>Logs and Notebooks pretty much work the same way. You use the buttons at
+the top to manually add new elements:</p>
+<figure class="align-default">
+<img alt="_images/bpconsole_top2.png" src="_images/bpconsole_top2.png" />
+</figure>
+<dl class="simple">
+<dt><a class="inimage reference internal" href="_images/new_text_but.png"><img alt="new text but" class="inimage" src="_images/new_text_but.png" style="height: 25px;" /></a></dt><dd><p>Add a new text cell.</p>
+</dd>
+<dt><a class="inimage reference internal" href="_images/new_code_but.png"><img alt="new code but" class="inimage" src="_images/new_code_but.png" style="height: 25px;" /></a></dt><dd><p>Add a new code cell.</p>
+</dd>
+<dt><a class="inimage reference internal" href="_images/new_link_but.png"><img alt="new link but" class="inimage" src="_images/new_link_but.png" style="height: 25px;" /></a></dt><dd><p>Add a link to a library resources. You will be prompted to select the resource.
+The link is currently always added at the end of the cell.</p>
+</dd>
+<dt><a class="inimage reference internal" href="_images/copy_cell_but.png"><img alt="copy cell but" class="inimage" src="_images/copy_cell_but.png" style="height: 25px;" /></a></dt><dd><p>Copies the current cell to a special cell clipboard. It provides a mechanism for
+copying cells across projects.</p>
+</dd>
+<dt><a class="inimage reference internal" href="_images/paste_cell_but.png"><img alt="paste cell but" class="inimage" src="_images/paste_cell_but.png" style="height: 25px;" /></a></dt><dd><p>Pastes the cell from the special cell clipbaord</p>
+</dd>
+<dt><a class="inimage reference internal" href="_images/reset_but.png"><img alt="reset but" class="inimage" src="_images/reset_but.png" style="height: 25px;" /></a></dt><dd><p>Clears the log namespace and clear all code output</p>
+</dd>
+<dt><a class="inimage reference internal" href="_images/stop_but.png"><img alt="stop but" class="inimage" src="_images/stop_but.png" style="height: 25px;" /></a></dt><dd><p>Stop any running cells.</p>
+</dd>
+<dt><a class="inimage reference internal" href="_images/clear_but.png"><img alt="clear but" class="inimage" src="_images/clear_but.png" style="height: 25px;" /></a></dt><dd><p>Entirely erases all contents from the log.</p>
+</dd>
+<dt><a class="inimage reference internal" href="_images/log_but.png"><img alt="log but" class="inimage" src="_images/log_but.png" style="height: 25px;" /></a></dt><dd><p>Shows the error console for the log container.</p>
+</dd>
+<dt><a class="inimage reference internal" href="_images/main_log_but.png"><img alt="main log but" class="inimage" src="_images/main_log_but.png" style="height: 25px;" /></a></dt><dd><p>Shows the error console for the main container.</p>
+</dd>
+</dl>
+<section id="text-fields">
+<h2>Text fields<a class="headerlink" href="#text-fields" title="Permalink to this headline">¶</a></h2>
+<p>You can create a text field by clicking the <span class="guilabel">text</span> button. You’ll get
+something that looks like this:</p>
+<figure class="align-default">
+<img alt="_images/bptext_item_annotated.png" src="_images/bptext_item_annotated.png" />
+</figure>
+<p>You can enter text as Markdown and Latex (see below). If you do,
+clicking the <span class="guilabel">convert markdown</span> button
+displays the formatted text. You can also hit command-enter to convert.</p>
+<figure class="align-default">
+<img alt="_images/bpconverted_markdown.png" src="_images/bpconverted_markdown.png" />
+</figure>
+<p>Clicking the bottom button again toggles the display back to plain text.
+You can also double-click on the converted markdown to go back to editing.</p>
+<p>Currently, the library that is used to do the conversion of the markdown to
+html is <a class="reference external" href="https://github.com/markdown-it/markdown-it">markdown-it</a>.
+The library used to convert Latex is
+<a class="reference external" href="https://github.com/tylingsoft/markdown-it-latex">markdown-it-latex</a>.
+Refer to the docs for these libraries for syntax specifics.</p>
+</section>
+<section id="code-fields">
+<h2>Code fields<a class="headerlink" href="#code-fields" title="Permalink to this headline">¶</a></h2>
+<p>You create a code field by clicking the <span class="guilabel">code</span> button:</p>
+<figure class="align-default">
+<img alt="_images/bpcode_item.png" src="_images/bpcode_item.png" />
+</figure>
+<p>In many ways, code fields in Logs and Notebooks function like a tile.
+You can write any code that you can write in a tile, which means you can
+test code here, and that you have access to the whole tile API.
+(However, some of these commands won’t make sense in Notebooks.)</p>
+<p>Any local variables you introduce within a code field are added to a
+global namespace. This means that these variables shared across the code
+fields in your Log/Notebook.</p>
+<p>Like a tile, output here is treated as html. So you might need to add
+html tags to get the output that you want. For example, you might want
+to wrap your output in <code class="docutils literal notranslate"><span class="pre">&lt;pre&gt;..&lt;/pre&gt;</span></code> tags.</p>
+<p>You can display plots in the console just as you’d expect. But you have to use the
+same magic commands as in a tile. So it’s a little ugly:</p>
+<figure class="align-default">
+<img alt="_images/bpmpl_figure.png" src="_images/bpmpl_figure.png" />
+</figure>
+<p>You can also work with the Matplotlib interactive mode if you use the <code class="docutils literal notranslate"><span class="pre">self.create_pyplot_html()</span></code>
+magic command:</p>
+<figure class="align-default">
+<img alt="_images/bppyplot_figure.png" src="_images/bppyplot_figure.png" />
+</figure>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
+<p>The normal <a class="reference external" href="Module-Viewer-Keyboard-Shortcuts.html">keyboard shortcuts</a> work inside of code items.
+In addition, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Enter</kbd></kbd> and <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Enter</kbd></kbd> will execute a cell. Those same two shortcuts,
+executed inside of a text cell, will display the formatted text.</p>
+</section>
+<section id="some-final-generalities">
+<h2>Some final generalities<a class="headerlink" href="#some-final-generalities" title="Permalink to this headline">¶</a></h2>
+<p>You can <strong>reorder</strong> fields by dragging on dragging spot</p>
+<p>About the <span class="guilabel">reset</span> button:</p>
+<p>Clicking the reset button does a few different things:</p>
+<ul class="simple">
+<li><p>It clears the output area of any code tiles.</p></li>
+<li><p>It stops and restarts the python process so that the internal state
+is entirely cleared.</p></li>
+</ul>
+<p>About the <span class="guilabel">clear</span> button:</p>
+<p>Clicking the clear button button does everything that reset does, and
+it also removes absolutely everything from the log.</p>
+<p>About the <strong>copy and paste</strong> buttons:</p>
+<p>These provide a means of copying and pasting cells across projects.
+Copy will copy the current cell. Paste will paste a copied cell, if there is one.
+So, for example, you can create a notebook into which you copy results, such as plots,
+from the log of a project.</p>
+<p>About the <strong>log and main</strong> buttons:</p>
+<p>The log button shows the container log for the virtual tile associated with the log.
+The main  button shows the container log for the container associated with the current project.
+Tactic tries to catch all errors and to display them for you in error drawer, or in alerts. But if you
+are getting unexpected behavior, and not seeing any normal error messages, then you can try looking at
+the container logs to get a sense for what’s going on. Problems with docker itself might also show up here.</p>
+<p>About log item <strong>summaries</strong>:</p>
+<p>When you shrink a log item, you will see the “summary” for the item.
+The summary can be specified in the <code class="docutils literal notranslate"><span class="pre">log_it</span></code> command that creates a log item.
+You can also directly edit the summary after shrinking a log item.</p>
+<p>About <strong>saving</strong>:</p>
+<p>When you save a standard project or notebook, Tactic attempts to save both
+the appearance <em>and internal state</em> of the Notebook. The saving of internal
+state is still an iffy business however.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tactic</a></h1>
+
+
+
+<p class="blurb">A text mining environment for qualitative researchers</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=bsherin&repo=tactic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Using Tactic</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Log and Notebook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#text-fields">Text fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-fields">Code fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#some-final-generalities">Some final generalities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Version-History-And-Compare.html">History and Compare</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How To</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Use-Existing-Tiles.html">Use Existing Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Create-Simple-Tile.html">Create A Simple Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WordFreqDist-Explained.html">WordFreqDist Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classifying-With-NLTK.html">Classifying with NLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Data-From-APIs.html">Getting Data From APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Main-interface.html" title="previous chapter">The Main Interface</a></li>
+      <li>Next: <a href="Working-With-Tags.html" title="next chapter">Working With Tags</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Bruce Sherin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Log-And-Notebook.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

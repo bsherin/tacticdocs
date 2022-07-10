@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Tile Creator &#8212; Tactic .1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Module Viewer" href="Module-Viewer.html" />
+    <link rel="prev" title="Intro to the tools" href="Making-Tiles.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="the-tile-creator">
+<h1>The Tile Creator<a class="headerlink" href="#the-tile-creator" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the future of tile creation.
+The Tile Creator is the editor that provides a more scaffolded
+environment for creating and editing tiles.</p>
+<section id="creating-the-new-tile">
+<h2>Creating the new tile<a class="headerlink" href="#creating-the-new-tile" title="Permalink to this headline">¶</a></h2>
+<p>With that said, here’s how to create a new tile with the creator:</p>
+<p>Go to the <span class="guilabel">tile</span> tab of your resource library and click <span class="menuselection">+creator ‣ StandardTile</span>.</p>
+<figure class="align-default">
+<img alt="_images/bpcreate_in_creator.png" src="_images/bpcreate_in_creator.png" />
+</figure>
+<p>When prompted give your tile some sort of useful name. Then you should
+see something that looks like this:</p>
+<figure class="align-default">
+<img alt="_images/bpstarting_creator_view.png" src="_images/bpstarting_creator_view.png" />
+</figure>
+</section>
+<section id="writing-the-tile-body">
+<h2>Writing the tile body<a class="headerlink" href="#writing-the-tile-body" title="Permalink to this headline">¶</a></h2>
+<p>The large box on the left-hand side is where you write the code that
+will be the <code class="docutils literal notranslate"><span class="pre">render_content</span></code> method in your new tile. In short, what
+you need to understand is that this bit of python code must return the
+html that will be displayed in your tile. Thus, the last line in the box
+should be a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement.</p>
+<p>So, for example, if you change the content of the box to be:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_html</span> <span class="o">=</span> <span class="s2">&quot;hello world&quot;</span>
+<span class="k">return</span> <span class="n">new_html</span>
+</pre></div>
+</div>
+<p>Then you will have a tile that simply prints “hello world” on its face.</p>
+<p>Remember that the text you display can be any valid html and will be
+displayed as such. So, for example, if you instead write this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_html</span> <span class="o">=</span> <span class="s2">&quot;&lt;b&gt;hello world&lt;/b&gt;&quot;</span>
+<span class="k">return</span> <span class="n">new_html</span>
+</pre></div>
+</div>
+<p>Then you’ll instead have a tile that display “hello world” in bold text.</p>
+<p>For its styling, Tactic uses the awesome <a class="reference external" href="https://blueprintjs.com/docs/">blueprint</a> project.
+That means you can use blueprint’s special CSS styles in the html that your tiles produce. For example,
+if there is a button on the front of your tile, giving that button the class “bp3-button” will cause
+the button to be styled in the manner of blueprint.</p>
+<p>In writing your tile, you have access to a number of tactic-specific
+commands that, for example, give you access to your data. These are
+described in some detail here: <a class="reference external" href="Tile-Commands.html">Tile Commands</a>.</p>
+<p>You can use these <a class="reference external" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a> within the box
+containing your code.</p>
+<p>Finally, typing <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">space</kbd></kbd> while in the code area brings up the
+autocomplete widget. This will prompt you with various useful
+possibilities, including the Tile Commands</p>
+<p>You can also import and make use of a number of <a class="reference external" href="Tile-commands.html#scientific-libraries">scientific libraries</a>.</p>
+<p>Go to the relevant web sites for documentation on these libraries.</p>
+</section>
+<section id="specifying-tile-resources">
+<h2>Specifying tile resources<a class="headerlink" href="#specifying-tile-resources" title="Permalink to this headline">¶</a></h2>
+<p>The area on the right-hand side of the interface allows you to create
+and edit various resources and metadata for your tile.</p>
+<figure class="align-default">
+<img alt="_images/bpmetadata_pane.png" src="_images/bpmetadata_pane.png" />
+</figure>
+<section id="metadata">
+<h3>metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">metadata</span> is where you specify a bit of metadata for your tile.
+The “Category” field determines the menu under which your tile will
+appear in the main project environment.</p>
+</section>
+<section id="options">
+<h3>options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">options</span> tab is where you specify <a class="reference external" href="Tile-Structure.html#options">Tile
+Options</a> that will appear on back of your
+tile. Here I have clicked on the options tab and then used the form at
+the bottom to create an option called <code class="docutils literal notranslate"><span class="pre">some_user_text</span></code>.</p>
+<figure class="align-default">
+<img alt="_images/bpcreator_options.png" src="_images/bpcreator_options.png" />
+</figure>
+<p>These option can now be referred to in the tile code as
+<code class="docutils literal notranslate"><span class="pre">self.some_user_text</span></code>. So if you then change your code to be:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_html</span> <span class="o">=</span> <span class="s2">&quot;&lt;b&gt;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">some_user_text</span> <span class="o">+</span> <span class="s2">&quot;&lt;/b&gt;&quot;</span>
+<span class="k">return</span> <span class="n">new_html</span>
+</pre></div>
+</div>
+<p>You can reorder the options in the table that appears in the options pane
+by clicking and dragging the number at the start of the row that you want to move.</p>
+<p>The button that looks like a trash can deletes the selected option. The button
+that looks like a bulleted list converts the list of options to some markdown
+that will display nicely, and copies it to the <span class="guilabel">notes</span> field in the metadata pane.</p>
+<p>There are many different types of options as described here: <a class="reference external" href="Tile-Structure.html#options">Tile
+Options</a>. there’s an extra step required in
+making use of some of these options (<code class="docutils literal notranslate"><span class="pre">list_select</span></code>, <code class="docutils literal notranslate"><span class="pre">pipe_select</span></code>,
+<code class="docutils literal notranslate"><span class="pre">function_select</span></code>, <code class="docutils literal notranslate"><span class="pre">class_select</span></code>). In these options, the variable
+you get contains only the name of the selected resource. To extract the
+value you have to use one of the tile commands described
+<a class="reference external" href="Tile-Commands.html#other">here</a>. For example
+<code class="docutils literal notranslate"><span class="pre">self.get_user_list(list_name)</span></code> returns the actual list referred to.</p>
+</section>
+<section id="exports">
+<h3>exports<a class="headerlink" href="#exports" title="Permalink to this headline">¶</a></h3>
+<p>You can also specifythe name of parameters that will be <span class="guilabel">exports</span> for
+your tile. (Exported parameters are available as pipes within other tiles.
+Note that these must be instance variables assigned values in your code
+in this manner <code class="docutils literal notranslate"><span class="pre">self.variable_name</span> <span class="pre">=</span>&#160; <span class="pre">...</span></code>. ) Also, note that the tile creator
+adds exported variables to the list of parameters that are saved when a project is saved.</p>
+<p>The interface for this is pretty much the same as for the <span class="guilabel">options</span> pane.</p>
+</section>
+<section id="methods">
+<h3>methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<p>The <span class="guilabel">methods</span> tab displays additional methods defined within a tile
+class. This is for advanced users. But if you use the tile creator to
+look at existing tiles they will often have methods that are visible
+here. You can define new methods that will be accessible in your tile.
+For example, you could define a method <code class="docutils literal notranslate"><span class="pre">my_method</span></code> like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avar</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">myvar</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>All methods that you define need to have <code class="docutils literal notranslate"><span class="pre">self</span></code> as the first argument.</p>
+</section>
+</section>
+<section id="creating-matplotlib-tiles">
+<h2>Creating Matplotlib Tiles<a class="headerlink" href="#creating-matplotlib-tiles" title="Permalink to this headline">¶</a></h2>
+<p>You can use the Tile Creator to make tiles that display matplotlib
+figures. If you open an existing matplotlib figure or create a new one
+from your resource manager, then the Tile Creator opens with a slightly
+different interface. Rather than having one large box for code on the
+left, there are two. The bottom one holds the code for the
+<code class="docutils literal notranslate"><span class="pre">render_content</span></code> method. The other holds the code for the
+<code class="docutils literal notranslate"><span class="pre">draw_plot</span></code> method, which all matplotlib tiles must have.</p>
+<p>This is explained a bit <a class="reference external" href="Matplotlib-Tiles.html">here</a>.</p>
+</section>
+<section id="creating-d3-tiles">
+<h2>Creating D3 Tiles<a class="headerlink" href="#creating-d3-tiles" title="Permalink to this headline">¶</a></h2>
+<p>You can also use the Tile Creator to make tiles that display interactive
+D3 figures. If you open an existing D3 figure or create a new one from
+your resource manager, then the Tile Creator opens with a slightly
+different interface. Rather than having one large box for code on the
+left, there are two. The bottom one holds the <code class="docutils literal notranslate"><span class="pre">render_content</span></code> method.
+The top one must hold the body of a function that will be passed the
+arguments <cite>selector</cite>, <cite>w</cite>, <cite>h</cite>, and <cite>arg_dict</cite>.</p>
+<p>Also, <code class="docutils literal notranslate"><span class="pre">render_content</span></code> must return a dictionary of arguments that will
+be passed to the javascript function in <code class="docutils literal notranslate"><span class="pre">arg_dict</span></code>.</p>
+<p>This is explained a bit <a class="reference external" href="D3-Tiles.html">here</a>.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tactic</a></h1>
+
+
+
+<p class="blurb">A text mining environment for qualitative researchers</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=bsherin&repo=tactic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Using Tactic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Tile Creator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-the-new-tile">Creating the new tile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-the-tile-body">Writing the tile body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-tile-resources">Specifying tile resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#metadata">metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options">options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exports">exports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#methods">methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-matplotlib-tiles">Creating Matplotlib Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-d3-tiles">Creating D3 Tiles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Version-History-And-Compare.html">History and Compare</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How To</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Use-Existing-Tiles.html">Use Existing Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Create-Simple-Tile.html">Create A Simple Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WordFreqDist-Explained.html">WordFreqDist Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classifying-With-NLTK.html">Classifying with NLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Data-From-APIs.html">Getting Data From APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Making-Tiles.html" title="previous chapter">Intro to the tools</a></li>
+      <li>Next: <a href="Module-Viewer.html" title="next chapter">The Module Viewer</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Bruce Sherin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Tile-Creator.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

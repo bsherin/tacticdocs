@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Running a Tactic Server &#8212; Tactic .1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Open Source Resources" href="open-source-resources.html" />
+    <link rel="prev" title="Getting Data From APIs" href="Getting-Data-From-APIs.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="running-a-tactic-server">
+<h1>Running a Tactic Server<a class="headerlink" href="#running-a-tactic-server" title="Permalink to this headline">¶</a></h1>
+<p>This is some preliminary documentation for running your own Tactic
+server. I haven’t tried following these instruction myself, so it very
+well might not work. But this should get you started.</p>
+<p>I have so far run Tactic on Linux and under OS X.</p>
+<ol class="arabic simple">
+<li><p>Install and start a MongoDb server. I have a note to myself that
+says: “Have to edit mongodb.conf so that it listens on all
+interfaces (comment out the bindIp line).” But I didn’t do this when
+recently creating an installation under OS X.</p></li>
+<li><p>Install and start Docker.</p></li>
+<li><p>Get the source code from the Tactic repository on Github.</p></li>
+<li><p>Create and activate a python virtual environment inside the folder.
+I did something like this:</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">virtualenv</span> <span class="pre">-p</span> <span class="pre">/usr/bin/python2.7</span> <span class="pre">tactic_env</span></code></p>
+<p>(The -p option lets you select a the python interpreter to be used. You
+want 2.7.x)</p>
+<p>After creating the virtual environment, you have to activate it:</p>
+<p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">tactic_venv/bin/activate</span></code></p>
+<ol class="arabic simple" start="4">
+<li><p>Download all of the dependencies. I have sometimes found that is it
+necessary to first run:</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">build-essential</span></code></p>
+<p>in order to get the installation of gevent to work. In any case, run
+this next to install the requirements.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
+<ol class="arabic simple" start="5">
+<li><p>Create all of the needed docker images by cding into the tactic_app
+folder and running:</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">build</span></code></p>
+<ol class="arabic simple" start="6">
+<li><p>There is no longer a step (6). Enjoy the added free time.</p></li>
+<li><p>Create a script for starting tactic. The terminal script that I use
+on my ubuntu linux computer looks like this:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">PycharmProjects</span><span class="o">/</span><span class="n">tactic</span>
+<span class="n">source</span> <span class="n">tactic_venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">export</span> <span class="n">USE_SSL</span><span class="o">=</span><span class="kc">False</span>
+<span class="n">export</span> <span class="n">STEP_SIZE</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">export</span> <span class="n">PYTHONUNBUFFERED</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">export</span> <span class="n">USE_LOCAL_SERVER</span><span class="o">=</span><span class="kc">True</span>
+<span class="n">export</span> <span class="n">CHUNK_SIZE</span><span class="o">=</span><span class="mi">200</span>
+<span class="n">export</span> <span class="n">MAX_QUEUE_LENGTH</span><span class="o">=</span><span class="mi">500</span>
+<span class="n">export</span> <span class="n">ANYONE_CAN_REGISTER</span><span class="o">=</span><span class="kc">True</span>
+<span class="n">export</span> <span class="n">SHORT_SLEEP_PERIOD</span><span class="o">=</span><span class="mf">.0001</span>
+<span class="n">export</span> <span class="n">LONG_SLEEP_PERIOD</span><span class="o">=</span><span class="mf">.1</span>
+<span class="o">~/</span><span class="n">PycharmProjects</span><span class="o">/</span><span class="n">tactic</span><span class="o">/</span><span class="n">tactic_venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gunicorn</span> <span class="o">-</span><span class="n">b</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">5000</span> <span class="o">-</span><span class="n">k</span> <span class="n">geventwebsocket</span><span class="o">.</span><span class="n">gunicorn</span><span class="o">.</span><span class="n">workers</span><span class="o">.</span><span class="n">GeventWebSocketWorker</span> <span class="n">tactic_run</span><span class="p">:</span><span class="n">app</span>
+</pre></div>
+</div>
+<p>You’ll have to edit the first and last lines so that they contain the
+correct paths for your own machine.</p>
+<p>Also, on the mac, I add:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">USE_FORWARDER</span><span class="o">=</span><span class="kc">True</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Execute this script. If you have lived a good life to this point,
+then the Tactic server will start. If it starts, but gives an error
+message or two, count your blessings and go on to step (9).</p></li>
+<li><p>Go to a browser and enter 0.0.0.0:5000. You should see the prompt
+to log in. Since there aren’t any user accounts, you can’t log in
+yet. So, click the “register’ button to create an account. The
+first thing you should do is to create an account with the
+username”admin.” That’s the administration account. The other
+special account is called “repository.” This is where the shared
+resources live. If you set ANYONE_CAN_REGISTER=False then the admin
+user can still create new accounts, but no one else can.</p></li>
+<li><p>One remaining problem is that the repository on your local machine
+isn’t populated. There’s no simple fix for this right now. The
+right fix might be to allow a local server to still use a remote
+repository. But that isn’t implemented.</p></li>
+</ol>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tactic</a></h1>
+
+
+
+<p class="blurb">A text mining environment for qualitative researchers</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=bsherin&repo=tactic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Using Tactic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Version-History-And-Compare.html">History and Compare</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How To</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Use-Existing-Tiles.html">Use Existing Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Create-Simple-Tile.html">Create A Simple Tile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WordFreqDist-Explained.html">WordFreqDist Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classifying-With-NLTK.html">Classifying with NLTK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Getting-Data-From-APIs.html">Getting Data From APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running a Tactic Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Getting-Data-From-APIs.html" title="previous chapter">Getting Data From APIs</a></li>
+      <li>Next: <a href="open-source-resources.html" title="next chapter">Open Source Resources</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Bruce Sherin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Running-your-own-Tactic-server.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
