@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>History and Compare &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,10 +13,11 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tile Structure" href="Tile-Structure.html" />
+    <link rel="next" title="Tile Reference Intro" href="Tile-Reference-Introduction.html" />
     <link rel="prev" title="Keyboard Shortcuts" href="Module-Viewer-Keyboard-Shortcuts.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -35,18 +36,18 @@
           <div class="body" role="main">
             
   <section id="history-and-compare">
-<h1>History and Compare<a class="headerlink" href="#history-and-compare" title="Permalink to this headline">¶</a></h1>
+<h1>History and Compare<a class="headerlink" href="#history-and-compare" title="Permalink to this heading">¶</a></h1>
 <section id="version-history">
-<h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this headline">¶</a></h2>
-<p>There is now machinery built into Tactic that helps you to look at and
+<h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this heading">¶</a></h2>
+<p>There is machinery built into Tactic that helps you to look at and
 use code from earlier versions of a tile. This is partly automatic and
 partly manual. First the manual part: In the Module Viewer and Tile
-Creator there is now a button that lets you set a checkpoint. Clicking on of
-this buttons saves the tile as usual. But it also will causes Tactic to
+Creator select <span class="menuselection">Save ‣ Save and Checkpoint</span> from the menus.
+This buttons saves the tile as usual. But it also will cause Tactic to
 permanently save a snapshot of the tile code as it appears at the moment
 of the save.</p>
 <figure class="align-default">
-<img alt="_images/bpsave_and_checkpoint.png" src="_images/bpsave_and_checkpoint.png" />
+<a class="reference internal image-reference" href="_images/save_and_checkpoint.png"><img alt="_images/save_and_checkpoint.png" src="_images/save_and_checkpoint.png" style="width: 611.2px; height: 348.8px;" /></a>
 </figure>
 <p>Tactic also tries to do some semi-intelligent saving of snapshots
 automatically. Every time that a tile is saved, Tactic will save a
@@ -57,30 +58,38 @@ all snapshots that are older than one day ago, and it only keeps the
 last version of a tile that was saved on a given day. So you’ll only end
 up with at most one snapshot of a tile per day. This pruning doesn’t
 affect manually created snapshots.</p>
-<p>Anyway, that is what I tried to make it do. If you ever find out whether it
-follows this protocol, let me know. I’m sort of curious.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I haven’t really tested this automated saving and pruning of snapshots, so you shouldn’t treat it
+as totally reliable.</p>
+</div>
+<p>You can access the history from the menu <span class="menuselection">Compare ‣ View History</span>.
+When the history viewer appears, this is what it looks like, in all it’s glory.</p>
 <figure class="align-default">
-<img alt="_images/bpshow_history_viewer.png" src="_images/bpshow_history_viewer.png" />
-</figure>
-<p>To access the history, you click the <strong>History</strong> button in one of the
-tile viewers. When the history viewer appears, this is what it looks like, in all it’s glory.</p>
-<figure class="align-default">
-<img alt="_images/bphistory_viewer.png" src="_images/bphistory_viewer.png" />
+<img alt="_images/history_viewer.png" src="_images/history_viewer.png" />
 </figure>
 <p>The popup list at the top right allows you to browse through old
 versions of the tile. Differences are highlighted and you can copy code
-from old versions to the current tile. (You have to click Save button for any
-changes to be saved. It’s the single toolbar button that appears..)</p>
+from old versions to the current tile. (You have to click Save for any
+changes to be saved. It’s the single <cite>Save</cite> menu that appears next to the Tile’s name.)</p>
+<p>Note that the view you have here shows the tile as it would appear, in its raw form
+in the Module Viewer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have any other panes in which you are viewing the tile, you will need to reload those
+panes to get the new version of the tile.</p>
+</div>
 </section>
 <section id="compare-tiles">
-<h2>Compare Tiles<a class="headerlink" href="#compare-tiles" title="Permalink to this headline">¶</a></h2>
-<p>You can also compare two tiles. Clicking on the <strong>Compare</strong> button
-brings up a window that is similar to the history viewer.</p>
+<h2>Compare Tiles<a class="headerlink" href="#compare-tiles" title="Permalink to this heading">¶</a></h2>
+<p>You can also compare two tiles. Clicking on the menu <span class="menuselection">Compare ‣ Compare to Other Modules</span>.
+brings up a window that is similar to the history viewer. You can also open the Comparison viewer using
+the menus in the Tile Library pane.</p>
 <figure class="align-default">
-<img alt="_images/bpshow_compare_viewer.png" src="_images/bpshow_compare_viewer.png" />
+<img alt="_images/compare_viewer.png" src="_images/compare_viewer.png" />
 </figure>
-<p>The compare viewer looks and operates very similary to the history viewer.
-So I won’t insult your intelligence by explaining it here. In fact, you probably
+<p>The compare viewer looks and operates very similary to the history viewer,
+so I won’t insult your intelligence by explaining it here. In fact, you probably
 could have figured out the history viewer without any documentation. I guess if your
 time was all that valuable you wouldn’t still be reading this paragraph.
 So I don’t feel too bad.</p>
@@ -120,13 +129,14 @@ So I don’t feel too bad.</p>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
@@ -138,13 +148,14 @@ So I don’t feel too bad.</p>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -168,7 +179,7 @@ So I don’t feel too bad.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="Module-Viewer-Keyboard-Shortcuts.html" title="previous chapter">Keyboard Shortcuts</a></li>
-      <li>Next: <a href="Tile-Structure.html" title="next chapter">Tile Structure</a></li>
+      <li>Next: <a href="Tile-Reference-Introduction.html" title="next chapter">Tile Reference Intro</a></li>
   </ul></li>
 </ul>
 </div>
@@ -181,7 +192,7 @@ So I don’t feel too bad.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -198,7 +209,7 @@ So I don’t feel too bad.</p>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

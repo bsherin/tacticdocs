@@ -1,7 +1,8 @@
 Keyboard Shortcuts
 ==================
 
-Keyboard shortcuts for the module viewer. These are mosly just copied
+Keyboard shortcuts for the module viewer, and anywhere else you can edit code.
+These are mosly just copied
 from here: https://codemirror.net/doc/manual.html#commands
 
 :command:`autocomplete` :kbd:`Ctrl-Space` (PC), :kbd:`Ctrl-Space` (Mac)

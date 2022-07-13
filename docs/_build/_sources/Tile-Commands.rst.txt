@@ -16,7 +16,7 @@ allows for code that is easier to read and write.
     All of the commands here are methods of the tile base class, ``TileBase``.
     And you will always be calling them, essentially, from within another
     method of `TileBase <Tile-Structure.html>`__. That means that when you invoke these functions you will
-    almost always be writing ``self.function()``.  In the case of properties, you'll
+    almost always be writing ``self.method()``.  In the case of properties, you'll
     write ``self.property``.
 
 .. py:class:: TileBase()
@@ -36,11 +36,10 @@ Refreshing
 
     .. py:method:: refresh_tile_now(new_html=None)
 
-        Updates the front of the tile using the passed html. If new_html is None
-        then ``render_content`` is called to generate the html to be displayed.
-
         :param str new_html: The html to display on the front of the tile.
 
+        Updates the front of the tile using the passed html. If new_html is None
+        then ``render_content`` is called to generate the html to be displayed.
 
     .. py:method:: spin_and_refresh()
 

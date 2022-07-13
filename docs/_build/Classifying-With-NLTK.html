@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Classifying with NLTK &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,7 +36,7 @@
           <div class="body" role="main">
             
   <section id="classifying-with-nltk">
-<h1>Classifying with NLTK<a class="headerlink" href="#classifying-with-nltk" title="Permalink to this headline">¶</a></h1>
+<h1>Classifying with NLTK<a class="headerlink" href="#classifying-with-nltk" title="Permalink to this heading">¶</a></h1>
 <p>In this tutorial we are going to do some real text mining. Sort of. Start by getting the collection called
 spam_collection from the repository if you don’t already have it. Then open it. This is what you should see.</p>
 <figure class="align-default">
@@ -95,13 +96,14 @@ unless I get too lazy.</p>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
@@ -109,13 +111,14 @@ unless I get too lazy.</p>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul class="current">
@@ -152,7 +155,7 @@ unless I get too lazy.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -169,7 +172,7 @@ unless I get too lazy.</p>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

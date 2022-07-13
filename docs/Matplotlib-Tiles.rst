@@ -7,7 +7,7 @@ images.
 The `Tile Creator <Tile-Creator.html#creating-matplotlib-tiles>`__ knows how
 to deal with MatplotlibTiles. This is what that looks like.
 
-.. figure:: images/list_plotter_creator.png
+.. figure:: images/list_plotter.png
 
 Unlike other tiles, matplotlib tiles are subclasses of both
 ``TileBase`` and ``MplFigure``. ``MplFigure`` is a subclass of
@@ -18,7 +18,6 @@ must define a method ``draw_plot`` that draws directly into the tile instance
 as it would a matplotlib figure. ``render_content`` can do other work,
 but it must call ‘draw_plot’, and then ‘create_figure_html’ to generate
 the html for the tile. Note that ‘draw_plot’ will also be called each
-time the user resizes the tile. Note that ‘draw_plot’ will also be called each
 time the user resizes the tile.
 
 In most cases, you’ll want the first line of ``draw_plot`` to be

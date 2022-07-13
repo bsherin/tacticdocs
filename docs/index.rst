@@ -11,6 +11,7 @@ Tactic Text
    Library-Interface
    Uploading-Data
    Main-interface
+   Working-With-Tiles
    Log-And-Notebook
    Working-With-Tags
    Which-tiles-are-available-when
@@ -18,7 +19,7 @@ Tactic Text
 .. toctree::
    :hidden:
    :maxdepth: 4
-   :caption: Tile Creation Tools
+   :caption: Tile Creation
 
    Making-Tiles
    Tile-Creator
@@ -31,13 +32,14 @@ Tactic Text
    :maxdepth: 4
    :caption: Tile Reference
 
+   Tile-Reference-Introduction
    Tile-Structure
    Tile-Commands
    Object-Oriented-API
-   Matplotlib-Tiles
-   D3-Tiles
    Handler-Methods
    Working-With-Code-Resources
+   Matplotlib-Tiles
+   D3-Tiles
 
 .. toctree::
    :hidden:
@@ -55,7 +57,6 @@ Tactic Text
    :maxdepth: 4
    :caption: Other
 
-   Running-your-own-Tactic-server
    open-source-resources
 
 .. toctree::

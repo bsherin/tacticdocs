@@ -30,7 +30,7 @@ anyone.
 Click :guilabel:`Repository` in the toolbar. This will allow you to see resources in the
 repository.
 
-.. figure:: images/bpshow_repo2.png
+.. figure:: images/bpshow_repo3.png
    :alt: blank_user
 
 Select one of the data collections from the list that appears. Then select
@@ -38,7 +38,7 @@ Select one of the data collections from the list that appears. Then select
 be added to your own personal
 library.
 
-.. figure:: images/bpcopy_to_library2.png
+.. figure:: images/bpcopy_to_library3.png
    :alt: repo_start
 
 Finally, close the browser tab showing the repository to go back to your own library.
@@ -54,6 +54,5 @@ Working with your collection
 ----------------------------
 
 If you haven’t already loaded a collection, do that. Then head over to
-the `Main interface <Main-interface.html>`__ section of the documentation.
+the :doc:`Main-interface` section of the documentation.
 
-.. |image0| image:: images/load_coll.png

@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>WordFreqDist Explained &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -35,7 +36,7 @@
           <div class="body" role="main">
             
   <section id="wordfreqdist-explained">
-<h1>WordFreqDist Explained<a class="headerlink" href="#wordfreqdist-explained" title="Permalink to this headline">¶</a></h1>
+<h1>WordFreqDist Explained<a class="headerlink" href="#wordfreqdist-explained" title="Permalink to this heading">¶</a></h1>
 <p>In <a class="reference external" href="Use-Existing-Tiles.html">Use Existing Tiles</a>. I walked you through how to plunk down and run a couple of tiles
 (WordFreqDist and FreqDistPlotter). In <a class="reference external" href="Create-Simple-Tile.html">Create A Simple Tile</a> I showed you how to use
 the Tile Creator to create an extremely simple tile.</p>
@@ -48,7 +49,7 @@ So, the first step is to go to the tiles pane of your library and open WordFreqD
 is visible on the left in the image above. We are also going to have to click on each of the tabs on the right, and
 look at what they do. Let’s start with the tabs on the right, since that’s easier.</p>
 <section id="metadata">
-<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">¶</a></h2>
 <p>First, the metadata. Most of this should be self-explanatory. The tags and notes are the same tags and notes you
 can edit in the library. The tags help you in organizing you set of tiles. In addition, two of the tags here are
 special: (1) Any tile with a “default” tag is automatically loaded when you log in; (2) The “starter” tag indicates
@@ -58,7 +59,7 @@ which menu your tile will appear under in the main view. Here we see that WordFr
 <span class="guilabel">word menu</span>.</p>
 </section>
 <section id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
 <p>Now let’s look at the options.</p>
 <figure class="align-center">
 <img alt="_images/wfd_options1.png" src="_images/wfd_options1.png" />
@@ -83,7 +84,7 @@ will contain the integer entered.</p></li>
 </ul>
 </section>
 <section id="exports">
-<h2>Exports<a class="headerlink" href="#exports" title="Permalink to this headline">¶</a></h2>
+<h2>Exports<a class="headerlink" href="#exports" title="Permalink to this heading">¶</a></h2>
 <p>Here’s the exports pane:</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="_images/wfd_exports.png"><img alt="_images/wfd_exports.png" src="_images/wfd_exports.png" style="width: 476.8px; height: 319.20000000000005px;" /></a>
@@ -99,7 +100,7 @@ attribute across saves since the tile needs it if a user tries to send the tile�
 the appropriate button at the top of the tile. There’s a bit more about this below.</p>
 </section>
 <section id="methods">
-<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">¶</a></h2>
 <p>Finally, here’s the methods pane:</p>
 <figure class="align-center">
 <img alt="_images/wfd_methods.png" src="_images/wfd_methods.png" />
@@ -110,7 +111,7 @@ they need to have <cite>self</cite> as their first argument, and they will have 
 <p>I’ll discuss the specific methods here below.</p>
 </section>
 <section id="render-content-in-detail">
-<h2>render_content, in detail<a class="headerlink" href="#render-content-in-detail" title="Permalink to this headline">¶</a></h2>
+<h2>render_content, in detail<a class="headerlink" href="#render-content-in-detail" title="Permalink to this heading">¶</a></h2>
 <p>Okay, now let’s get into the guts of this thing. Here are the first few lines of <code class="docutils literal notranslate"><span class="pre">render_content</span></code>.</p>
 <figure class="align-center">
 <img alt="_images/first_lines.png" src="_images/first_lines.png" />
@@ -197,13 +198,14 @@ pointless, but it’s a least possible that we might want to access this documen
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
@@ -211,13 +213,14 @@ pointless, but it’s a least possible that we might want to access this documen
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul class="current">
@@ -261,7 +264,7 @@ pointless, but it’s a least possible that we might want to access this documen
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -278,7 +281,7 @@ pointless, but it’s a least possible that we might want to access this documen
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>The Log and Notebook &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,11 +13,12 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Working With Tags" href="Working-With-Tags.html" />
-    <link rel="prev" title="The Main Interface" href="Main-interface.html" />
+    <link rel="prev" title="Working with tile instances" href="Working-With-Tiles.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,11 +36,10 @@
           <div class="body" role="main">
             
   <section id="the-log-and-notebook">
-<h1>The Log and Notebook<a class="headerlink" href="#the-log-and-notebook" title="Permalink to this headline">¶</a></h1>
-<p>As mentioned in the section on the <a class="reference external" href="Main-interface.html">Main Interface</a>,
+<h1>The Log and Notebook<a class="headerlink" href="#the-log-and-notebook" title="Permalink to this heading">¶</a></h1>
+<p>As mentioned in the section on the <a class="reference internal" href="Main-interface.html"><span class="doc">The Main Interface</span></a>,
 there is a component at the bottom of the screen called the Log. Tiles
-can send information to the Log, and some error messages will show up
-there. The Log is also designed to be used more like a full-fledged
+can send information to the Log. The Log is also designed to be used more like a full-fledged
 python notebook.</p>
 <p>Furthermore, you can create projects that consist of nothing more
 than a Notebook of this sort. There are two ways to create one of these
@@ -50,63 +50,52 @@ start a Notebook project using the current contents of the Log.</p>
 manager. Activate the projects pane. Then select <span class="guilabel">New notebook</span>
 from the <span class="guilabel">Open</span> menu.</p>
 <img alt="_images/bpnew_notebook2.png" src="_images/bpnew_notebook2.png" />
-<p>Logs and Notebooks pretty much work the same way. You use the buttons at
-the top to manually add new elements:</p>
+<p>Logs and Notebooks pretty much work the same way. Below, I’m going to use the word “Notebook,” but all of this will
+apply in both cases.</p>
+<section id="under-the-hood">
+<h2>Under the hood<a class="headerlink" href="#under-the-hood" title="Permalink to this heading">¶</a></h2>
+<p>In some important ways, the Log and Notebook <em>are</em> tiles. There is a (pretty much) standard tile container associated
+with a Notebook. Most of the code that you can write in a tile can also be run in a notebook, including all of
+the commands in the API, both object-oriented and standard.</p>
+<p>Tactic notebooks do have some special tricks, however. For example, when you save a standard project or notebook,
+Tactic attempts to save both the appearance <em>and internal state</em> of the Notebook. I save “attempt” because it’s
+impossible to do this completely. For example, the internal state associated with a function definition cannot be
+saved. But Tactic can get pretty close.</p>
+</section>
+<section id="notebook-menus">
+<h2>Notebook menus<a class="headerlink" href="#notebook-menus" title="Permalink to this heading">¶</a></h2>
+<p>. figure:: images/top_of_log.png</p>
+<p>There are a bunch of menus at the top of a Notebook. I think they are mostly self-explanatory, but I’ll mention a few
+points that might be obvious. First, the edit menu has items that allow you to copy and paste cells within and
+across projects. They act on any currently selected cells. (You can select multiple cells using <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">shift</kbd>-<kbd class="kbd docutils literal notranslate">click</kbd></kbd>.</p>
+<p>The <span class="guilabel">Consoles</span> menu lets you show and hide two different consoles, the Log console and the Main console.
+The Log console is the console associated with the container within which commands in the Notebook are executed.
+The Main console shows the console associated with a container associated with the project as a whole.</p>
+</section>
+<section id="text-cells">
+<h2>Text cells<a class="headerlink" href="#text-cells" title="Permalink to this heading">¶</a></h2>
 <figure class="align-default">
-<img alt="_images/bpconsole_top2.png" src="_images/bpconsole_top2.png" />
+<img alt="_images/text_cell.png" src="_images/text_cell.png" />
 </figure>
-<dl class="simple">
-<dt><a class="inimage reference internal" href="_images/new_text_but.png"><img alt="new text but" class="inimage" src="_images/new_text_but.png" style="height: 25px;" /></a></dt><dd><p>Add a new text cell.</p>
-</dd>
-<dt><a class="inimage reference internal" href="_images/new_code_but.png"><img alt="new code but" class="inimage" src="_images/new_code_but.png" style="height: 25px;" /></a></dt><dd><p>Add a new code cell.</p>
-</dd>
-<dt><a class="inimage reference internal" href="_images/new_link_but.png"><img alt="new link but" class="inimage" src="_images/new_link_but.png" style="height: 25px;" /></a></dt><dd><p>Add a link to a library resources. You will be prompted to select the resource.
-The link is currently always added at the end of the cell.</p>
-</dd>
-<dt><a class="inimage reference internal" href="_images/copy_cell_but.png"><img alt="copy cell but" class="inimage" src="_images/copy_cell_but.png" style="height: 25px;" /></a></dt><dd><p>Copies the current cell to a special cell clipboard. It provides a mechanism for
-copying cells across projects.</p>
-</dd>
-<dt><a class="inimage reference internal" href="_images/paste_cell_but.png"><img alt="paste cell but" class="inimage" src="_images/paste_cell_but.png" style="height: 25px;" /></a></dt><dd><p>Pastes the cell from the special cell clipbaord</p>
-</dd>
-<dt><a class="inimage reference internal" href="_images/reset_but.png"><img alt="reset but" class="inimage" src="_images/reset_but.png" style="height: 25px;" /></a></dt><dd><p>Clears the log namespace and clear all code output</p>
-</dd>
-<dt><a class="inimage reference internal" href="_images/stop_but.png"><img alt="stop but" class="inimage" src="_images/stop_but.png" style="height: 25px;" /></a></dt><dd><p>Stop any running cells.</p>
-</dd>
-<dt><a class="inimage reference internal" href="_images/clear_but.png"><img alt="clear but" class="inimage" src="_images/clear_but.png" style="height: 25px;" /></a></dt><dd><p>Entirely erases all contents from the log.</p>
-</dd>
-<dt><a class="inimage reference internal" href="_images/log_but.png"><img alt="log but" class="inimage" src="_images/log_but.png" style="height: 25px;" /></a></dt><dd><p>Shows the error console for the log container.</p>
-</dd>
-<dt><a class="inimage reference internal" href="_images/main_log_but.png"><img alt="main log but" class="inimage" src="_images/main_log_but.png" style="height: 25px;" /></a></dt><dd><p>Shows the error console for the main container.</p>
-</dd>
-</dl>
-<section id="text-fields">
-<h2>Text fields<a class="headerlink" href="#text-fields" title="Permalink to this headline">¶</a></h2>
-<p>You can create a text field by clicking the <span class="guilabel">text</span> button. You’ll get
-something that looks like this:</p>
-<figure class="align-default">
-<img alt="_images/bptext_item_annotated.png" src="_images/bptext_item_annotated.png" />
-</figure>
+<p>You create a text cell using the <span class="guilabel">insert</span> menu or the associated keyboard shortcut. As shown in the figure
+above, each text cell as some buttons associated with it. These buttons become visible when the cell is selected
+or the cursor is in the cell.</p>
 <p>You can enter text as Markdown and Latex (see below). If you do,
-clicking the <span class="guilabel">convert markdown</span> button
-displays the formatted text. You can also hit command-enter to convert.</p>
-<figure class="align-default">
-<img alt="_images/bpconverted_markdown.png" src="_images/bpconverted_markdown.png" />
-</figure>
-<p>Clicking the bottom button again toggles the display back to plain text.
-You can also double-click on the converted markdown to go back to editing.</p>
+clicking the convert button converts between raw and converted text.</p>
 <p>Currently, the library that is used to do the conversion of the markdown to
-html is <a class="reference external" href="https://github.com/markdown-it/markdown-it">markdown-it</a>.
-The library used to convert Latex is
+html is <a class="reference external" href="https://github.com/markdown-it/markdown-it">markdown-it</a>.</p>
+<p>The library used to convert Latex is
 <a class="reference external" href="https://github.com/tylingsoft/markdown-it-latex">markdown-it-latex</a>.
 Refer to the docs for these libraries for syntax specifics.</p>
 </section>
-<section id="code-fields">
-<h2>Code fields<a class="headerlink" href="#code-fields" title="Permalink to this headline">¶</a></h2>
-<p>You create a code field by clicking the <span class="guilabel">code</span> button:</p>
+<section id="code-cells">
+<h2>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this heading">¶</a></h2>
 <figure class="align-default">
-<img alt="_images/bpcode_item.png" src="_images/bpcode_item.png" />
+<img alt="_images/code_cell.png" src="_images/code_cell.png" />
 </figure>
-<p>In many ways, code fields in Logs and Notebooks function like a tile.
+<p>You create a text cell using the <span class="guilabel">insert</span> menu or the associated keyboard shortcut. As shown in the
+figure above, code cells have some special buttons, one to clear any outputs, another to execute the cell.</p>
+<p>As mentioned above, code fields in Logs and Notebooks function like a tile.
 You can write any code that you can write in a tile, which means you can
 test code here, and that you have access to the whole tile API.
 (However, some of these commands won’t make sense in Notebooks.)</p>
@@ -128,43 +117,16 @@ magic command:</p>
 </figure>
 </section>
 <section id="keyboard-shortcuts">
-<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h2>
+<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this heading">¶</a></h2>
 <p>The normal <a class="reference external" href="Module-Viewer-Keyboard-Shortcuts.html">keyboard shortcuts</a> work inside of code items.
 In addition, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Enter</kbd></kbd> and <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Enter</kbd></kbd> will execute a cell. Those same two shortcuts,
 executed inside of a text cell, will display the formatted text.</p>
 </section>
-<section id="some-final-generalities">
-<h2>Some final generalities<a class="headerlink" href="#some-final-generalities" title="Permalink to this headline">¶</a></h2>
-<p>You can <strong>reorder</strong> fields by dragging on dragging spot</p>
-<p>About the <span class="guilabel">reset</span> button:</p>
-<p>Clicking the reset button does a few different things:</p>
-<ul class="simple">
-<li><p>It clears the output area of any code tiles.</p></li>
-<li><p>It stops and restarts the python process so that the internal state
-is entirely cleared.</p></li>
-</ul>
-<p>About the <span class="guilabel">clear</span> button:</p>
-<p>Clicking the clear button button does everything that reset does, and
-it also removes absolutely everything from the log.</p>
-<p>About the <strong>copy and paste</strong> buttons:</p>
-<p>These provide a means of copying and pasting cells across projects.
-Copy will copy the current cell. Paste will paste a copied cell, if there is one.
-So, for example, you can create a notebook into which you copy results, such as plots,
-from the log of a project.</p>
-<p>About the <strong>log and main</strong> buttons:</p>
-<p>The log button shows the container log for the virtual tile associated with the log.
-The main  button shows the container log for the container associated with the current project.
-Tactic tries to catch all errors and to display them for you in error drawer, or in alerts. But if you
-are getting unexpected behavior, and not seeing any normal error messages, then you can try looking at
-the container logs to get a sense for what’s going on. Problems with docker itself might also show up here.</p>
-<p>About log item <strong>summaries</strong>:</p>
-<p>When you shrink a log item, you will see the “summary” for the item.
-The summary can be specified in the <code class="docutils literal notranslate"><span class="pre">log_it</span></code> command that creates a log item.
-You can also directly edit the summary after shrinking a log item.</p>
-<p>About <strong>saving</strong>:</p>
-<p>When you save a standard project or notebook, Tactic attempts to save both
-the appearance <em>and internal state</em> of the Notebook. The saving of internal
-state is still an iffy business however.</p>
+<section id="the-exports-viewer">
+<h2>The exports viewer<a class="headerlink" href="#the-exports-viewer" title="Permalink to this heading">¶</a></h2>
+<p>As discussed <a class="reference internal" href="Main-interface.html#exports-viewer"><span class="std std-ref">here.</span></a> The exports viewer is always available on the right hand side of the
+log and notebook. In addition to displaying any tile exports, the exports viewer displays any variables or
+objects defined within a Notebook.</p>
 </section>
 </section>
 
@@ -201,19 +163,22 @@ state is still an iffy business however.</p>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The Log and Notebook</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#text-fields">Text fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#code-fields">Code fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#under-the-hood">Under the hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notebook-menus">Notebook menus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#text-cells">Text cells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-cells">Code cells</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#some-final-generalities">Some final generalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-exports-viewer">The exports viewer</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
@@ -221,13 +186,14 @@ state is still an iffy business however.</p>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -250,7 +216,7 @@ state is still an iffy business however.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Main-interface.html" title="previous chapter">The Main Interface</a></li>
+      <li>Previous: <a href="Working-With-Tiles.html" title="previous chapter">Working with tile instances</a></li>
       <li>Next: <a href="Working-With-Tags.html" title="next chapter">Working With Tags</a></li>
   </ul></li>
 </ul>
@@ -264,7 +230,7 @@ state is still an iffy business however.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -281,7 +247,7 @@ state is still an iffy business however.</p>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

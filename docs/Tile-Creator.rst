@@ -1,23 +1,22 @@
 The Tile Creator
 ================
 
-Welcome to the future of tile creation.
-The Tile Creator is the editor that provides a more scaffolded
+Welcome to the future of tile creation. The Tile Creator is the editor that provides a scaffolded
 environment for creating and editing tiles.
 
 Creating the new tile
 ---------------------
 
-With that said, here’s how to create a new tile with the creator:
+To get started, go to the :guilabel:`tile` pane of your resource library and click :menuselection:`+creator --> StandardTile`.
 
-Go to the :guilabel:`tile` tab of your resource library and click :menuselection:`+creator --> StandardTile`.
-
-.. figure:: images/bpcreate_in_creator.png
+.. figure:: images/new_tile_from_library.png
+    :scale: 40 %
 
 When prompted give your tile some sort of useful name. Then you should
 see something that looks like this:
 
-.. figure:: images/bpstarting_creator_view.png
+.. figure:: images/starting_creator_view.png
+    :scale: 30 %
 
 Writing the tile body
 ---------------------
@@ -49,23 +48,22 @@ Then you’ll instead have a tile that display “hello world” in bold text.
 
 For its styling, Tactic uses the awesome `blueprint <https://blueprintjs.com/docs/>`__ project.
 That means you can use blueprint's special CSS styles in the html that your tiles produce. For example,
-if there is a button on the front of your tile, giving that button the class "bp3-button" will cause
+if there is a button on the front of your tile, giving that button the class "bp4-button" will cause
 the button to be styled in the manner of blueprint.
 
 In writing your tile, you have access to a number of tactic-specific
 commands that, for example, give you access to your data. These are
-described in some detail here: `Tile Commands <Tile-Commands.html>`__.
+described in some detail in :doc:`Tile-Commands` and :doc:`Object-Oriented-API`. Y
 
-You can use these `Keyboard Shortcuts <Module-Viewer-Keyboard-Shortcuts.html>`__ within the box
+You can also import and make use of a number of `scientific libraries <Tile-commands.html#scientific-libraries>`__.
+That list is not always kept up to date though. Go to the relevant web sites for documentation on these libraries.
+
+You can use these :doc:`Module-Viewer-Keyboard-Shortcuts` within the box
 containing your code.
 
 Finally, typing :kbd:`ctrl-space` while in the code area brings up the
 autocomplete widget. This will prompt you with various useful
-possibilities, including the Tile Commands
-
-You can also import and make use of a number of `scientific libraries <Tile-commands.html#scientific-libraries>`__.
-
-Go to the relevant web sites for documentation on these libraries.
+possibilities, including the Tile Commands. At least in principle.
 
 Specifying tile resources
 -------------------------
@@ -73,12 +71,13 @@ Specifying tile resources
 The area on the right-hand side of the interface allows you to create
 and edit various resources and metadata for your tile.
 
-.. figure:: images/bpmetadata_pane.png
+.. figure:: images/creator_metadata_pane.png
+    :scale: 40 %
 
 metadata
 ~~~~~~~~
 
-The :guilabel:`metadata` is where you specify a bit of metadata for your tile.
+The :guilabel:`metadata` tab is where you specify a bit of metadata for your tile.
 The “Category” field determines the menu under which your tile will
 appear in the main project environment.
 
@@ -86,11 +85,13 @@ options
 ~~~~~~~
 
 The :guilabel:`options` tab is where you specify `Tile
-Options <Tile-Structure.html#options>`__ that will appear on back of your
-tile. Here I have clicked on the options tab and then used the form at
-the bottom to create an option called ``some_user_text``.
+Options <Tile-Structure.html#options>`__ that will appear when you click the gear icon onyour tile. Here I have
+created two options, a text option ``some_user_text`` and a boolean option ``normalize`` that has a default value
+of True. You use the form at the bottom to create new options. To modify an existing options, first click
+on the row in the table of options. Then edit the option in the form at the bottom and click update.
 
-.. figure:: images/bpcreator_options.png
+.. figure:: images/creator_options_pane.png
+    :scale: 40 %
 
 These option can now be referred to in the tile code as
 ``self.some_user_text``. So if you then change your code to be:
@@ -100,8 +101,12 @@ These option can now be referred to in the tile code as
     new_html = "<b>" + self.some_user_text + "</b>"
     return new_html
 
-You can reorder the options in the table that appears in the options pane
-by clicking and dragging the number at the start of the row that you want to move.
+
+There are a couple of things you can do to make the list of options less overwhelming for readers. One thing
+you can do is simply to order your options in a sensible way. To do this, first highlight the row containing the option
+you want to move. Then you can click and drag the number at the start of the row.
+You can also insert :guilabel:`divider` options.
+These can be used to visually group your options into named categories on your tile.
 
 The button that looks like a trash can deletes the selected option. The button
 that looks like a bulleted list converts the list of options to some markdown
@@ -112,14 +117,17 @@ Options <Tile-Structure.html#options>`__. there’s an extra step required in
 making use of some of these options (``list_select``, ``pipe_select``,
 ``function_select``, ``class_select``). In these options, the variable
 you get contains only the name of the selected resource. To extract the
-value you have to use one of the tile commands described
-`here <Tile-Commands.html#other>`__. For example
-``self.get_user_list(list_name)`` returns the actual list referred to.
+value you have to use :doc:`Tile-Commands` or the :doc:`Object-Oriented-API`.
+
+For example, supposed you have a :guilabel:`list_select` option named "stop_list".
+In this case ``self.stop_list`` will contain the name of the list, rather than the contents of
+the list. To get the actual list you need to either write``self.get_user_list(self.stop_list)``
+or ``Library.lists[self.stop_list]``.
 
 exports
 ~~~~~~~
 
-You can also specifythe name of parameters that will be :guilabel:`exports` for
+You can also specify the name of parameters that will be :guilabel:`exports` for
 your tile. (Exported parameters are available as pipes within other tiles.
 Note that these must be instance variables assigned values in your code
 in this manner ``self.variable_name =  ...``. ) Also, note that the tile creator
@@ -142,6 +150,7 @@ For example, you could define a method ``my_method`` like so:
         return myvar + 2
 
 All methods that you define need to have ``self`` as the first argument.
+This is also where you must define any :doc:`Handler-Methods`.
 
 Creating Matplotlib Tiles
 -------------------------
@@ -154,7 +163,7 @@ left, there are two. The bottom one holds the code for the
 ``render_content`` method. The other holds the code for the
 ``draw_plot`` method, which all matplotlib tiles must have.
 
-This is explained a bit `here <Matplotlib-Tiles.html>`__.
+This is explained a bit :doc:`here <Matplotlib-Tiles>`.
 
 Creating D3 Tiles
 -----------------
@@ -162,7 +171,7 @@ Creating D3 Tiles
 You can also use the Tile Creator to make tiles that display interactive
 D3 figures. If you open an existing D3 figure or create a new one from
 your resource manager, then the Tile Creator opens with a slightly
-different interface. Rather than having one large box for code on the
+different interface. Again, rather than having one large box for code on the
 left, there are two. The bottom one holds the ``render_content`` method.
 The top one must hold the body of a function that will be passed the
 arguments `selector`, `w`, `h`, and `arg_dict`.
@@ -170,5 +179,5 @@ arguments `selector`, `w`, `h`, and `arg_dict`.
 Also, ``render_content`` must return a dictionary of arguments that will
 be passed to the javascript function in ``arg_dict``.
 
-This is explained a bit `here <D3-Tiles.html>`__.
+This is explained a bit :doc:`here <D3-Tiles>`.
 

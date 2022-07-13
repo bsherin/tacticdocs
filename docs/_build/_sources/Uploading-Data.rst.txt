@@ -14,12 +14,12 @@ To upload data, go to the collections tab of your user library. Then select
     You can select any number of files and these files will be loaded as documents within a single
     collection.
 
-.. figure:: images/upload_col.png
+.. figure:: images/upload_col2.png
 
 To choose files, you can either click within the dashed space to select them
 manually or drag and drop them in the same area.
 
-.. figure:: images/select_files.PNG
+.. figure:: images/select_files2.PNG
 
 After choosing the files, you can enter a name for the collection right below.
 You also have the option to import the file as a freeform document by checking

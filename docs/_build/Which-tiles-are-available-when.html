@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tile Availability and Loading &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,10 +13,11 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Intro to the tools" href="Making-Tiles.html" />
+    <link rel="next" title="Making Tiles" href="Making-Tiles.html" />
     <link rel="prev" title="Working With Tags" href="Working-With-Tags.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -35,9 +36,9 @@
           <div class="body" role="main">
             
   <section id="tile-availability-and-loading">
-<h1>Tile Availability and Loading<a class="headerlink" href="#tile-availability-and-loading" title="Permalink to this headline">¶</a></h1>
+<h1>Tile Availability and Loading<a class="headerlink" href="#tile-availability-and-loading" title="Permalink to this heading">¶</a></h1>
 <p>If you open up a project window, the tile menus will be populated by
-a subset of the tiles from your library. The basic idea is that the tiles that appear in those menus
+a subset of the tiles from your library. (See <a class="reference internal" href="Main-interface.html"><span class="doc">The Main Interface</span></a>.)The basic idea is that the tiles that appear in those menus
 are the ones that are currenlty <em>loaded</em>. In fact, this is all that it means for a tile to be loaded; i.e.,
 if a tile is loaded, then it appears in the tile menus at the top of a project.</p>
 <div class="admonition note">
@@ -45,35 +46,34 @@ if a tile is loaded, then it appears in the tile menus at the top of a project.<
 <p>Actually, when Tactic loads a tile, it first makes sure that it can successfully load it in a container. If it can’t
 then the tile won’t be loaded.</p>
 </div>
-<p>When you first log in, Tactic automatically loads all of the tiles with the tag <strong>default</strong>.
+<p>When you first log in, Tactic automatically loads all of the tiles with the tag <strong>default</strong>. (See <a class="reference internal" href="Working-With-Tags.html#special-tags"><span class="std std-ref">Special Tags</span></a>.)
 So you can control your default set by adding or removing this tag from your tile modules.</p>
 <p>You can manage the loaded tiles from the tile pane of your library. Loaded tiles have an up arrow. You can use the
 <span class="guilabel">load</span> menu to manually load and unload individual tiles. You can also reset the set of loaded tiles
 to just the tiles with the default tag. Any loaded tile is immediately available universally,
 across all of your open projects, or in any new project windows you open.</p>
-<p>It’s also possible to load a tile from the <a class="reference external" href="Tile-Creator.html">Tile Creator</a> or <a class="reference external" href="Module-Viewer.html">Module
-Viewer</a>.</p>
+<p>It’s also possible to load a tile from the <a class="reference internal" href="Tile-Creator.html"><span class="doc">The Tile Creator</span></a> or <a class="reference internal" href="Module-Viewer.html"><span class="doc">The Module Viewer</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you load a tile, and an existing tile has the same name, then the old
 tile will be overwritten.</p>
-<p>Also note: The name of a tile comes from the
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The name of a tile comes from the
 name of the tile <em>class</em>, not the name of the module. If you create your tiles
 using the Tile Creator, then the name of the module and the class will always be the
 same. However, if you use the module viewer, the name of the tile class need not be the
 same as the containing module. In fact, it is even possible to have multiple tile classes
-within a single module.</p>
+within a single module. This dates back to the early days when I was confused. If I was starting
+over, then each tile module would only have one tile class, and it would always have the same name.</p>
 </div>
 <p>Suppose you <strong>edit a previously loaded tile</strong> in the module viewer, then
 click “save and load.” In that case, any new versions of this tile will
-have the new version of the code. Existing tiles in open projects will not be modified internally.
-However, the tile will turn a very ugly color to signal that the tile isn’t up to date.</p>
-<p>At that point, if you click the <span class="guilabel">reload</span> icon at the top right of a tile (just
-to the left of the trash can), then the tile will refresh itself using
-whatever current version of the code is. When it does this, it will
-assume that the options and their values stay the same. If an edit to
-the tile’s code changed the options, then the reload button will cause
-the tile to display the options for you to edit before running the tile.</p>
+have the new version of the code. Existing tile instances in open projects will not be modified internally.
+However, the tile will turn a very ugly color to signal that the tile isn’t up to date.
+At that point, if you kill and reload the tile instance, then the tile will refresh itself using
+whatever current version of the code is.</p>
 </section>
 
 
@@ -109,13 +109,14 @@ the tile to display the options for you to edit before running the tile.</p>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tile Availability and Loading</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
@@ -123,13 +124,14 @@ the tile to display the options for you to edit before running the tile.</p>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -153,7 +155,7 @@ the tile to display the options for you to edit before running the tile.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="Working-With-Tags.html" title="previous chapter">Working With Tags</a></li>
-      <li>Next: <a href="Making-Tiles.html" title="next chapter">Intro to the tools</a></li>
+      <li>Next: <a href="Making-Tiles.html" title="next chapter">Making Tiles</a></li>
   </ul></li>
 </ul>
 </div>
@@ -166,7 +168,7 @@ the tile to display the options for you to edit before running the tile.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -183,7 +185,7 @@ the tile to display the options for you to edit before running the tile.</p>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
