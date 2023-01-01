@@ -66,7 +66,7 @@ Tactic Text
 
 Welcome to the TacticText documentation, a place of wonder and
 enjoyment. This is the *documentation* for Tactic. If you want to access tactic itself, then you
-should go to https://tactic.northwestern.edu
+should go to https://tactictext.net
 
 New to Tactic?
 --------------

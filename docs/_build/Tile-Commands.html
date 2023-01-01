@@ -4,17 +4,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>The Tile API &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Object-Oriented API" href="Object-Oriented-API.html" />
@@ -896,14 +894,100 @@ nltk will be available to all methods.</p>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The Tile API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#refreshing">Refreshing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data-access">Data Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data-setting">Data Setting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#filter-and-iterate">Filter-And-Iterate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#object-api-related">Object API-related</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#other-tilebase">Other TileBase</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plots">Plots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#global">Global</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#TileBase"><code class="docutils literal notranslate"><span class="pre">TileBase</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#refreshing">Refreshing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start_spinner"><code class="docutils literal notranslate"><span class="pre">start_spinner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stop_spinner"><code class="docutils literal notranslate"><span class="pre">stop_spinner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#refresh_tile_now"><code class="docutils literal notranslate"><span class="pre">refresh_tile_now()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spin_and_refresh"><code class="docutils literal notranslate"><span class="pre">spin_and_refresh()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-access">Data Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get_document_names"><code class="docutils literal notranslate"><span class="pre">get_document_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_current_document_name"><code class="docutils literal notranslate"><span class="pre">get_current_document_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_document_data"><code class="docutils literal notranslate"><span class="pre">get_document_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_document_data_as_list"><code class="docutils literal notranslate"><span class="pre">get_document_data_as_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_column_names"><code class="docutils literal notranslate"><span class="pre">get_column_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_number_rows"><code class="docutils literal notranslate"><span class="pre">get_number_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_row"><code class="docutils literal notranslate"><span class="pre">get_row()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_cell"><code class="docutils literal notranslate"><span class="pre">get_cell()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_column_data"><code class="docutils literal notranslate"><span class="pre">get_column_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_column_data_dict"><code class="docutils literal notranslate"><span class="pre">get_column_data_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_document_metadata"><code class="docutils literal notranslate"><span class="pre">get_document_metadata()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-setting">Data Setting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#set_cell"><code class="docutils literal notranslate"><span class="pre">set_cell()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add_document"><code class="docutils literal notranslate"><span class="pre">add_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remove_document"><code class="docutils literal notranslate"><span class="pre">remove_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add_freeform_document"><code class="docutils literal notranslate"><span class="pre">add_freeform_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#insert_row"><code class="docutils literal notranslate"><span class="pre">insert_row()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete_row"><code class="docutils literal notranslate"><span class="pre">delete_row()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rename_document"><code class="docutils literal notranslate"><span class="pre">rename_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set_document"><code class="docutils literal notranslate"><span class="pre">set_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set_column_data"><code class="docutils literal notranslate"><span class="pre">set_column_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set_document_metadata"><code class="docutils literal notranslate"><span class="pre">set_document_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set_cell_background"><code class="docutils literal notranslate"><span class="pre">set_cell_background()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#color_cell_text"><code class="docutils literal notranslate"><span class="pre">color_cell_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#filter-and-iterate">Filter-And-Iterate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get_matching_documents"><code class="docutils literal notranslate"><span class="pre">get_matching_documents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_matching_rows"><code class="docutils literal notranslate"><span class="pre">get_matching_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display_matching_rows"><code class="docutils literal notranslate"><span class="pre">display_matching_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clear_table_highlighting"><code class="docutils literal notranslate"><span class="pre">clear_table_highlighting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#highlight_matching_text"><code class="docutils literal notranslate"><span class="pre">highlight_matching_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display_all_rows"><code class="docutils literal notranslate"><span class="pre">display_all_rows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apply_to_rows"><code class="docutils literal notranslate"><span class="pre">apply_to_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#object-api-related">Object API-related</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#collection"><code class="docutils literal notranslate"><span class="pre">collection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create_collection_object"><code class="docutils literal notranslate"><span class="pre">create_collection_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create_document"><code class="docutils literal notranslate"><span class="pre">create_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create_freeform_document"><code class="docutils literal notranslate"><span class="pre">create_freeform_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create_row"><code class="docutils literal notranslate"><span class="pre">create_row()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create_line"><code class="docutils literal notranslate"><span class="pre">create_line()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tiles"><code class="docutils literal notranslate"><span class="pre">tiles</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-tilebase">Other TileBase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create_collection"><code class="docutils literal notranslate"><span class="pre">create_collection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#go_to_document"><code class="docutils literal notranslate"><span class="pre">go_to_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#go_to_row_in_document"><code class="docutils literal notranslate"><span class="pre">go_to_row_in_document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_selected_text"><code class="docutils literal notranslate"><span class="pre">get_selected_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log_it"><code class="docutils literal notranslate"><span class="pre">log_it()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_container_log"><code class="docutils literal notranslate"><span class="pre">get_container_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send_tile_message"><code class="docutils literal notranslate"><span class="pre">send_tile_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_function_names"><code class="docutils literal notranslate"><span class="pre">get_function_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_user_list"><code class="docutils literal notranslate"><span class="pre">get_user_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_pipe_value"><code class="docutils literal notranslate"><span class="pre">get_pipe_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_user_function"><code class="docutils literal notranslate"><span class="pre">get_user_function()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_user_class"><code class="docutils literal notranslate"><span class="pre">get_user_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_user_collection"><code class="docutils literal notranslate"><span class="pre">get_user_collection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#html_table"><code class="docutils literal notranslate"><span class="pre">html_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build_html_table_from_data_list"><code class="docutils literal notranslate"><span class="pre">build_html_table_from_data_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get_user_settings"><code class="docutils literal notranslate"><span class="pre">get_user_settings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#plots">Plots</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MplFigure"><code class="docutils literal notranslate"><span class="pre">MplFigure</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#MplFigure.init_mpl_figure"><code class="docutils literal notranslate"><span class="pre">MplFigure.init_mpl_figure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#MplFigure.create_figure_html"><code class="docutils literal notranslate"><span class="pre">MplFigure.create_figure_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#MplFigure.create_pyplot_html"><code class="docutils literal notranslate"><span class="pre">MplFigure.create_pyplot_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#MplFigure.create_bokeh_html"><code class="docutils literal notranslate"><span class="pre">MplFigure.create_bokeh_html()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#global">Global</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ColorMapper"><code class="docutils literal notranslate"><span class="pre">ColorMapper</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ColorMapper.color_from_val"><code class="docutils literal notranslate"><span class="pre">ColorMapper.color_from_val()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#global_import"><code class="docutils literal notranslate"><span class="pre">global_import()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#scientific-libraries">Scientific libraries</a></li>
 </ul>
 </li>
@@ -923,7 +1007,6 @@ nltk will be available to all methods.</p>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
 </ul>
 <ul>
@@ -965,7 +1048,7 @@ nltk will be available to all methods.</p>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.0.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

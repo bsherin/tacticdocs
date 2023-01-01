@@ -4,17 +4,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Object-Oriented API &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Handler Methods" href="Handler-Methods.html" />
@@ -847,12 +845,150 @@ as noted below.</p>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Object-Oriented API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#accessing-and-manipulating-the-collection">Accessing and manipulating the collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-and-manipulating-detached-data">Creating and manipulating detached data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#communicating-with-other-tiles">Communicating with other tiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-pipes-object">The Pipes Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-library-object">The Library Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-settings-object">The Settings Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-and-manipulating-the-collection">Accessing and manipulating the collection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Collection"><code class="docutils literal notranslate"><span class="pre">Collection</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticCollection"><code class="docutils literal notranslate"><span class="pre">TacticCollection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticCollection.document_names"><code class="docutils literal notranslate"><span class="pre">TacticCollection.document_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticCollection.current_document"><code class="docutils literal notranslate"><span class="pre">TacticCollection.current_document</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticCollection.column"><code class="docutils literal notranslate"><span class="pre">TacticCollection.column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticCollection.tokenize"><code class="docutils literal notranslate"><span class="pre">TacticCollection.tokenize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticCollection.detach"><code class="docutils literal notranslate"><span class="pre">TacticCollection.detach()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticCollection.rewind"><code class="docutils literal notranslate"><span class="pre">TacticCollection.rewind()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticDocument"><code class="docutils literal notranslate"><span class="pre">TacticDocument</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.name"><code class="docutils literal notranslate"><span class="pre">TacticDocument.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.metadata"><code class="docutils literal notranslate"><span class="pre">TacticDocument.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.column_names"><code class="docutils literal notranslate"><span class="pre">TacticDocument.column_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.df"><code class="docutils literal notranslate"><span class="pre">TacticDocument.df</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.insert"><code class="docutils literal notranslate"><span class="pre">TacticDocument.insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.column"><code class="docutils literal notranslate"><span class="pre">TacticDocument.column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.dict_list"><code class="docutils literal notranslate"><span class="pre">TacticDocument.dict_list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.get_matching_rows"><code class="docutils literal notranslate"><span class="pre">TacticDocument.get_matching_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.tokenize"><code class="docutils literal notranslate"><span class="pre">TacticDocument.tokenize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.set_column_data"><code class="docutils literal notranslate"><span class="pre">TacticDocument.set_column_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.detach"><code class="docutils literal notranslate"><span class="pre">TacticDocument.detach()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticDocument.rewind"><code class="docutils literal notranslate"><span class="pre">TacticDocument.rewind()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticRow"><code class="docutils literal notranslate"><span class="pre">TacticRow</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticRow.row_dict"><code class="docutils literal notranslate"><span class="pre">TacticRow.row_dict</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticRow.series"><code class="docutils literal notranslate"><span class="pre">TacticRow.series</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticRow.detach"><code class="docutils literal notranslate"><span class="pre">TacticRow.detach()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#FreeformTacticDocument"><code class="docutils literal notranslate"><span class="pre">FreeformTacticDocument</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#FreeformTacticDocument.text"><code class="docutils literal notranslate"><span class="pre">FreeformTacticDocument.text</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#FreeformTacticDocument.line_list"><code class="docutils literal notranslate"><span class="pre">FreeformTacticDocument.line_list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#FreeformTacticDocument.metadata"><code class="docutils literal notranslate"><span class="pre">FreeformTacticDocument.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#FreeformTacticDocument.tokenize"><code class="docutils literal notranslate"><span class="pre">FreeformTacticDocument.tokenize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#FreeformTacticDocument.rewind"><code class="docutils literal notranslate"><span class="pre">FreeformTacticDocument.rewind()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticLine"><code class="docutils literal notranslate"><span class="pre">TacticLine</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticLine.text"><code class="docutils literal notranslate"><span class="pre">TacticLine.text</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-and-manipulating-detached-data">Creating and manipulating detached data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#DetachedTacticCollection"><code class="docutils literal notranslate"><span class="pre">DetachedTacticCollection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticCollection.document_names"><code class="docutils literal notranslate"><span class="pre">DetachedTacticCollection.document_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticCollection.append"><code class="docutils literal notranslate"><span class="pre">DetachedTacticCollection.append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticCollection.column"><code class="docutils literal notranslate"><span class="pre">DetachedTacticCollection.column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticCollection.update"><code class="docutils literal notranslate"><span class="pre">DetachedTacticCollection.update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticCollection.rewind"><code class="docutils literal notranslate"><span class="pre">DetachedTacticCollection.rewind()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticCollection.add_to_library"><code class="docutils literal notranslate"><span class="pre">DetachedTacticCollection.add_to_library()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#DetachedTacticDocument"><code class="docutils literal notranslate"><span class="pre">DetachedTacticDocument</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticDocument.name"><code class="docutils literal notranslate"><span class="pre">DetachedTacticDocument.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticDocument.add_column"><code class="docutils literal notranslate"><span class="pre">DetachedTacticDocument.add_column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticDocument.append"><code class="docutils literal notranslate"><span class="pre">DetachedTacticDocument.append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticDocument.insert"><code class="docutils literal notranslate"><span class="pre">DetachedTacticDocument.insert()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#DetachedTacticRow"><code class="docutils literal notranslate"><span class="pre">DetachedTacticRow</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticRow.row_dict"><code class="docutils literal notranslate"><span class="pre">DetachedTacticRow.row_dict</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticRow.series"><code class="docutils literal notranslate"><span class="pre">DetachedTacticRow.series</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#DetachedFreeformTacticDocument"><code class="docutils literal notranslate"><span class="pre">DetachedFreeformTacticDocument</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedFreeformTacticDocument.name"><code class="docutils literal notranslate"><span class="pre">DetachedFreeformTacticDocument.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedFreeformTacticDocument.append"><code class="docutils literal notranslate"><span class="pre">DetachedFreeformTacticDocument.append()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#DetachedTacticLine"><code class="docutils literal notranslate"><span class="pre">DetachedTacticLine</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#DetachedTacticLine.text"><code class="docutils literal notranslate"><span class="pre">DetachedTacticLine.text</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#communicating-with-other-tiles">Communicating with other tiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Tiles"><code class="docutils literal notranslate"><span class="pre">Tiles</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#RemoteTiles"><code class="docutils literal notranslate"><span class="pre">RemoteTiles</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#RemoteTiles.names"><code class="docutils literal notranslate"><span class="pre">RemoteTiles.names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#RemoteTiles.rewind"><code class="docutils literal notranslate"><span class="pre">RemoteTiles.rewind()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#RemoteTile"><code class="docutils literal notranslate"><span class="pre">RemoteTile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#RemoteTile.name"><code class="docutils literal notranslate"><span class="pre">RemoteTile.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#RemoteTile.pipe_names"><code class="docutils literal notranslate"><span class="pre">RemoteTile.pipe_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#RemoteTile.pipe_tags"><code class="docutils literal notranslate"><span class="pre">RemoteTile.pipe_tags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#RemoteTile.tile_id"><code class="docutils literal notranslate"><span class="pre">RemoteTile.tile_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#RemoteTile.send_message"><code class="docutils literal notranslate"><span class="pre">RemoteTile.send_message()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-pipes-object">The Pipes Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Pipes"><code class="docutils literal notranslate"><span class="pre">Pipes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#RemotePipes"><code class="docutils literal notranslate"><span class="pre">RemotePipes</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#RemotePipes.names"><code class="docutils literal notranslate"><span class="pre">RemotePipes.names</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-library-object">The Library Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Library"><code class="docutils literal notranslate"><span class="pre">Library</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticLibrary"><code class="docutils literal notranslate"><span class="pre">TacticLibrary</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticLibrary.collections"><code class="docutils literal notranslate"><span class="pre">TacticLibrary.collections</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticLibrary.lists"><code class="docutils literal notranslate"><span class="pre">TacticLibrary.lists</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticLibrary.functions"><code class="docutils literal notranslate"><span class="pre">TacticLibrary.functions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticLibrary.classes"><code class="docutils literal notranslate"><span class="pre">TacticLibrary.classes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticListSet"><code class="docutils literal notranslate"><span class="pre">TacticListSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticListSet.names"><code class="docutils literal notranslate"><span class="pre">TacticListSet.names()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ListResource"><code class="docutils literal notranslate"><span class="pre">ListResource</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ListResource.metadata"><code class="docutils literal notranslate"><span class="pre">ListResource.metadata</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticCollectionSet"><code class="docutils literal notranslate"><span class="pre">TacticCollectionSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticCollectionSet.names"><code class="docutils literal notranslate"><span class="pre">TacticCollectionSet.names()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticFunctionSet"><code class="docutils literal notranslate"><span class="pre">TacticFunctionSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticFunctionSet.names"><code class="docutils literal notranslate"><span class="pre">TacticFunctionSet.names()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#FunctionResource"><code class="docutils literal notranslate"><span class="pre">FunctionResource</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#FunctionResource.metadata"><code class="docutils literal notranslate"><span class="pre">FunctionResource.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#FunctionResource.code_resource"><code class="docutils literal notranslate"><span class="pre">FunctionResource.code_resource</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-settings-object">The Settings Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Settings"><code class="docutils literal notranslate"><span class="pre">Settings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticSettings"><code class="docutils literal notranslate"><span class="pre">TacticSettings</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticSettings.names"><code class="docutils literal notranslate"><span class="pre">TacticSettings.names</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
@@ -870,7 +1006,6 @@ as noted below.</p>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
 </ul>
 <ul>
@@ -912,7 +1047,7 @@ as noted below.</p>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.0.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
