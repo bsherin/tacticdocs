@@ -11,7 +11,7 @@ Using tags in resource lists
 The primary way in which you assign tags to to resources is via the tags field that appears on the right when you are
 viewing your resource library.
 
-.. figure:: images/bptags_field.png
+.. figure:: images/tags_in_resource_list.png
 
 Clicking on the image of a tag on the left causes the viewer to
 only show resources with that tag.
@@ -35,14 +35,32 @@ For example, if you create an option of type list_select, and you specify the ta
 then the user will only see lists with the stop_list tag when selecting a list on the back of the tile.
 The image below shows what this will look like in the Creator.
 
-.. figure:: images/bpstop_list_tag.png
+.. figure:: images/options_with_tags.png
     :width: 600px
 
 You can also assign tags to tile exports. Then if tags are assigned to a pipe_select option, the user
 will only see exports that match the tag.
 
-The **default** tag
+.. _special-tags:
+
+Special Tags
 -------------------
 
-The tag **default** has a special meaning when it is assigned to a tile.
-You can read more `here <Which-tiles-are-available-when.html>`__.
+There are a number of tags that have special meanings in Tactic. I shall list them now.
+
+default
+    Tiles with this tag will be automatically loaded when you log in (or after you unload all tiles).
+
+starter
+    Resources in this repository that include this tag are automatically included in the library when
+    a new account is created.
+
+hidden
+    Resources that have this tag, either as a standalone, or as the top level of any nested tags
+    (for example, hidden/stop_list) will not appear in the resource list when :guilabel:`all` is selected
+    at the top of the tag list. You can see these resource by clicking on :guilabel:`hidden` in the tag list.
+
+all
+    Clicking on this special tag at the top of the tag list shows all of your resources (that aren't hidden).
+    Assigning this tag to one of your resources won't have any effect. (At least, it shouldn't. I haven't tried
+    it in a while.)

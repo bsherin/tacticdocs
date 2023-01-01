@@ -62,7 +62,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = "en"
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -93,12 +93,14 @@ html_sidebars = {
     ]
 }
 html_theme_options = {
-    'sidebar_width': "220px",
+    'sidebar_width': "270px",
+    'page_width': "1200px",
     'caption_font_size': '20px',
     'sidebar_header': "black",
     'github_user': 'bsherin',
     'github_repo': 'tactic',
-    'description': 'A text mining environment for qualitative researchers'
+    'description': 'A text mining environment for qualitative researchers',
+    'code_font_size': "0.75em"
 }
 
 # Theme options are theme-specific and customize the look and feel of a theme

@@ -156,7 +156,7 @@ of events handled by tiles follows. When each of these events is
 received, a method within the tile is called. Each of these events is
 handled, in some manner, by TileBase (although sometimes it does
 nothing). But they can also be handled by a user tile to introduce
-custom behavior.
+custom behavior. This is also discussed some in :doc:`Handler-Methods`.
 
 -  *RefreshTile*. When a tile receives this event, it calls
    ``render_content()``. This does nothing by default.

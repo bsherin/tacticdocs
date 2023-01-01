@@ -1,22 +1,21 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Getting Data From APIs &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Running a Tactic Server" href="Running-your-own-Tactic-server.html" />
+    <link rel="next" title="Open Source Resources" href="open-source-resources.html" />
     <link rel="prev" title="Classifying with NLTK" href="Classifying-With-NLTK.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -35,7 +34,7 @@
           <div class="body" role="main">
             
   <section id="getting-data-from-apis">
-<h1>Getting Data From APIs<a class="headerlink" href="#getting-data-from-apis" title="Permalink to this headline">¶</a></h1>
+<h1>Getting Data From APIs<a class="headerlink" href="#getting-data-from-apis" title="Permalink to this heading">¶</a></h1>
 <p>This tutorial will walk you through getting data from some prominent online APIs.</p>
 <p>Throughout the tutorial, I will be showing samples of code that I used in my notebook.
 This notebook is accessible from the repository and has the name “getting_data_from_online_apis”. If you don’t know how
@@ -46,7 +45,7 @@ to access the repository, you can read about it on the <a class="reference exter
 <p><strong>Reddit:</strong>
 <a class="reference external" href="https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c">How to Use the Reddit API in Python</a></p>
 <section id="twitter">
-<h2>Twitter<a class="headerlink" href="#twitter" title="Permalink to this headline">¶</a></h2>
+<h2>Twitter<a class="headerlink" href="#twitter" title="Permalink to this heading">¶</a></h2>
 <p>The first step in getting data from Twitter is going <a class="reference external" href="http://apps.twitter.com">here</a> and creating an app.
 If you don’t already have a developer account, you’ll have to apply for that first.</p>
 <figure class="align-default">
@@ -55,7 +54,7 @@ If you don’t already have a developer account, you’ll have to apply for that
 <p>Once you have created your app, make sure that you are back at the <a class="reference external" href="http://apps.twitter.com">Twitter apps</a> page and
 select the “Details” button to the right of your app. Then, navigate to the “Keys and Tokens” section to get your API
 keys and access tokens (I know, big surprise there). You will need these in a moment.</p>
-<p>Now it’s time to head over to <a class="reference external" href="https://tactic.northwestern.edu/">Tactic</a> and create a new notebook. We will be using
+<p>Now it’s time to head over to <a class="reference external" href="https://tactictext.net/">Tactic</a> and create a new notebook. We will be using
 the library Tweepy, which you can read more about <a class="reference external" href="https://docs.tweepy.org/en/stable/">here</a>.</p>
 <p>In your notebook, execute these commands once:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
@@ -157,7 +156,7 @@ select “mlb_df.”</p>
 to exclude tokens such as ! and $, but hopefully this gives you a general idea of how to use Tactic and Tweepy.</p>
 </section>
 <section id="propublica">
-<h2>ProPublica<a class="headerlink" href="#propublica" title="Permalink to this headline">¶</a></h2>
+<h2>ProPublica<a class="headerlink" href="#propublica" title="Permalink to this heading">¶</a></h2>
 <p>ProPublica makes substantial data available for free with a few APIs. Before you can use any of these APIs, though, you
 need to request a key. Luckily, it’s very quick and easy:</p>
 <p>First, visit the ProPublica APIs page <a class="reference external" href="https://www.propublica.org/datastore/apis">here</a> and click on one of the APIs you’d like to use (in
@@ -235,7 +234,7 @@ and then clicking “view documentation.”</p>
 </figure>
 </section>
 <section id="reddit">
-<h2>Reddit<a class="headerlink" href="#reddit" title="Permalink to this headline">¶</a></h2>
+<h2>Reddit<a class="headerlink" href="#reddit" title="Permalink to this heading">¶</a></h2>
 <p>Reddit contains a massive amount of data, which in the right hands can be very useful. It can be a little tricky to
 figure out at first, but once you get going it won’t be too hard. The first step in using Reddit’s API is registering for an
 access token <a class="reference external" href="https://www.propublica.org/datastore/apis">here</a>. At the bottom of the screen, select “are you a developer? create an app…”</p>
@@ -337,7 +336,7 @@ if there are any common words used in the titles. Just like in the Twitter tutor
 about it, you can view its documentation <a class="reference external" href="https://www.reddit.com/dev/api/">here</a>.</p>
 </section>
 <section id="wikipedia">
-<h2>Wikipedia<a class="headerlink" href="#wikipedia" title="Permalink to this headline">¶</a></h2>
+<h2>Wikipedia<a class="headerlink" href="#wikipedia" title="Permalink to this heading">¶</a></h2>
 <p>Unlike the other APIs used in this tutorial, you do not need a key or access token to use Wikipedia’s API. So, you can
 go straight into a Tactic notebook and run this code to set up your API:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wikipediaapi</span>
@@ -411,13 +410,14 @@ them, you can read their documentation <a class="reference external" href="https
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
@@ -425,13 +425,14 @@ them, you can read their documentation <a class="reference external" href="https
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul class="current">
@@ -449,7 +450,6 @@ them, you can read their documentation <a class="reference external" href="https
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
 </ul>
 <ul>
@@ -461,7 +461,7 @@ them, you can read their documentation <a class="reference external" href="https
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="Classifying-With-NLTK.html" title="previous chapter">Classifying with NLTK</a></li>
-      <li>Next: <a href="Running-your-own-Tactic-server.html" title="next chapter">Running a Tactic Server</a></li>
+      <li>Next: <a href="open-source-resources.html" title="next chapter">Open Source Resources</a></li>
   </ul></li>
 </ul>
 </div>
@@ -474,7 +474,7 @@ them, you can read their documentation <a class="reference external" href="https
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -491,7 +491,7 @@ them, you can read their documentation <a class="reference external" href="https
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.0.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

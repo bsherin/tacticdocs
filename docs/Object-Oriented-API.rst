@@ -9,7 +9,7 @@ special-purpose commands. However, in some cases, the code will run more slowly.
 .. category_start
 
 Accessing and manipulating the collection
------------------------------------------'
+-----------------------------------------
 
 .. py:data:: Collection
 

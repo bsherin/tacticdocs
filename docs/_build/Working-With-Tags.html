@@ -1,19 +1,18 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Working With Tags &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tile Availability and Loading" href="Which-tiles-are-available-when.html" />
@@ -35,22 +34,22 @@
           <div class="body" role="main">
             
   <section id="working-with-tags">
-<h1>Working With Tags<a class="headerlink" href="#working-with-tags" title="Permalink to this headline">¶</a></h1>
+<h1>Working With Tags<a class="headerlink" href="#working-with-tags" title="Permalink to this heading">¶</a></h1>
 <p>Tags perform a couple of important functions in Tactic.
 Firstly, they provide a means of organizing your resources. Second, they permit you to narrow which resources
 are made available in selection lists presented in the options lists on the back of tiles.</p>
 <section id="using-tags-in-resource-lists">
-<h2>Using tags in resource lists<a class="headerlink" href="#using-tags-in-resource-lists" title="Permalink to this headline">¶</a></h2>
+<h2>Using tags in resource lists<a class="headerlink" href="#using-tags-in-resource-lists" title="Permalink to this heading">¶</a></h2>
 <p>The primary way in which you assign tags to to resources is via the tags field that appears on the right when you are
 viewing your resource library.</p>
 <figure class="align-default">
-<img alt="_images/bptags_field.png" src="_images/bptags_field.png" />
+<img alt="_images/tags_in_resource_list.png" src="_images/tags_in_resource_list.png" />
 </figure>
 <p>Clicking on the image of a tag on the left causes the viewer to
 only show resources with that tag.</p>
 </section>
 <section id="nested-tags">
-<h2>Nested tags<a class="headerlink" href="#nested-tags" title="Permalink to this headline">¶</a></h2>
+<h2>Nested tags<a class="headerlink" href="#nested-tags" title="Permalink to this heading">¶</a></h2>
 <p>Notice how, in the above image, the genesis colleciton has “nltk/book” as a tag.
 When a “/” appears in a tag, it is treated as a nested tag. In this case, the book
 tag is now a tag within the nltk folder, and that relationship is reflected in the tag list
@@ -58,22 +57,36 @@ on the left. You can have as many layers of nesting as your like.</p>
 <p>Note that “nltk” can still function as a tag in its own right.</p>
 </section>
 <section id="using-tags-in-tile-options-and-exports">
-<h2>Using tags in tile options and exports<a class="headerlink" href="#using-tags-in-tile-options-and-exports" title="Permalink to this headline">¶</a></h2>
+<h2>Using tags in tile options and exports<a class="headerlink" href="#using-tags-in-tile-options-and-exports" title="Permalink to this heading">¶</a></h2>
 <p>For tile options that present a selection list to the user, you can specify tags.
 If you do, the selection list will be narrowed to resources that match the tags.
 For example, if you create an option of type list_select, and you specify the tag “stop_list”,
 then the user will only see lists with the stop_list tag when selecting a list on the back of the tile.
 The image below shows what this will look like in the Creator.</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/bpstop_list_tag.png"><img alt="_images/bpstop_list_tag.png" src="_images/bpstop_list_tag.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/options_with_tags.png"><img alt="_images/options_with_tags.png" src="_images/options_with_tags.png" style="width: 600px;" /></a>
 </figure>
 <p>You can also assign tags to tile exports. Then if tags are assigned to a pipe_select option, the user
 will only see exports that match the tag.</p>
 </section>
-<section id="the-default-tag">
-<h2>The <strong>default</strong> tag<a class="headerlink" href="#the-default-tag" title="Permalink to this headline">¶</a></h2>
-<p>The tag <strong>default</strong> has a special meaning when it is assigned to a tile.
-You can read more <a class="reference external" href="Which-tiles-are-available-when.html">here</a>.</p>
+<section id="special-tags">
+<span id="id1"></span><h2>Special Tags<a class="headerlink" href="#special-tags" title="Permalink to this heading">¶</a></h2>
+<p>There are a number of tags that have special meanings in Tactic. I shall list them now.</p>
+<dl class="simple">
+<dt>default</dt><dd><p>Tiles with this tag will be automatically loaded when you log in (or after you unload all tiles).</p>
+</dd>
+<dt>starter</dt><dd><p>Resources in this repository that include this tag are automatically included in the library when
+a new account is created.</p>
+</dd>
+<dt>hidden</dt><dd><p>Resources that have this tag, either as a standalone, or as the top level of any nested tags
+(for example, hidden/stop_list) will not appear in the resource list when <span class="guilabel">all</span> is selected
+at the top of the tag list. You can see these resource by clicking on <span class="guilabel">hidden</span> in the tag list.</p>
+</dd>
+<dt>all</dt><dd><p>Clicking on this special tag at the top of the tag list shows all of your resources (that aren’t hidden).
+Assigning this tag to one of your resources won’t have any effect. (At least, it shouldn’t. I haven’t tried
+it in a while.)</p>
+</dd>
+</dl>
 </section>
 </section>
 
@@ -110,19 +123,20 @@ You can read more <a class="reference external" href="Which-tiles-are-available-
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Working With Tags</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#using-tags-in-resource-lists">Using tags in resource lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#nested-tags">Nested tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-tags-in-tile-options-and-exports">Using tags in tile options and exports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-default-tag">The <strong>default</strong> tag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#special-tags">Special Tags</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
@@ -130,13 +144,14 @@ You can read more <a class="reference external" href="Which-tiles-are-available-
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -148,7 +163,6 @@ You can read more <a class="reference external" href="Which-tiles-are-available-
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
 </ul>
 <ul>
@@ -173,7 +187,7 @@ You can read more <a class="reference external" href="Which-tiles-are-available-
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -190,7 +204,7 @@ You can read more <a class="reference external" href="Which-tiles-are-available-
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.0.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

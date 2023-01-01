@@ -1,10 +1,9 @@
 The Log and Notebook
 ====================
 
-As mentioned in the section on the `Main Interface <Main-interface.html>`__,
+As mentioned in the section on the :doc:`Main-interface`,
 there is a component at the bottom of the screen called the Log. Tiles
-can send information to the Log, and some error messages will show up
-there. The Log is also designed to be used more like a full-fledged
+can send information to the Log. The Log is also designed to be used more like a full-fledged
 python notebook.
 
 Furthermore, you can create projects that consist of nothing more
@@ -19,100 +18,63 @@ from the :guilabel:`Open` menu.
 
 .. image:: images/bpnew_notebook2.png
 
-Logs and Notebooks pretty much work the same way. You use the buttons at
-the top to manually add new elements:
+Logs and Notebooks pretty much work the same way. Below, I'm going to use the word "Notebook," but all of this will
+apply in both cases.
 
-.. figure:: images/bpconsole_top2.png
+Under the hood
+--------------
 
-|new text but|
-    Add a new text cell.
-|new code but|
-    Add a new code cell.
-|new link but|
-    Add a link to a library resources. You will be prompted to select the resource.
-    The link is currently always added at the end of the cell.
-|copy cell but|
-    Copies the current cell to a special cell clipboard. It provides a mechanism for
-    copying cells across projects.
-|paste cell but|
-    Pastes the cell from the special cell clipbaord
-|reset but|
-    Clears the log namespace and clear all code output
-|stop but|
-    Stop any running cells.
-|clear but|
-    Entirely erases all contents from the log.
-|log but|
-    Shows the error console for the log container.
-|main log but|
-    Shows the error console for the main container.
+In some important ways, the Log and Notebook *are* tiles. There is a (pretty much) standard tile container associated
+with a Notebook. Most of the code that you can write in a tile can also be run in a notebook, including all of
+the commands in the API, both object-oriented and standard.
 
-.. |new code but| image:: images/new_code_but.png
-   :height: 25
-   :class: inimage
+Tactic notebooks do have some special tricks, however. For example, when you save a standard project or notebook,
+Tactic attempts to save both the appearance *and internal state* of the Notebook. I save "attempt" because it's
+impossible to do this completely. For example, the internal state associated with a function definition cannot be
+saved. But Tactic can get pretty close.
 
-.. |new text but| image:: images/new_text_but.png
-   :height: 25
-   :class: inimage
+Notebook menus
+--------------
 
-.. |stop but| image:: images/stop_but.png
-   :height: 25
-   :class: inimage
+. figure:: images/top_of_log.png
 
-.. |new link but| image:: images/new_link_but.png
-   :height: 25
-   :class: inimage
+There are a bunch of menus at the top of a Notebook. I think they are mostly self-explanatory, but I'll mention a few
+points that might be obvious. First, the edit menu has items that allow you to copy and paste cells within and
+across projects. They act on any currently selected cells. (You can select multiple cells using :kbd:`shift-click`.
 
-.. |copy cell but| image:: images/copy_cell_but.png
-   :height: 25
-   :class: inimage
-.. |paste cell but| image:: images/paste_cell_but.png
-   :height: 25
-   :class: inimage
-.. |reset but| image:: images/reset_but.png
-   :height: 25
-   :class: inimage
-.. |clear but| image:: images/clear_but.png
-   :height: 25
-   :class: inimage
-.. |log but| image:: images/log_but.png
-   :height: 25
-   :class: inimage
-.. |main log but| image:: images/main_log_but.png
-   :height: 25
-   :class: inimage
+The :guilabel:`Consoles` menu lets you show and hide two different consoles, the Log console and the Main console.
+The Log console is the console associated with the container within which commands in the Notebook are executed.
+The Main console shows the console associated with a container associated with the project as a whole.
 
-Text fields
+
+Text cells
 -----------
 
-You can create a text field by clicking the :guilabel:`text` button. You’ll get
-something that looks like this:
+.. figure:: images/text_cell.png
 
-.. figure:: images/bptext_item_annotated.png
+You create a text cell using the :guilabel:`insert` menu or the associated keyboard shortcut. As shown in the figure
+above, each text cell as some buttons associated with it. These buttons become visible when the cell is selected
+or the cursor is in the cell.
 
 You can enter text as Markdown and Latex (see below). If you do,
-clicking the :guilabel:`convert markdown` button
-displays the formatted text. You can also hit command-enter to convert.
-
-.. figure:: images/bpconverted_markdown.png
-
-Clicking the bottom button again toggles the display back to plain text.
-You can also double-click on the converted markdown to go back to editing.
+clicking the convert button converts between raw and converted text.
 
 Currently, the library that is used to do the conversion of the markdown to
 html is `markdown-it <https://github.com/markdown-it/markdown-it>`__.
+
 The library used to convert Latex is
 `markdown-it-latex <https://github.com/tylingsoft/markdown-it-latex>`__.
 Refer to the docs for these libraries for syntax specifics.
 
-Code fields
+Code cells
 -----------
 
-You create a code field by clicking the :guilabel:`code` button:
+.. figure:: images/code_cell.png
 
-.. figure:: images/bpcode_item.png
+You create a text cell using the :guilabel:`insert` menu or the associated keyboard shortcut. As shown in the
+figure above, code cells have some special buttons, one to clear any outputs, another to execute the cell.
 
-In many ways, code fields in Logs and Notebooks function like a tile.
+As mentioned above, code fields in Logs and Notebooks function like a tile.
 You can write any code that you can write in a tile, which means you can
 test code here, and that you have access to the whole tile API.
 (However, some of these commands won’t make sense in Notebooks.)
@@ -142,47 +104,9 @@ The normal `keyboard shortcuts <Module-Viewer-Keyboard-Shortcuts.html>`__ work i
 In addition, :kbd:`Ctrl-Enter` and :kbd:`Cmd-Enter` will execute a cell. Those same two shortcuts,
 executed inside of a text cell, will display the formatted text.
 
-Some final generalities
+The exports viewer
 -----------------------
 
-You can **reorder** fields by dragging on dragging spot
-
-About the :guilabel:`reset` button:
-
-Clicking the reset button does a few different things:
-
--  It clears the output area of any code tiles.
--  It stops and restarts the python process so that the internal state
-   is entirely cleared.
-
-About the :guilabel:`clear` button:
-
-Clicking the clear button button does everything that reset does, and
-it also removes absolutely everything from the log.
-
-About the **copy and paste** buttons:
-
-These provide a means of copying and pasting cells across projects.
-Copy will copy the current cell. Paste will paste a copied cell, if there is one.
-So, for example, you can create a notebook into which you copy results, such as plots,
-from the log of a project.
-
-About the **log and main** buttons:
-
-The log button shows the container log for the virtual tile associated with the log.
-The main  button shows the container log for the container associated with the current project.
-Tactic tries to catch all errors and to display them for you in error drawer, or in alerts. But if you
-are getting unexpected behavior, and not seeing any normal error messages, then you can try looking at
-the container logs to get a sense for what's going on. Problems with docker itself might also show up here.
-
-About log item **summaries**:
-
-When you shrink a log item, you will see the "summary" for the item.
-The summary can be specified in the ``log_it`` command that creates a log item.
-You can also directly edit the summary after shrinking a log item.
-
-About **saving**:
-
-When you save a standard project or notebook, Tactic attempts to save both
-the appearance *and internal state* of the Notebook. The saving of internal
-state is still an iffy business however.
+As discussed :ref:`here. <exports_viewer>` The exports viewer is always available on the right hand side of the
+log and notebook. In addition to displaying any tile exports, the exports viewer displays any variables or
+objects defined within a Notebook.

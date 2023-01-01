@@ -1,23 +1,22 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Tile Structure &#8212; Tactic .1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="The Tile API" href="Tile-Commands.html" />
-    <link rel="prev" title="History and Compare" href="Tile-Version-History-And-Compare.html" />
+    <link rel="prev" title="Tile Reference Intro" href="Tile-Reference-Introduction.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,7 +34,7 @@
           <div class="body" role="main">
             
   <section id="tile-structure">
-<h1>Tile Structure<a class="headerlink" href="#tile-structure" title="Permalink to this headline">¶</a></h1>
+<h1>Tile Structure<a class="headerlink" href="#tile-structure" title="Permalink to this heading">¶</a></h1>
 <p>This section explains the full structure of the code that describes a tile.
 If you use the <a class="reference external" href="Tile-Creator.html">Tile Creator</a> you might not need to know
 any of this. But, on occasion, you might want to directly edit the source of
@@ -76,7 +75,7 @@ of user tiles available for the user.</p>
 </pre></div>
 </div>
 <section id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
 <p>The new ingredient here is options. Each tile can include a property
 named ‘options’ that defines what fields will be displayed on the back
 of the tile. This property should be a list of dicts. Each dict should
@@ -122,7 +121,7 @@ in ‘self.participant’ in the tile (when the user clicks submit). More on
 this below.</p>
 </section>
 <section id="category-exports-inits-save-attrs">
-<h2>Category exports inits save_attrs<a class="headerlink" href="#category-exports-inits-save-attrs" title="Permalink to this headline">¶</a></h2>
+<h2>Category exports inits save_attrs<a class="headerlink" href="#category-exports-inits-save-attrs" title="Permalink to this heading">¶</a></h2>
 <p>A still more elaborate tile might look like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@user_tile</span>
 <span class="k">class</span> <span class="nc">MyTile</span><span class="p">(</span><span class="n">TileBase</span><span class="p">):</span>
@@ -173,14 +172,14 @@ tile_creator does this.</p></li>
 </ul>
 </section>
 <section id="events-and-default-handlers">
-<h2>Events and default handlers<a class="headerlink" href="#events-and-default-handlers" title="Permalink to this headline">¶</a></h2>
+<h2>Events and default handlers<a class="headerlink" href="#events-and-default-handlers" title="Permalink to this heading">¶</a></h2>
 <p>I suspect that a large fraction of user tiles will look like the second
 example above. But there are more elaborate possibilities. The full list
 of events handled by tiles follows. When each of these events is
 received, a method within the tile is called. Each of these events is
 handled, in some manner, by TileBase (although sometimes it does
 nothing). But they can also be handled by a user tile to introduce
-custom behavior.</p>
+custom behavior. This is also discussed some in <a class="reference internal" href="Handler-Methods.html"><span class="doc">Handler Methods</span></a>.</p>
 <ul class="simple">
 <li><p><em>RefreshTile</em>. When a tile receives this event, it calls
 <code class="docutils literal notranslate"><span class="pre">render_content()</span></code>. This does nothing by default.</p></li>
@@ -288,7 +287,7 @@ back side of the tile.</p></li>
 </ul>
 </section>
 <section id="working-directly-with-events">
-<h2>Working directly with events<a class="headerlink" href="#working-directly-with-events" title="Permalink to this headline">¶</a></h2>
+<h2>Working directly with events<a class="headerlink" href="#working-directly-with-events" title="Permalink to this heading">¶</a></h2>
 <p>You can, if you choose, post events directly to a tile’s events queue:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">post_event</span><span class="p">(</span><span class="n">event_name</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
@@ -329,13 +328,14 @@ back side of the tile.</p></li>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
@@ -343,6 +343,7 @@ back side of the tile.</p></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tile Structure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#category-exports-inits-save-attrs">Category exports inits save_attrs</a></li>
@@ -352,10 +353,10 @@ back side of the tile.</p></li>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -367,7 +368,6 @@ back side of the tile.</p></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
 </ul>
 <ul>
@@ -378,7 +378,7 @@ back side of the tile.</p></li>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Tile-Version-History-And-Compare.html" title="previous chapter">History and Compare</a></li>
+      <li>Previous: <a href="Tile-Reference-Introduction.html" title="previous chapter">Tile Reference Intro</a></li>
       <li>Next: <a href="Tile-Commands.html" title="next chapter">The Tile API</a></li>
   </ul></li>
 </ul>
@@ -392,7 +392,7 @@ back side of the tile.</p></li>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -409,7 +409,7 @@ back side of the tile.</p></li>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.0.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
