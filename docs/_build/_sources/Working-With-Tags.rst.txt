@@ -56,9 +56,7 @@ starter
     a new account is created.
 
 hidden
-    Resources that have this tag, either as a standalone, or as the top level of any nested tags
-    (for example, hidden/stop_list) will not appear in the resource list when :guilabel:`all` is selected
-    at the top of the tag list. You can see these resource by clicking on :guilabel:`hidden` in the tag list.
+    Resources that have this tag will not be visible unless the :guilabel:`show hidden` switch is on.
 
 all
     Clicking on this special tag at the top of the tag list shows all of your resources (that aren't hidden).
