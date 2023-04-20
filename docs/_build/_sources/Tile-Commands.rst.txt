@@ -41,6 +41,14 @@ Refreshing
         Updates the front of the tile using the passed html. If new_html is None
         then ``render_content`` is called to generate the html to be displayed.
 
+    .. py:method:: display_status(new_html)
+
+        :param str new_html: The html to display on the front of the tile.
+
+        Updates the front of the tile using the passed html. It looks like this
+        might behave differently than :py:meth:`refresh_tile_now` under some circumstances.
+        In particular, it looks like it updates pipe information if necessary.
+
     .. py:method:: spin_and_refresh()
 
         Starts the spinner, refreshes the tile, then stops the spinner.
@@ -625,8 +633,8 @@ Plots
 
 .. category_start
 
-Global
-------
+Global and Notebook-Only
+------------------------
 
 .. note::
     The following commands are not called with ``self``.
@@ -641,7 +649,7 @@ Global
 
     :param float top_val: Specify the value range.
 
-    :param str color_palette_name: iT name of the matplotlib
+    :param str color_palette_name: The name of the matplotlib
         color_palette. These can be selected by the user using the
         palette_select option type.
 
@@ -651,6 +659,12 @@ Global
     within ``render_content`` would make ``nltk`` available within all method calls in your tile.
 
     :param str module_name: The name of the module to import as a string.
+
+.. py:method:: display(output_string) [notebook only]
+
+    Displays the given string as the output of the current cell, replacing any output that was already there.
+
+    :param str output_string: The name of the module to import as a string.
 
 .. category_end
 
@@ -663,7 +677,7 @@ The libraries listed below are currently available for import from tiles.
 .. note::
     There is one subtlety to be aware of when importing libraries.
     The code that you write for a tile is always executed within a method.
-    If you all of the code you for your tile is in the `render_content`, then
+    If all of the code for your tile is in the `render_content`, then
     you can just import your the library there, and everything is fine.
     However, if your tile includes other methods, then each method would have to separately
     import the library.

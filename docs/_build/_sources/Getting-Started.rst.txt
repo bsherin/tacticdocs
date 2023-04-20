@@ -5,7 +5,7 @@ Creating an account
 ------------------------------
 
 First, you need an account. Right now the only way to get an account is to email
-me, Bruce Sherin, at bsherin@northwestern.edu. In response, you'll get a username
+me, Bruce Sherin, at bsherin@u.northwestern.edu. In response, you'll get a username
 and password.
 
 Then head over to https://tactictext.net and use your credentials to log in.

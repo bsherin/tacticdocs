@@ -48,7 +48,20 @@ Clicks on Tile Front
         This handler is called when the user changes the value of a select element
         in the body of the tile. ``value`` is the value selected. `select_name` is the value
         of the ``name`` property assigned in the html for your select component. The default
-        handle does nothing
+        handler does nothing.
+
+    .. py:method:: handle_tile_row_click(self, clicked_row, doc_name, active_row_id=None)
+
+        This handler is called when the user clicks on a row in a table that is displayed
+        on the tile. Note that the row must have the class ``row-clickable``. This can be
+        accomplished by calling :py:meth:`html_table` with ``click_type=row-clickable``.
+        ``clicked_row`` contains a list of the values in the cells in the row. The default handler does nothing.
+
+    .. py:method:: handle_tile_word_click(self, clicked_word, doc_name, active_row_id=None)
+
+        This handler is called when the user clicks on a word on the front of the tile.
+        Note that the word must be within an element with the class ``word-clickable``.
+        The default handler selects all appearances of the clicked word in the main data table.
 
     .. py:method:: handle_form_submit(self, form_data, doc_name, active_row_index)
 
@@ -63,6 +76,48 @@ Clicks on Tile Front
         Called when the user the user changes the contents of a textarea DOM
         element on the front of the tile. ``value`` is the new content of
         the textarea. The default handler does nothing.
+
+.. category_end
+
+.. category_start
+
+Environment changes
+---------------
+
+    .. py:method:: handle_size_change(self)
+
+        The size of the current tile has been changed by the user.
+        The default handler does nothing.
+
+    .. py:method:: handle_doc_change(self, new_doc_name)
+
+        The visible document in the main data has been changed.
+        The default handler does nothing.
+
+    .. py:method:: handle_text_select(self, selected_text)
+
+        The has selected text within the main table.
+        The default handler does nothing.
+
+    .. py:method:: handle_cell_change(self, column_header, row_index, old_content, new_content, doc_name)
+
+        A cell in the main data table has been changed.
+        The default handler does nothing.
+
+    .. py:method:: handle_freeform_text_change(self, new_content, doc_name)
+
+        The text of a freeform data table has been changed.
+        The default handler does nothing.
+
+    .. py:method:: handle_pipe_update(self, pipe_name)
+
+        The value of a pipe has changed.
+        The default handler does nothing.
+
+    .. py:method:: handle_doc_change(self, new_doc_name)
+
+        The visible document in the main data has been changed.
+
 
 .. category_end
 
@@ -119,5 +174,31 @@ Dynamic Options
 
         Called when the user changes an individual option on the back of a tile. ``opt_name``
         is the name of the option and ``value`` is the new value.
+
+.. category_end
+
+.. category_start
+
+Other
+-----
+
+    .. py:method:: handle_tile_message(self, event_name, data)
+
+        This handler is called when the a message is sent using the :py:meth:`send_tile_message` command.
+        The default handler looks like this:
+
+        .. code-block:: python
+
+            def handle_log_tile(self):
+                summary = "Log from tile " + self.tile_name
+                self.log_it(self.current_html, summary=summary)
+                return
+
+
+    .. py:method:: handle_log_tile(self)
+
+        The user has selected :guilabel:`Log me` from the tile menu.
+
+        This handler is called when the a message is sent using the :py:meth:`send_tile_message` command.
 
 .. category_end
