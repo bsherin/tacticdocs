@@ -30,8 +30,10 @@ Scientific computing in Python
 -  `nltk <http://www.nltk.org>`__
 -  `numpy <http://www.numpy.org>`__
 -  `matplotlib <https://matplotlib.org>`__
--  `regex <https://pypi.org/project/regex/>`__
 -  `pandas <http://pandas.pydata.org>`__
+-  `pyLDAvis <https://pyldavis.readthedocs.io/en/latest/#>`__ (currently requires using the patch from the
+   code resource ``patch_pyldavis``)
+-  `regex <https://pypi.org/project/regex/>`__
 -  `scipy <http://scipy.org>`__
 -  `sklearn <http://scikit-learn.org/stable/index.html>`__
 -  `tweepy <https://www.tweepy.org/>`__
