@@ -3,7 +3,7 @@ Settings and Themes
 
 If you click on your username at the top right of the toolbar, you'll be taken to the account interace.
 
-.. image:: images/account_interface3.png
+.. image:: images/account_interface4.png
    :scale: 25 %
    :align: center
 
@@ -52,3 +52,10 @@ separate browser tabs.
 
 Note that, at any time, you can click in the toolbar to create a new context or
 tabbed view.
+
+Library Style
+--------------------
+There are also two choices here, unified and tabbed. In unified, which
+is currently the default, the library is viewed within a single pane,
+with the ability to filter by resource type. In tabbed mode, there is separate pane
+for each resource type.
