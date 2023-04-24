@@ -31,13 +31,11 @@ Scientific computing in Python
 -  `numpy <http://www.numpy.org>`__
 -  `matplotlib <https://matplotlib.org>`__
 -  `pandas <http://pandas.pydata.org>`__
--  `pyLDAvis <https://pyldavis.readthedocs.io/en/latest/#>`__ (currently requires using the patch from the
-   code resource ``patch_pyldavis``)
+-  `pyLDAvis <https://pyldavis.readthedocs.io/en/latest/#>`__
 -  `regex <https://pypi.org/project/regex/>`__
 -  `scipy <http://scipy.org>`__
 -  `sklearn <http://scikit-learn.org/stable/index.html>`__
 -  `tweepy <https://www.tweepy.org/>`__
--  `wordcloud <https://github.com/amueller/word_cloud>`__
 -  `yellowbrick <https://www.scikit-yb.org/en/latest/>`__
 
 
