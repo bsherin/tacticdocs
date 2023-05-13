@@ -15,6 +15,7 @@ Tactic Text
    Log-And-Notebook
    Working-With-Tags
    Which-tiles-are-available-when
+   Reports-and-Presentations
 
 .. toctree::
    :hidden:
