@@ -23,8 +23,8 @@ Scientific computing in Python
 
 -  `beautifulsoup4 <https://www.crummy.com/software/BeautifulSoup/>`__ (from bs4 import BeautifulSoup)
 -  `bokeh <https://docs.bokeh.org/en/latest/index.html>`__
--  `fuzzywuzzy <https://github.com/seatgeek/fuzzywuzzy>`__
 -  `gensim <https://radimrehurek.com/gensim/>`__
+-  `levenshtein <https://github.com/maxbachmann/python-Levenshtein>`__
 -  `markdown <https://github.com/Python-Markdown/markdown>`__
 -  `networkx <https://networkx.github.io>`__
 -  `nltk <http://www.nltk.org>`__
@@ -32,6 +32,7 @@ Scientific computing in Python
 -  `matplotlib <https://matplotlib.org>`__
 -  `pandas <http://pandas.pydata.org>`__
 -  `pyLDAvis <https://pyldavis.readthedocs.io/en/latest/#>`__
+-  `pyviz <https://github.com/WestHealth/pyvis>`__
 -  `regex <https://pypi.org/project/regex/>`__
 -  `scipy <http://scipy.org>`__
 -  `sklearn <http://scikit-learn.org/stable/index.html>`__
