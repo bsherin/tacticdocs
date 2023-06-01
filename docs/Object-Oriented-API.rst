@@ -215,6 +215,10 @@ Accessing and manipulating the collection
         Applies tokenizer_func to each line and returns the result as a list. If
         `tokenizer_func` is None then uses ``nltk.word_tokenize``.
 
+    .. py:method:: download(file_name=None)
+
+        Downloads the text of the document to the local client.
+
     .. py:method:: rewind()
 
         Resets the iterator to the first line.

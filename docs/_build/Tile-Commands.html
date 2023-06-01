@@ -83,6 +83,19 @@ then <code class="docutils literal notranslate"><span class="pre">render_content
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="display_status">
+<span class="sig-name descname"><span class="pre">display_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_html</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#display_status" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>new_html</strong> (<em>str</em>) – The html to display on the front of the tile.</p>
+</dd>
+</dl>
+<p>Updates the front of the tile using the passed html. It looks like this
+might behave differently than <a class="reference internal" href="#refresh_tile_now" title="refresh_tile_now"><code class="xref py py-meth docutils literal notranslate"><span class="pre">refresh_tile_now()</span></code></a> under some circumstances.
+In particular, it looks like it updates pipe information if necessary.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="spin_and_refresh">
 <span class="sig-name descname"><span class="pre">spin_and_refresh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spin_and_refresh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts the spinner, refreshes the tile, then stops the spinner.</p>
@@ -513,6 +526,18 @@ of column names. This allows you to specify the order in which columns will appe
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="download_collection">
+<span class="sig-name descname"><span class="pre">download_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#download_collection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the named collection from the user’s library to the local client.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="download_data">
+<span class="sig-name descname"><span class="pre">download_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#download_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the given text_data to the local client.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="go_to_document">
 <span class="sig-name descname"><span class="pre">go_to_document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#go_to_document" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shows the named document in the table.</p>
@@ -764,8 +789,8 @@ can cause problems, especially when loading a saved project.</p>
 </dd></dl>
 
 </section>
-<section id="global">
-<h2>Global<a class="headerlink" href="#global" title="Permalink to this heading">¶</a></h2>
+<section id="global-and-notebook-only">
+<h2>Global and Notebook-Only<a class="headerlink" href="#global-and-notebook-only" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following commands are not called with <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
@@ -785,7 +810,7 @@ ColorMapper() creates the class instance.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bottom_val</strong> (<em>float</em>) – </p></li>
 <li><p><strong>top_val</strong> (<em>float</em>) – Specify the value range.</p></li>
-<li><p><strong>color_palette_name</strong> (<em>str</em>) – iT name of the matplotlib
+<li><p><strong>color_palette_name</strong> (<em>str</em>) – The name of the matplotlib
 color_palette. These can be selected by the user using the
 palette_select option type.</p></li>
 </ul>
@@ -805,6 +830,17 @@ within <code class="docutils literal notranslate"><span class="pre">render_conte
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">display(output_string)</span> <span class="pre">[notebook</span> <span class="pre">only]</span></span></dt>
+<dd><p>Displays the given string as the output of the current cell, replacing any output that was already there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output_string</strong> (<em>str</em>) – The name of the module to import as a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="scientific-libraries">
 <h2>Scientific libraries<a class="headerlink" href="#scientific-libraries" title="Permalink to this heading">¶</a></h2>
@@ -814,7 +850,7 @@ The libraries listed below are currently available for import from tiles.</p>
 <p class="admonition-title">Note</p>
 <p>There is one subtlety to be aware of when importing libraries.
 The code that you write for a tile is always executed within a method.
-If you all of the code you for your tile is in the <cite>render_content</cite>, then
+If all of the code for your tile is in the <cite>render_content</cite>, then
 you can just import your the library there, and everything is fine.
 However, if your tile includes other methods, then each method would have to separately
 import the library.</p>
@@ -880,6 +916,7 @@ nltk will be available to all methods.</p>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reports-and-Presentations.html">Reports and Presentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
@@ -899,6 +936,7 @@ nltk will be available to all methods.</p>
 <li class="toctree-l3"><a class="reference internal" href="#start_spinner"><code class="docutils literal notranslate"><span class="pre">start_spinner()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stop_spinner"><code class="docutils literal notranslate"><span class="pre">stop_spinner()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#refresh_tile_now"><code class="docutils literal notranslate"><span class="pre">refresh_tile_now()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display_status"><code class="docutils literal notranslate"><span class="pre">display_status()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spin_and_refresh"><code class="docutils literal notranslate"><span class="pre">spin_and_refresh()</span></code></a></li>
 </ul>
 </li>
@@ -953,6 +991,8 @@ nltk will be available to all methods.</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#other-tilebase">Other TileBase</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#create_collection"><code class="docutils literal notranslate"><span class="pre">create_collection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download_collection"><code class="docutils literal notranslate"><span class="pre">download_collection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download_data"><code class="docutils literal notranslate"><span class="pre">download_data()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#go_to_document"><code class="docutils literal notranslate"><span class="pre">go_to_document()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#go_to_row_in_document"><code class="docutils literal notranslate"><span class="pre">go_to_row_in_document()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get_selected_text"><code class="docutils literal notranslate"><span class="pre">get_selected_text()</span></code></a></li>
@@ -980,7 +1020,7 @@ nltk will be available to all methods.</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#global">Global</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#global-and-notebook-only">Global and Notebook-Only</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ColorMapper"><code class="docutils literal notranslate"><span class="pre">ColorMapper</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#ColorMapper.color_from_val"><code class="docutils literal notranslate"><span class="pre">ColorMapper.color_from_val()</span></code></a></li>
 </ul>

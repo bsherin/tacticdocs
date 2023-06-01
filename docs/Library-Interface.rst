@@ -5,36 +5,53 @@ This Library interface is what you see when you use to manage the resources in y
 such as the data you upload, and the tiles you create or import. It is also from here that you can launch viewers
 and editors of those resources. Here it is, with the :guilabel:`Tiles` area in the library selected.
 
-.. figure:: images/bplibrary_interface3.png
+.. figure:: images/bplibrary_interface4.png
 
 Here's a little tour:
 
 The sidebar
 -------------
 
-.. image:: images/sidebar.png
+.. image:: images/sidebar2.png
    :scale: 40 %
    :align: center
 
-The sidebar, on the left, includes links to each of the areas in your library, as well as to the panes with each of
-your currently opened resource. There are five Library panes, each corresponding to one of the categories of resources.
-They are, from top to bottom:
+The sidebar, on the left, includes a link to your library, as well as to the panes with each of
+your currently opened resource.
 
-1. Data Collections. This is your raw data.
-2. Projects. This is where you access your in-progress projects. You can also create new notebooks here.
-3. Tiles. Your tile modules.
-4. Lists. Your lists, obviously.
-5. Code resources. These are explained a bit :doc:`here. <Working-With-Code-Resources>`
-
-In the images above, there are currently two resources open, a project named "spam_project"
+In the image above, there are currently two resources open, a project named "spam_project"
 and a tile named "HelloWorld." You can click on one of these to go to the associated pane. You can also close or
 reload one of these resources using the little icons next to each name.
+
+Filtering
+-------------
+
+.. image:: images/library_filters.png
+   :scale: 40 %
+   :align: center
+
+You can filter the resources visible in a variety of ways. Clicking on one of the colored icons
+will filter by resources type. These are, from left to right:
+
+1. All. This shows all resource types.
+2. Data Collections. This is your raw data.
+3. Projects. This is where you access your in-progress projects. You can also create new notebooks here.
+4. Tiles. Your tile modules.
+5. Lists. Your lists, obviously.
+6. Code resources. These are explained a bit :doc:`here. <Working-With-Code-Resources>`
+
+The switches behave as follows;
+
+* :guilabel:`metadata`. Include metadata in the search
+
+* :guilabel:`inside`. Search inside the content of resources. This only works for some resource types.
+
+* :guilabel:`show hidden`. Show resources that have the ``hidden`` tag.
 
 The menubar
 -------------
 
-Across the top is each library pane is a menubar with a number of menus These differ in function depending on
-what resource you are managing. I think these will mostly be self-explanatory.
+Across the top is a menubar with a number of menus. I think these will mostly be self-explanatory.
 They do things such as let you view a resource, delete it, combine resources, etc.
 
 The tag tree

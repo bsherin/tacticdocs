@@ -75,7 +75,24 @@ like this:</p>
 <dd><p>This handler is called when the user changes the value of a select element
 in the body of the tile. <code class="docutils literal notranslate"><span class="pre">value</span></code> is the value selected. <cite>select_name</cite> is the value
 of the <code class="docutils literal notranslate"><span class="pre">name</span></code> property assigned in the html for your select component. The default
-handle does nothing</p>
+handler does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_tile_row_click">
+<span class="sig-name descname"><span class="pre">handle_tile_row_click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clicked_row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active_row_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_tile_row_click" title="Permalink to this definition">¶</a></dt>
+<dd><p>This handler is called when the user clicks on a row in a table that is displayed
+on the tile. Note that the row must have the class <code class="docutils literal notranslate"><span class="pre">row-clickable</span></code>. This can be
+accomplished by calling <a class="reference internal" href="Tile-Commands.html#html_table" title="html_table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">html_table()</span></code></a> with <code class="docutils literal notranslate"><span class="pre">click_type=row-clickable</span></code>.
+<code class="docutils literal notranslate"><span class="pre">clicked_row</span></code> contains a list of the values in the cells in the row. The default handler does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_tile_word_click">
+<span class="sig-name descname"><span class="pre">handle_tile_word_click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clicked_word</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active_row_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_tile_word_click" title="Permalink to this definition">¶</a></dt>
+<dd><p>This handler is called when the user clicks on a word on the front of the tile.
+Note that the word must be within an element with the class <code class="docutils literal notranslate"><span class="pre">word-clickable</span></code>.
+The default handler selects all appearances of the clicked word in the main data table.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -94,6 +111,59 @@ itself. The default handler does nothing.</p>
 <dd><p>Called when the user the user changes the contents of a textarea DOM
 element on the front of the tile. <code class="docutils literal notranslate"><span class="pre">value</span></code> is the new content of
 the textarea. The default handler does nothing.</p>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="environment-changes">
+<h2>Environment changes<a class="headerlink" href="#environment-changes" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt class="sig sig-object py" id="handle_size_change">
+<span class="sig-name descname"><span class="pre">handle_size_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_size_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>The size of the current tile has been changed by the user.
+The default handler does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_doc_change">
+<span class="sig-name descname"><span class="pre">handle_doc_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_doc_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_doc_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>The visible document in the main data has been changed.
+The default handler does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_text_select">
+<span class="sig-name descname"><span class="pre">handle_text_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_text_select" title="Permalink to this definition">¶</a></dt>
+<dd><p>The has selected text within the main table.
+The default handler does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_cell_change">
+<span class="sig-name descname"><span class="pre">handle_cell_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_cell_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>A cell in the main data table has been changed.
+The default handler does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_freeform_text_change">
+<span class="sig-name descname"><span class="pre">handle_freeform_text_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_freeform_text_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>The text of a freeform data table has been changed.
+The default handler does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_pipe_update">
+<span class="sig-name descname"><span class="pre">handle_pipe_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipe_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_pipe_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>The value of a pipe has changed.
+The default handler does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">handle_doc_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_doc_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>The visible document in the main data has been changed.</p>
 </dd></dl>
 
 </div></blockquote>
@@ -148,6 +218,31 @@ simply by not including it in the revised options.</p>
 <span class="sig-name descname"><span class="pre">handle_option_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_option_change" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when the user changes an individual option on the back of a tile. <code class="docutils literal notranslate"><span class="pre">opt_name</span></code>
 is the name of the option and <code class="docutils literal notranslate"><span class="pre">value</span></code> is the new value.</p>
+</dd></dl>
+
+</div></blockquote>
+</section>
+<section id="other">
+<h2>Other<a class="headerlink" href="#other" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><dl class="py method">
+<dt class="sig sig-object py" id="handle_tile_message">
+<span class="sig-name descname"><span class="pre">handle_tile_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_tile_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>This handler is called when the a message is sent using the <a class="reference internal" href="Tile-Commands.html#send_tile_message" title="send_tile_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_tile_message()</span></code></a> command.
+The default handler looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handle_log_tile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;Log from tile &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">tile_name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">log_it</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_html</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="n">summary</span><span class="p">)</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_log_tile">
+<span class="sig-name descname"><span class="pre">handle_log_tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_log_tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>The user has selected <span class="guilabel">Log me</span> from the tile menu.</p>
+<p>This handler is called when the a message is sent using the <a class="reference internal" href="Tile-Commands.html#send_tile_message" title="send_tile_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_tile_message()</span></code></a> command.</p>
 </dd></dl>
 
 </div></blockquote>
@@ -210,13 +305,30 @@ is the name of the option and <code class="docutils literal notranslate"><span c
 <li class="toctree-l2"><a class="reference internal" href="#clicks-on-tile-front">Clicks on Tile Front</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#handle_button_click"><code class="docutils literal notranslate"><span class="pre">handle_button_click()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handle_select_change"><code class="docutils literal notranslate"><span class="pre">handle_select_change()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle_tile_row_click"><code class="docutils literal notranslate"><span class="pre">handle_tile_row_click()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle_tile_word_click"><code class="docutils literal notranslate"><span class="pre">handle_tile_word_click()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handle_form_submit"><code class="docutils literal notranslate"><span class="pre">handle_form_submit()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handle_textarea_change"><code class="docutils literal notranslate"><span class="pre">handle_textarea_change()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-changes">Environment changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#handle_size_change"><code class="docutils literal notranslate"><span class="pre">handle_size_change()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle_doc_change"><code class="docutils literal notranslate"><span class="pre">handle_doc_change()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle_text_select"><code class="docutils literal notranslate"><span class="pre">handle_text_select()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle_cell_change"><code class="docutils literal notranslate"><span class="pre">handle_cell_change()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle_freeform_text_change"><code class="docutils literal notranslate"><span class="pre">handle_freeform_text_change()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle_pipe_update"><code class="docutils literal notranslate"><span class="pre">handle_pipe_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">handle_doc_change()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dynamic-options">Dynamic Options</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#modify_options"><code class="docutils literal notranslate"><span class="pre">modify_options()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handle_option_change"><code class="docutils literal notranslate"><span class="pre">handle_option_change()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other">Other</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#handle_tile_message"><code class="docutils literal notranslate"><span class="pre">handle_tile_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle_log_tile"><code class="docutils literal notranslate"><span class="pre">handle_log_tile()</span></code></a></li>
 </ul>
 </li>
 </ul>

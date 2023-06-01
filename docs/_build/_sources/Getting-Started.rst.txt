@@ -5,7 +5,7 @@ Creating an account
 ------------------------------
 
 First, you need an account. Right now the only way to get an account is to email
-me, Bruce Sherin, at bsherin@northwestern.edu. In response, you'll get a username
+me, Bruce Sherin, at bsherin@u.northwestern.edu. In response, you'll get a username
 and password.
 
 Then head over to https://tactictext.net and use your credentials to log in.
@@ -16,12 +16,12 @@ First steps with collections
 ----------------------------
 
 After you log in, you'll be taken automatically to Library manager. To get started using tactic, you need to load in some
-data. Your libary should already have some collections loaded. To view
-one of these collections, select it in the list and choose
+data. Your libary should already have some collections loaded. In the image below, the collections are the
+resources with blue data cylinders. To view one of these collections, first select it.
 :guilabel:`open` from the Open menu. (You can also double_click directly on the item or press the space bar or enter key.) A new pane
 should appear showing your collection.
 
-.. figure:: images/bpload_collection2.png
+.. figure:: images/bpload_collection3.png
 
 If you want, you can also explore additional sample collections
 available in the repository, which provides resources that can be used
