@@ -402,6 +402,15 @@ Other TileBase
 
         Synonym: ``cc``
 
+
+    .. py:method:: download_collection(collection_name, file_name=None)
+
+        Downloads the named collection from the user's library to the local client.
+
+    .. py:method:: download_data(text_data, file_name=None)
+
+        Downloads the given text_data to the local client.
+
     .. py:method:: go_to_document(document_name)
 
         Shows the named document in the table.
