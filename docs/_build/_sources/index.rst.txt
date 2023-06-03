@@ -59,6 +59,7 @@ Tactic Text
    :caption: Other
 
    open-source-resources
+   Developing-Tactic
 
 .. toctree::
    :hidden:
