@@ -40,7 +40,7 @@ Tactic Text
    Handler-Methods
    Working-With-Code-Resources
    Matplotlib-Tiles
-   D3-Tiles
+   Javascript-Tiles
 
 .. toctree::
    :hidden:
