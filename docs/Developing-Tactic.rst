@@ -23,7 +23,7 @@ For this all to work, you need to somehow have a local mongo database with the a
 There's no easy solution for that yet.
 
 Building steps
--------------
+--------------
 
 To build development javascript files:
 

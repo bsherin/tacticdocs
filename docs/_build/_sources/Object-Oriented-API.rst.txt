@@ -61,6 +61,10 @@ Accessing and manipulating the collection
 
         Reset the iterator to the first document.
 
+    .. py:method:: download(file_name="filename")
+
+        Downloads the collection to the local computer.
+
 .. py:class:: TacticDocument()
 
     Objects in this class correspond to one of the documents in the collection in the current project.
