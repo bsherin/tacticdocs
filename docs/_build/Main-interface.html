@@ -53,12 +53,12 @@ is given a “category,” which can be anything that you want. It is these cate
 which menus will appear and where each tile will appear in the menus.</p>
 <p>To the right of the white bar is a set of fixed menus. The <span class="guilabel">Document</span>, <span class="guilabel">Column</span>, <span class="guilabel">Row</span>,
 and <span class="guilabel">View</span> menus should be pretty much self-explanatory.</p>
-<p>Use the <span class="guilabel">Project</span> menu to save the current state of a project. You can
-also export the data table in a few different ways: (1) you can export
-it as a data collection back to your library, (2) you can export the
-visible document as a CSV file on your local machine, and (3) you can
-export all of the documents to an excel file.</p>
-<p>The <span class="guilabel">Project</span> menu also has an option <span class="guilabel">change_collection</span> which lets
+<p>Use the <span class="guilabel">Project</span> menu to save the current state of a project. There are two kinds of saves, regular
+saves and lite saves. Lite saves don’t save any tile attributes that are exported by a tile, and the saves
+of notebooks don’t include variables.</p>
+<p>There are a few other useful things in the <span class="guilabel">Project</span> menu. You can export the project collection
+as a data collection back to your library. You can also export the notebook as a <a class="reference external" href="Reports-and-Presentations.html">presentation or a report.</a></p>
+<p>Finally, the <span class="guilabel">Project</span> menu has an option <span class="guilabel">change_collection</span> which lets
 you swap out the data collection in the main data table.</p>
 <p>Finally, at the very far right of the menu bar is a little icon that shows the Error Drawer.</p>
 </section>
@@ -163,6 +163,7 @@ created in the log.</p>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reports-and-Presentations.html">Reports and Presentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
@@ -181,7 +182,7 @@ created in the log.</p>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Javascript-Tiles.html">Javascript Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -194,6 +195,7 @@ created in the log.</p>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developing-Tactic.html">Developing Tactic</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -234,8 +236,8 @@ created in the log.</p>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/Main-interface.rst.txt"

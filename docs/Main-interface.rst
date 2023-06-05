@@ -32,13 +32,14 @@ which menus will appear and where each tile will appear in the menus.
 To the right of the white bar is a set of fixed menus. The :guilabel:`Document`, :guilabel:`Column`, :guilabel:`Row`,
 and :guilabel:`View` menus should be pretty much self-explanatory.
 
-Use the :guilabel:`Project` menu to save the current state of a project. You can
-also export the data table in a few different ways: (1) you can export
-it as a data collection back to your library, (2) you can export the
-visible document as a CSV file on your local machine, and (3) you can
-export all of the documents to an excel file.
+Use the :guilabel:`Project` menu to save the current state of a project. There are two kinds of saves, regular
+saves and lite saves. Lite saves don't save any tile attributes that are exported by a tile, and the saves
+of notebooks don't include variables.
 
-The :guilabel:`Project` menu also has an option :guilabel:`change_collection` which lets
+There are a few other useful things in the :guilabel:`Project` menu. You can export the project collection
+as a data collection back to your library. You can also export the notebook as a `presentation or a report. <Reports-and-Presentations.html>`__
+
+Finally, the :guilabel:`Project` menu has an option :guilabel:`change_collection` which lets
 you swap out the data collection in the main data table.
 
 Finally, at the very far right of the menu bar is a little icon that shows the Error Drawer.
