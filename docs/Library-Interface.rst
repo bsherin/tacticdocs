@@ -54,6 +54,15 @@ The menubar
 Across the top is a menubar with a number of menus. I think these will mostly be self-explanatory.
 They do things such as let you view a resource, delete it, combine resources, etc.
 
+
+The omnibar
+-------------
+
+Typing :kbd:`Ctrl-Space` brings up the omnibar - a "macOS Spotlight-style typeahead component"
+This is actually accessible throughout Tactic. Anything that is currently accessible from a menu can also be
+accessed from the omnibar. There are a handful of other useful functions. For example, links that appear in the
+navbar have corresponding omnibar entries. All hail the awesome `omnibar. <https://blueprintjs.com/docs/#select/omnibar>`__
+
 The tag tree
 --------------
 
@@ -80,15 +89,6 @@ associated with a resource.
 
 You can also :kbd:`Right-Click` (or :kbd:`Control-Click`) on a row in the table to access a context menu. The available
 functions replicate a subset of the functions available in the menubar.
-
-The omnibar
--------------
-
-Typing :kbd:`Ctrl-Space` brings up the omnibar. Start typing to select from a list of resources in the current tab.
-Then press enter to select and view a resource. All hail the awesome `omnibar. <https://blueprintjs.com/docs/#select/omnibar>`__
-
-.. warning::
-    The omnibar has not been updated for a while, and it doesn't yet behave naturally within the single-window interface.
 
 The metadata editor
 ---------------------
