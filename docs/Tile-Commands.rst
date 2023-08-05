@@ -417,11 +417,11 @@ Other TileBase
 
         Synonym: ``gtd``
 
-    .. py:method:: go_to_row_in_document(document_name, row_id)
+    .. py:method:: go_to_row_in_document(document_name, row_id, scroll_to_row=True, select_row=True)
 
-        For table documents, this shows the named document and selects the named
-        row. For freeform documents, the corresponding line is scrolled into
-        view.
+        For freeform documents, this shows the named document and the corresponding line is scrolled into
+        view. For table documents, this shows the named document and optionally scrolls the
+        row into view and selects it.
 
         Synonym: ``gtrid``
 
