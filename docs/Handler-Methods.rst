@@ -94,6 +94,11 @@ Environment changes
         The visible document in the main data has been changed.
         The default handler does nothing.
 
+    .. py:method:: handle_row_change(self, row_index, doc_name)
+
+        A new row has been selected in the main table.
+        The default handler does nothing.
+
     .. py:method:: handle_text_select(self, selected_text)
 
         The has selected text within the main table.
