@@ -9,6 +9,7 @@ Tactic Text
    Getting-Started
    Account-Interface
    Library-Interface
+   Pool
    Uploading-Data
    Main-interface
    Working-With-Tiles

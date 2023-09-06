@@ -87,6 +87,13 @@ and ``type`` is the type. Obviously. At present the option types are:
 -  *divider*. Creates a separator and section heading in the option list
    on the back of a tile.
 
+.. _pool-select:
+
+- *pool_select*. Displays a tree view of the user's Pool from which
+  they can select a particular file, folder, or both. It returns the
+  full path to the selected item. The Pool is discussed `here <Pool.html>`__.
+  Note that not all users have access to Pool storage.
+
 By default, when the user clicks “submit” on the back of the tile, the
 values in each of the fields will be stored as properties in the tile
 instance. For example, if a user has an option field named
