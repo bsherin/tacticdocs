@@ -185,6 +185,11 @@ Other
     .. py:method:: handle_tile_message(self, event_name, data)
 
         This handler is called when the a message is sent using the :py:meth:`send_tile_message` command.
+        Note that this handler can return a value.
+
+    .. py:method:: handle_log_tile(self)
+
+        The user has selected :guilabel:`Log me` from the tile menu.
         The default handler looks like this:
 
         .. code-block:: python
@@ -193,12 +198,5 @@ Other
                 summary = "Log from tile " + self.tile_name
                 self.log_it(self.current_html, summary=summary)
                 return
-
-
-    .. py:method:: handle_log_tile(self)
-
-        The user has selected :guilabel:`Log me` from the tile menu.
-
-        This handler is called when the a message is sent using the :py:meth:`send_tile_message` command.
 
 .. category_end

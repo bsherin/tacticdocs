@@ -229,6 +229,13 @@ is the name of the option and <code class="docutils literal notranslate"><span c
 <dt class="sig sig-object py" id="handle_tile_message">
 <span class="sig-name descname"><span class="pre">handle_tile_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_tile_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>This handler is called when the a message is sent using the <a class="reference internal" href="Tile-Commands.html#send_tile_message" title="send_tile_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_tile_message()</span></code></a> command.
+Note that this handler can return a value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="handle_log_tile">
+<span class="sig-name descname"><span class="pre">handle_log_tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_log_tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>The user has selected <span class="guilabel">Log me</span> from the tile menu.
 The default handler looks like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handle_log_tile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;Log from tile &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">tile_name</span>
@@ -236,13 +243,6 @@ The default handler looks like this:</p>
     <span class="k">return</span>
 </pre></div>
 </div>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="handle_log_tile">
-<span class="sig-name descname"><span class="pre">handle_log_tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_log_tile" title="Permalink to this definition">¶</a></dt>
-<dd><p>The user has selected <span class="guilabel">Log me</span> from the tile menu.</p>
-<p>This handler is called when the a message is sent using the <a class="reference internal" href="Tile-Commands.html#send_tile_message" title="send_tile_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_tile_message()</span></code></a> command.</p>
 </dd></dl>
 
 </div></blockquote>
@@ -286,6 +286,7 @@ The default handler looks like this:</p>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reports-and-Presentations.html">Reports and Presentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
@@ -335,7 +336,7 @@ The default handler looks like this:</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Javascript-Tiles.html">Javascript Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -348,6 +349,7 @@ The default handler looks like this:</p>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developing-Tactic.html">Developing Tactic</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>

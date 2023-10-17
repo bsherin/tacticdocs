@@ -588,11 +588,12 @@ messages go to this file. Also and print statements.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="send_tile_message">
-<span class="sig-name descname"><span class="pre">send_tile_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tile_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#send_tile_message" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">send_tile_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tile_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#send_tile_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a message to a tile with the given name. The event_name and data
 are passed to the named tile, which it can capture by defining a
 handle_tile_message method. (See <a class="reference external" href="Tile-Structure.html#events-and-default-handlers">Events and
 handlers</a>)</p>
+<p>If you specify a callback_func that function will receive whatever value handle_tile_message returns</p>
 <p>Synonym: <code class="docutils literal notranslate"><span class="pre">stm</span></code></p>
 </dd></dl>
 
@@ -630,7 +631,7 @@ advance, the name of one of your resources.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="html_table">
-<span class="sig-name descname"><span class="pre">html_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">click_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'word-clickable'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sortable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sidebyside</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_row_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#html_table" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">html_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">click_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'word-clickable'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sortable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sidebyside</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_row_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#html_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns html for a table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -910,7 +911,6 @@ nltk will be available to all methods.</p>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Pool.html">The Pool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
@@ -1090,8 +1090,8 @@ nltk will be available to all methods.</p>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/Tile-Commands.rst.txt"

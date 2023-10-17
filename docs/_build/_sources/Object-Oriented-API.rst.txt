@@ -456,7 +456,7 @@ Communicating with other tiles
 
         The id of this tile.
 
-    .. py:method:: send_message(event_name, data=None)
+    .. py:method:: send_message(event_name, data=None, callback_func=None)
 
         Send a message from the tile in which the code is executing to this RemoteTile object.
         Refer to py:meth:`send_tile_message`.

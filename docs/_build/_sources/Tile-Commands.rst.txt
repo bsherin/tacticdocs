@@ -451,12 +451,14 @@ Other TileBase
         This is the log file of the container that holds the tile. All error
         messages go to this file. Also and print statements.
 
-    .. py:method:: send_tile_message(tile_name, event_name, data=None)
+    .. py:method:: send_tile_message(tile_name, event_name, data=None, callback_func=None)
 
         Sends a message to a tile with the given name. The event_name and data
         are passed to the named tile, which it can capture by defining a
         handle_tile_message method. (See `Events and
         handlers <Tile-Structure.html#events-and-default-handlers>`__)
+
+        If you specify a callback_func that function will receive whatever value handle_tile_message returns
 
         Synonym: ``stm``
 
@@ -487,7 +489,7 @@ Other TileBase
         Synonyms: ``gulist``, ``gufunc``, ``guclass``, ``gucol`` for ``get_user_list``, ``get_user_function``,
         ``get_user_class``, and ``get_user_collection`` respectively.
 
-    .. py:method:: html_table(data, title=None, click_type="word-clickable", sortable=True, sidebyside=False, has_header=True, max_rows=None, header_style=None, body_style=None, column_order=None, include_row_labels=True)
+    .. py:method:: html_table(data, title=None, click_type="word-clickable", sortable=True, sidebyside=False, has_header=True, max_rows=100, header_style=None, body_style=None, column_order=None, include_row_labels=True)
 
         Returns html for a table.
 
