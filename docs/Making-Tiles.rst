@@ -38,6 +38,9 @@ Additional methods
     Partly, this is just a convenience; it's a way to keep your ``render_content`` code from becoming too cluttered.
     But this is also where you'll defined any special :doc:`Handler-Methods`.
 
+Globals
+    You can provide code to executed in the global namespace.
+
 Metadata
     Finally, you can attach metadata to your tile. This includes the same tags and notes you can attach
     to any resource. But it also includes a field that is specific to tiles called :guilabel:`Category`. This

@@ -58,7 +58,14 @@ in the body of the tile. The decorator <code class="docutils literal notranslate
 that the following class is a tile that should be displayed in the menu
 of user tiles available for the user.</p>
 <p>A more elaborate tile might look like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@user_tile</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+
+<span class="n">my_global_var</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="k">def</span> <span class="nf">my_global_func</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+    <span class="n">Tile</span><span class="o">.</span><span class="n">display_status</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+
+<span class="nd">@user_tile</span>
 <span class="k">class</span> <span class="nc">MyTile</span><span class="p">(</span><span class="n">TileBase</span><span class="p">):</span>
 
     <span class="nd">@property</span>
@@ -126,10 +133,28 @@ instance. For example, if a user has an option field named
 in ‘self.participant’ in the tile (when the user clicks submit). More on
 this below.</p>
 </section>
+<section id="globals">
+<h2>Globals<a class="headerlink" href="#globals" title="Permalink to this heading">¶</a></h2>
+<p>The code above also includes some code outside of the class definition.
+You can do that! This can be convenient in some cases. This code will
+be executed when the tile code is first run in the container.</p>
+<p>Because this code is outside of the tile class it doesn’t have access to <code class="docutils literal notranslate"><span class="pre">self</span></code>.
+However, you can access commands from the tile API using <code class="docutils literal notranslate"><span class="pre">Tile</span></code> like this:
+<code class="docutils literal notranslate"><span class="pre">Tile.display_status(&quot;some</span> <span class="pre">text&quot;)</span></code>. However, <code class="docutils literal notranslate"><span class="pre">Tile</span></code> is not available when the
+global code is initially run. This means you only use <code class="docutils literal notranslate"><span class="pre">Tile</span></code> inside a method
+defined in the global space.</p>
+</section>
 <section id="category-exports-inits-save-attrs">
 <h2>Category exports inits save_attrs<a class="headerlink" href="#category-exports-inits-save-attrs" title="Permalink to this heading">¶</a></h2>
 <p>A still more elaborate tile might look like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@user_tile</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+
+<span class="n">my_global_var</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="k">def</span> <span class="nf">my_global_func</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+    <span class="n">Tile</span><span class="o">.</span><span class="n">display_status</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+
+<span class="nd">@user_tile</span>
 <span class="k">class</span> <span class="nc">MyTile</span><span class="p">(</span><span class="n">TileBase</span><span class="p">):</span>
     <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;utility&quot;</span>
     <span class="n">exports</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">}]</span>
@@ -332,6 +357,7 @@ back side of the tile.</p></li>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pool.html">The Pool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
@@ -353,6 +379,7 @@ back side of the tile.</p></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tile Structure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#globals">Globals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#category-exports-inits-save-attrs">Category exports inits save_attrs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#events-and-default-handlers">Events and default handlers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#working-directly-with-events">Working directly with events</a></li>

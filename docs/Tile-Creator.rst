@@ -152,6 +152,13 @@ For example, you could define a method ``my_method`` like so:
 All methods that you define need to have ``self`` as the first argument.
 This is also where you must define any :doc:`Handler-Methods`.
 
+globals
+~~~~~~~
+
+The :guilabel:`globals` tab provides a place where you can enter code
+to be in the global namespace when the tile class is created.
+There is a little more about this :doc:`here <Tile-Structure>`.
+
 Creating Matplotlib Tiles
 -------------------------
 

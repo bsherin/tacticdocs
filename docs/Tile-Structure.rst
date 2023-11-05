@@ -32,6 +32,13 @@ A more elaborate tile might look like this:
 
 .. code-block:: python
 
+        import re
+        import nltk
+
+        my_global_var = 7
+        def my_global_func(txt):
+            Tile.display_status(txt)
+
         @user_tile
         class MyTile(TileBase):
 
@@ -101,12 +108,32 @@ instance. For example, if a user has an option field named
 in ‘self.participant’ in the tile (when the user clicks submit). More on
 this below.
 
+Globals
+-------
+
+The code above also includes some code outside of the class definition.
+You can do that! This can be convenient in some cases. This code will
+be executed when the tile code is first run in the container.
+
+Because this code is outside of the tile class it doesn't have access to ``self``.
+However, you can access commands from the tile API using ``Tile`` like this:
+``Tile.display_status("some text")``. However, ``Tile`` is not available when the
+global code is initially run. This means you only use ``Tile`` inside a method
+defined in the global space.
+
 Category exports inits save_attrs
 ---------------------------------
 
 A still more elaborate tile might look like this:
 
 .. code:: python
+
+        import re
+        import nltk
+
+        my_global_var = 7
+        def my_global_func(txt):
+            Tile.display_status(txt)
 
         @user_tile
         class MyTile(TileBase):
