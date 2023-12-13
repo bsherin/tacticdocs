@@ -15,6 +15,7 @@ Tactic Text
    Working-With-Tiles
    Log-And-Notebook
    Working-With-Tags
+   Omnibar
    Which-tiles-are-available-when
    Reports-and-Presentations
 
