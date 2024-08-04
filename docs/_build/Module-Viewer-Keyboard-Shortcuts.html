@@ -35,217 +35,12 @@
             
   <section id="keyboard-shortcuts">
 <h1>Keyboard Shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this heading">¶</a></h1>
-<p>Keyboard shortcuts for the module viewer, and anywhere else you can edit code.
-These are mosly just copied
-from here: <a class="reference external" href="https://codemirror.net/doc/manual.html#commands">https://codemirror.net/doc/manual.html#commands</a></p>
-<p><strong class="command">autocomplete</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Space</kbd></kbd> (PC), <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Space</kbd></kbd> (Mac)</p>
-<blockquote>
-<div><p>Bring up the autocomplete widget.</p>
-</div></blockquote>
-<p><strong class="command">search</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">S</kbd></kbd> (PC), <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">S</kbd></kbd> (Mac)</p>
-<blockquote>
-<div><p>Search the whole content of the editor.</p>
-</div></blockquote>
-<p><strong class="command">selectAll</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">A</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">A</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Select the whole content of the editor.</p>
-</div></blockquote>
-<p><strong class="command">killLine</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">K</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Emacs-style line killing. Deletes the part of the line after the cursor.
-If that consists only of whitespace, the newline at the end of the line
-is also deleted.</p>
-</div></blockquote>
-<p><strong class="command">deleteLine</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">D</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">D</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Deletes the whole line under the cursor, including newline at the end.</p>
-</div></blockquote>
-<p><strong class="command">delWrappedLineLeft</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Backspace</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Delete the part of the line from the left side of the visual line the
-cursor is on to the cursor.</p>
-</div></blockquote>
-<p><strong class="command">delWrappedLineRight</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Delete</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Delete the part of the line from the cursor to the right side of the
-visual line the cursor is on.</p>
-</div></blockquote>
-<p><strong class="command">undo</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Z</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Z</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Undo the last change.</p>
-</div></blockquote>
-<p><strong class="command">redo</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Y</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Z</kbd> <kbd class="kbd docutils literal notranslate">(Mac),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Y</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Redo the last undone change.</p>
-</div></blockquote>
-<p><strong class="command">undoSelection</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">U</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">U</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Undo the last change to the selection, or if there are no selection-only
-changes at the top of the history, undo the last change.</p>
-</div></blockquote>
-<p><strong class="command">redoSelection</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">U</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">U</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Redo the last change to the selection, or the last text change if no
-selection changes remain.</p>
-</div></blockquote>
-<p><strong class="command">goDocStart</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Home</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Up</kbd> <kbd class="kbd docutils literal notranslate">(Mac),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Home</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move the cursor to the start of the document.</p>
-</div></blockquote>
-<p><strong class="command">goDocEnd</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">End</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">End</kbd> <kbd class="kbd docutils literal notranslate">(Mac),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Down</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move the cursor to the end of the document.</p>
-</div></blockquote>
-<p><strong class="command">goLineStart</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Left</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">A</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move the cursor to the start of the line.</p>
-</div></blockquote>
-<p><strong class="command">goLineStartSmartHome</strong></p>
-<blockquote>
-<div><p>Move to the start of the text on the line, or if we are already there,
-to the actual start of the line (including whitespace).</p>
-</div></blockquote>
-<p><strong class="command">goLineEnd</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Right</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">E</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move the cursor to the end of the line.</p>
-</div></blockquote>
-<p><strong class="command">goLineRight</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Right</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move the cursor to the right side of the visual line it is on.</p>
-</div></blockquote>
-<p><strong class="command">goLineLeft</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Left</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move the cursor to the left side of the visual line it is on. If this
-line is wrapped, that may not be the start of the line.</p>
-</div></blockquote>
-<p><strong class="command">goLineUpUp ` :kbd:`Ctrl-P (Mac)</strong></p>
-<blockquote>
-<div><p>Move the cursor up one line.</p>
-</div></blockquote>
-<p><strong class="command">goLineDownDown, ` :kbd:`Ctrl-N (Mac)</strong></p>
-<blockquote>
-<div><p>Move down one line.</p>
-</div></blockquote>
-<p><strong class="command">goPageUpPageUp, Shift-</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">V</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move the cursor up one screen, and scroll up by the same distance.</p>
-</div></blockquote>
-<p><strong class="command">goPageDownPageDown, ` :kbd:`Ctrl-V (Mac)</strong></p>
-<blockquote>
-<div><p>Move the cursor down one screen, and scroll down by the same distance.</p>
-</div></blockquote>
-<p><strong class="command">goCharLeftLeft, ` :kbd:`Ctrl-B (Mac)</strong></p>
-<blockquote>
-<div><p>Move the cursor one character left, going to the previous line when
-hitting the start of line.</p>
-</div></blockquote>
-<p><strong class="command">goCharRightRight, ` :kbd:`Ctrl-F (Mac)</strong></p>
-<blockquote>
-<div><p>Move the cursor one character right, going to the next line when hitting
-the end of line.</p>
-</div></blockquote>
-<p><strong class="command">goColumnLeft</strong></p>
-<blockquote>
-<div><p>Move the cursor one character left, but don’t cross line boundaries.</p>
-</div></blockquote>
-<p><strong class="command">goColumnRight</strong></p>
-<blockquote>
-<div><p>Move the cursor one character right, don’t cross line boundaries.</p>
-</div></blockquote>
-<p><strong class="command">goWordLeft</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">B</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move the cursor to the start of the previous word.</p>
-</div></blockquote>
-<p><strong class="command">goWordRight</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">F</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move the cursor to the end of the next word.</p>
-</div></blockquote>
-<p><strong class="command">goGroupLeft</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Left</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Left</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move to the left of the group before the cursor. A group is a stretch of
-word characters, a stretch of punctuation characters, a newline, or a
-stretch of more than one whitespace character.</p>
-</div></blockquote>
-<p><strong class="command">goGroupRight</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Right</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Right</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Move to the right of the group after the cursor (see above).</p>
-</div></blockquote>
-<p><strong class="command">delCharBeforeShift-Backspace, ` :kbd:`Ctrl-H (Mac)</strong></p>
-<blockquote>
-<div><p>Delete the character before the cursor.</p>
-</div></blockquote>
-<p><strong class="command">delCharAfterDelete, ` :kbd:`Ctrl-D (Mac)</strong></p>
-<blockquote>
-<div><p>Delete the character after the cursor.</p>
-</div></blockquote>
-<p><strong class="command">delWordBefore</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Backspace</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Delete up to the start of the word before the cursor.</p>
-</div></blockquote>
-<p><strong class="command">delWordAfter</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">D</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Delete up to the end of the word after the cursor.</p>
-</div></blockquote>
-<p><strong class="command">delGroupBefore</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Backspace</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Backspace</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Delete to the left of the group before the cursor.</p>
-</div></blockquote>
-<p><strong class="command">delGroupAfter</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Delete</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Backspace</kbd> <kbd class="kbd docutils literal notranslate">(Mac),</kbd> <kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Delete(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Delete to the start of the group after the cursor.</p>
-</div></blockquote>
-<p><strong class="command">indentAutoShift-Tab</strong></p>
-<blockquote>
-<div><p>Auto-indent the current line or selection.</p>
-</div></blockquote>
-<p><strong class="command">indentMore</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">]</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">]</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Indent the current line or selection by one indent unit.</p>
-</div></blockquote>
-<p><strong class="command">indentLess</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">[</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">[</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Dedent the current line or selection by one indent unit.</p>
-</div></blockquote>
-<p><strong class="command">insertTab</strong></p>
-<blockquote>
-<div><p>Insert a tab character at the cursor.</p>
-</div></blockquote>
-<p><strong class="command">insertSoftTab</strong></p>
-<blockquote>
-<div><p>Insert the amount of spaces that match the width a tab at the cursor
-position would have.</p>
-</div></blockquote>
-<p><strong class="command">defaultTabTab</strong></p>
-<blockquote>
-<div><p>If something is selected, indent it by one indent unit. If nothing is
-selected, insert a tab character.</p>
-</div></blockquote>
-<p><strong class="command">transposeChars</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">T</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Swap the characters before and after the cursor.</p>
-</div></blockquote>
-<p><strong class="command">newlineAndIndentEnter</strong></p>
-<blockquote>
-<div><p>Insert a newline and auto-indent the new line.</p>
-</div></blockquote>
-<p><strong class="command">toggleOverwriteInsert</strong></p>
-<blockquote>
-<div><p>Flip the overwrite flag.</p>
-</div></blockquote>
-<p><strong class="command">save</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">S</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">S</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Not defined by the core library, only referred to in key maps. Intended
-to provide an easy way for user code to define a save command.</p>
-</div></blockquote>
-<p><strong class="command">find</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">F</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">F</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<p><strong class="command">findNext</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">G</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">G</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<p><strong class="command">findPrev</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">G</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">G</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<p><strong class="command">replace</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">F</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">F</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<p><strong class="command">replaceAll</strong> <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">R</kbd> <kbd class="kbd docutils literal notranslate">(PC),</kbd> <kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">Cmd</kbd>-<kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">F</kbd> <kbd class="kbd docutils literal notranslate">(Mac)</kbd></kbd></p>
-<blockquote>
-<div><p>Not defined by the core library, but defined in the search addon (or
-custom client addons).</p>
-</div></blockquote>
+<p>Keyboard shortcuts for the module viewer, and anywhere else you can edit code. These are listed in the CodeMirror
+documentation. The include the <a class="reference external" href="https://codemirror.net/docs/ref/#commands.standardKeymap">standard keymap</a>,
+<a class="reference external" href="https://codemirror.net/docs/ref/#commands.defaultKeymap">default keymap</a> ,
+<a class="reference external" href="https://codemirror.net/docs/ref/#commands.historyKeymap">history keymap</a> ,
+<a class="reference external" href="https://codemirror.net/docs/ref/#commands.foldKeymap">fold keymap</a> ,
+and <a class="reference external" href="https://codemirror.net/docs/ref/#commands.completionKeymap">completion keymap</a> ,</p>
 </section>
 
 
@@ -279,12 +74,15 @@ custom client addons).</p>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pool.html">The Pool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Omnibar.html">The Omnibar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reports-and-Presentations.html">Reports and Presentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul class="current">
@@ -303,7 +101,7 @@ custom client addons).</p>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Javascript-Tiles.html">Javascript Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -316,6 +114,7 @@ custom client addons).</p>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developing-Tactic.html">Developing Tactic</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -356,8 +155,8 @@ custom client addons).</p>
       &copy;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.0.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/Module-Viewer-Keyboard-Shortcuts.rst.txt"

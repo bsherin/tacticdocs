@@ -520,7 +520,11 @@ The Library Object
 
     .. py:attribute:: classes
 
-        Returns a TacticClassnSet object corresponding to a user's class resources
+        Returns a TacticClassSet object corresponding to a user's class resources
+
+    .. py:attribute:: codes
+
+        Returns a TacticCodesSet object corresponding to a user's code resources represented as raw text.
 
     .. code-block:: python
 
@@ -607,6 +611,34 @@ The Library Object
     .. py:attribute:: code_resource
 
         Returns the the name of the code resource containing the function.
+
+.. py:class:: TacticCodeSet()
+
+    Object corresponding to a user's code resources as text.
+
+    .. py:method:: names(tag_filter=None, search_filter=None)
+
+        Returns the names of the user's code resources. If tag_filter or search_filter are specified, then
+        the results are filtered accordingly. (This behaves just as it does when typing into the corresponding
+        fields in the library interface.)
+
+.. py:class:: CodeResource(list)
+
+    Corresponds to an code resource in the code library. This is used when you want to access the code resource
+    as raw text..
+
+    .. code-block:: python
+
+        my_code = Library.codes["code_name"]
+        my_code.the_code  # Returns the code as a string
+
+    .. py:attribute:: metadata
+
+        Returns the CodeResource's metadata
+
+    .. py:attribute:: the_code
+
+            Returns the code as a string
 
 .. category_end
 

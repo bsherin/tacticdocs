@@ -660,7 +660,13 @@ Refer to py:meth:<cite>send_tile_message</cite>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="TacticLibrary.classes">
 <span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#TacticLibrary.classes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a TacticClassnSet object corresponding to a user’s class resources</p>
+<dd><p>Returns a TacticClassSet object corresponding to a user’s class resources</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TacticLibrary.codes">
+<span class="sig-name descname"><span class="pre">codes</span></span><a class="headerlink" href="#TacticLibrary.codes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a TacticCodesSet object corresponding to a user’s code resources represented as raw text.</p>
 </dd></dl>
 
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Library</span><span class="o">.</span><span class="n">lists</span>  <span class="c1"># Returns a TacticListSet object corresponding to a user&#39;s list resources</span>
@@ -766,6 +772,43 @@ as noted below.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="TacticCodeSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TacticCodeSet</span></span><a class="headerlink" href="#TacticCodeSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object corresponding to a user’s code resources as text.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TacticCodeSet.names">
+<span class="sig-name descname"><span class="pre">names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TacticCodeSet.names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the names of the user’s code resources. If tag_filter or search_filter are specified, then
+the results are filtered accordingly. (This behaves just as it does when typing into the corresponding
+fields in the library interface.)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="CodeResource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CodeResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodeResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corresponds to an code resource in the code library. This is used when you want to access the code resource
+as raw text..</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_code</span> <span class="o">=</span> <span class="n">Library</span><span class="o">.</span><span class="n">codes</span><span class="p">[</span><span class="s2">&quot;code_name&quot;</span><span class="p">]</span>
+<span class="n">my_code</span><span class="o">.</span><span class="n">the_code</span>  <span class="c1"># Returns the code as a string</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="CodeResource.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#CodeResource.metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the CodeResource’s metadata</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="CodeResource.the_code">
+<span class="sig-name descname"><span class="pre">the_code</span></span><a class="headerlink" href="#CodeResource.the_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the code as a string</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="the-settings-object">
 <h2>The Settings Object<a class="headerlink" href="#the-settings-object" title="Permalink to this heading">¶</a></h2>
@@ -830,11 +873,13 @@ as noted below.</p>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pool.html">The Pool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Omnibar.html">The Omnibar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Reports-and-Presentations.html">Reports and Presentation</a></li>
 </ul>
@@ -964,6 +1009,7 @@ as noted below.</p>
 <li class="toctree-l4"><a class="reference internal" href="#TacticLibrary.lists"><code class="docutils literal notranslate"><span class="pre">TacticLibrary.lists</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#TacticLibrary.functions"><code class="docutils literal notranslate"><span class="pre">TacticLibrary.functions</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#TacticLibrary.classes"><code class="docutils literal notranslate"><span class="pre">TacticLibrary.classes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#TacticLibrary.codes"><code class="docutils literal notranslate"><span class="pre">TacticLibrary.codes</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#TacticListSet"><code class="docutils literal notranslate"><span class="pre">TacticListSet</span></code></a><ul>
@@ -985,6 +1031,15 @@ as noted below.</p>
 <li class="toctree-l3"><a class="reference internal" href="#FunctionResource"><code class="docutils literal notranslate"><span class="pre">FunctionResource</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#FunctionResource.metadata"><code class="docutils literal notranslate"><span class="pre">FunctionResource.metadata</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#FunctionResource.code_resource"><code class="docutils literal notranslate"><span class="pre">FunctionResource.code_resource</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#TacticCodeSet"><code class="docutils literal notranslate"><span class="pre">TacticCodeSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#TacticCodeSet.names"><code class="docutils literal notranslate"><span class="pre">TacticCodeSet.names()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#CodeResource"><code class="docutils literal notranslate"><span class="pre">CodeResource</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#CodeResource.metadata"><code class="docutils literal notranslate"><span class="pre">CodeResource.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#CodeResource.the_code"><code class="docutils literal notranslate"><span class="pre">CodeResource.the_code</span></code></a></li>
 </ul>
 </li>
 </ul>

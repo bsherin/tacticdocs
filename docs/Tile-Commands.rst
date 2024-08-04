@@ -671,6 +671,24 @@ Global and Notebook-Only
 
     :param str module_name: The name of the module to import as a string.
 
+.. py:method:: ds(text)
+
+    Shortcut for ``self.display_status(text)``
+
+    :param str text: The text to display.
+
+.. py:method:: escape_html(text)
+
+    Returns the text with html characters escaped.
+
+    :param str text: The text to display.
+
+.. py:method:: xh(text)
+
+    Shortcut for ``self.escape_html(text)``
+
+    :param str text: The text to display.
+
 .. py:method:: display(output_string) [notebook only]
 
     Displays the given string as the output of the current cell, replacing any output that was already there.

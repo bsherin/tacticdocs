@@ -77,7 +77,8 @@ and ``type`` is the type. Obviously. At present the option types are:
 -  *collection_select*. Displays a popup list of the users data
    collection.
 -  *palette_select*. Displays a popup list of available matplotlib color
-   palettes. These can be used in tandem with with ColorMapper.
+   palettes. These can be used in tandem with with ColorMapper or
+   ``matplotlib.colormaps[self.palette_name]``.
 -  *pipe_select*. Displays a popup list of available variables exported
    by other tiles.
 -  *custom_list*. Displays a popup list of special list. Requires an

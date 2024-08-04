@@ -61,10 +61,6 @@ That list is not always kept up to date though. Go to the relevant web sites for
 You can use these :doc:`Module-Viewer-Keyboard-Shortcuts` within the box
 containing your code.
 
-Finally, typing :kbd:`ctrl-space` while in the code area brings up the
-autocomplete widget. This will prompt you with various useful
-possibilities, including the Tile Commands. At least in principle.
-
 Specifying tile resources
 -------------------------
 
