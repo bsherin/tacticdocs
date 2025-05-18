@@ -4,7 +4,7 @@ AI Features
 Creating an OpenAI API Key
 --------------------------------
 
-To use the AI features, you have to have a chatGPT key. Here's you can get one:
+To use the AI features, you have to have a chatGPT key. Here's how you can get one:
 
 Step 1: Create or Log In to Your OpenAI Account
 
@@ -52,4 +52,4 @@ will turn your chat history into a tactic notebook in your library.
 Using the AI Copilot
 ----------------------
 The AI copilot is a tool that helps you write code. It is available in the tile creator and in notebooks. AI suggestions
-will be included in the autocomplete list. Hitting control-/ at any point will show suggestions.
+will be included in the autocomplete list. Hitting :kbd:`option-/` at any point will show suggestions.
