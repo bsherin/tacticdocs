@@ -16,6 +16,7 @@ Tactic Text
    Log-And-Notebook
    Working-With-Tags
    Omnibar
+   AI-Features
    Which-tiles-are-available-when
    Reports-and-Presentations
 
