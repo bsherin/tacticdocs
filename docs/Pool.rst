@@ -8,12 +8,8 @@ of your tiles and notebooks.
 
     This is an advanced feature, currently only available to some users.
 
-If you have access to the Pool, then it will appear in your sidebar, as shown in the image below.
+If you have access to the Pool, then it will appear in your sidebar.
 Clicking on it brings up a tree-like image of your pool storage.
-
-.. image:: images/pool_interface.png
-   :scale: 40 %
-   :align: center
 
 You can use the menus to add a delete things from your storage, rename things, etc. I don't think I've implemented
 download yet. That actually seems fairly important.
