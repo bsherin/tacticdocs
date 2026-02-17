@@ -1,0 +1,188 @@
+# Widgets
+
+If you have read other parts of this document, you have learned that the display on the front of a tile
+is determined by html returned by the `render_content` method. The same is true for the return value of cells
+in a notebook.
+This can html elements that are interactive, such as buttons and text boxes.
+However, this makes it awkward to make tile displays that are truly interactive.
+
+As an alternative, you can return _widgets_. Here's what that can look like in a tile:
+
+```python
+def render_content(self):
+    my_text_widget = self.widget("text", {"value": "some text"})
+    return [my_text_widget.render()]
+```
+
+The first line here creates a text widget. 
+
+The second line renders the widget and returns it as an element in a list.
+You can also return multiple widgets in a list, and they will be displayed one above the other.
+
+The power comes from the fact that one a widget is created, you can easily change it's `value` property from code
+in a way that will be reflected dynamically. For example:
+
+```python
+def render_content(self):
+    my_text_widget = self.widget("text", {"value": "some text"})
+    ds([my_text_widget.render()]) # immediately renders and displays the widget
+    # do some stuff here
+    my_text_widget.value = "some new text" # this will update the widget display to this new text
+    # do some more stuff here
+```
+
+The general syntax for creating a widget is `self.widget(widget_kind, widget_data, **kwargs`).
+
+The `widget_kind` is a string that specifies the type of widget you want to create. The `widget_data` is a
+dictionary that contains parameters that define the widget. You can also specify parameters as keyword arguments. 
+Under the hood, `widget_data` and `**kwargs` are merged together, so you can use either one to specify any parameters.
+
+:::{note}
+Where styles are specified, they can be in camel case or in kebab case. 
+So for example, you could specify a background color like this: `{"background-color": "red"}` or 
+like this: `{"backgroundColor": "red"}`. Both will work.
+:::
+
+## Widget kinds
+
+These are the currently available widgets, along with the parameters they accept. 
+Note that the blueprintjs library is used to render the
+widgets in the browser. So you might learn more in some cases by referring to the documentation for that 
+library for the corresponding widget: <https://blueprintjs.com/docs/>.
+
+- **text**. Display a string of text.
+  - _value_: The text to display.
+  - _ellipsize_: Whether to truncate the text with an ellipsis if it gets too long.
+  - _style_: A dictionary of styles to be applied.
+- **table**. Display an interactive table of data
+    - _value_: The table of data. This can be in the form of pandas Datframe, a list of dicts, a TacticDocument,
+    an nltk FreqDist, a dict, a list, or a pandas Series.
+    - _maxColumnWidth_ (default=None):
+    - _expandRows_ (default=False): Whether rows begin expanded.
+    - _maxRows_ (default=50):
+    - _className_ (default=""):
+    - _style_ (default={}): A dictionary of styles to be applied.
+- **slider**. Displays an interactive slider.
+  - _value_ The current value of the slider.
+  - _on_change_ A function that will be called when the slider value changes. 
+  This function should take a single argument, which will be the new value of the slider.
+  - _min_ (default=0):
+  - _max_ (default=10):
+  - _stepSize_ (default=1): 
+  - _labelStepSize_ (default=1)
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **progressBar**. Display a progress bar.
+    - _value_: The current value of the progress bar. This should be a number between 0 and 1.
+    - _style_ (default={}): A dictionary of styles to be applied.
+    - _stripes_ (default=False): Whether the progress bar should have stripes.
+    - _intent_ (default="primary"): The intent of the progress bar. This can be one of None, "primary", "success", "warning", or "danger".
+    - _style_ (default={}): A dictionary of styles to be applied.
+- **html**. Displays raw htmls.
+  - _value_: The html string to display.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **iframe**. Creates an iframe with data.
+  - _value_: A inline string containing html that will be the srcDoc for the iframe.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **button**. Crates a button.
+  - _value_: The value that will be provided when the button is pressed.
+  - _text_ (default="Button"): The text to display on the button.
+  - _on_click_: A function that will be called when the button is clicked. This function should take a single argument, which will be the value of the button.
+  - _icon_ (default=None): The name of a blueprint icon to display on the button. For example, "add" or "delete".
+  - _fill_ (default=False): Whether the button should expand to fill its container.
+  - _variant_ (default="solid"): The variant of the button. This can be one of "solid", "minimal", or "outlines".
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **switch**. Displays a switch that can be toggled on and off.
+  - _value_: The current value of the switch. This should be a boolean.
+  - _on_change_: A function that will be called when the switch value changes. This function should take a single argument, which will be the new value of the switch.
+  - _label_ (default="switch"): The label to display next to the switch.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **select**. Displays a dropdown select menu.
+  - _value_: The current value of the select menu. This should be a string that matches one of the values in the options list.
+  - _on_change_: A function that will be called when the select value changes. This function should take a single argument, which will be the new value of the select menu.
+  - _options_: A list of options to display in the select menu. Each option can be a string or a dict with "label" and "value" keys.
+  - _label_ (default="select"): The label to display next to the select menu.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **input**. Displays an input box where users can type text.
+  - _value_: The current value of the input box. This should be a string.
+  - _fill_: (default=False): Whether the input box should expand to fill its container.
+  - _inline_: (default=False): Whether the input box should be displayed inline with its label.
+  - _on_change_: A function that will be called when the input value changes. This function should take a single argument, which will be the new value of the input box.
+  - _label_ (default="input"): The label to display next to the input box.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **box**. A widget that organizes other widgets. It takes a list of widgets and displays them in a div element to which th
+the given style is applied.
+  - _widgets_: A list of widgets to display.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **matplotlib**. Displays a matplotlib figure. See below for a full discussion.
+  - _style_ (default={}): A dictionary of styles to be applied.
+  - _use_svg_ (default=True): Whether to render the figure as an svg.
+- **javascript**. Displays a widget with executing javascript code. See below for a full discussion.
+  - _value_: A value, typically a dict, that will be passed to the javascript code.
+  - _code_: A string of javascript code to execute. This code should define a function.
+
+(matplotlib-widgets)=
+## Matplotlib widgets
+
+Using the matplotlib widget is just a little more complicated. First you create it. 
+The created wdiget will have a matplotlib Figure object as its `fig` property. 
+You can then use that figure object to create an axis and plot on it. Finally, 
+before rendering the widget, you have to call the `set_html` method of the widget.
+
+Here's how that looks:
+
+```python
+w = self.widget("matplotlib")
+ax = w.fig.add_subplot(111)
+ax.plot([1, 2, 3], [16, 25, 36])
+w.set_html()
+```
+(javascript-widgets)=
+## Javascript widgets
+
+The javascript widget is the most complicated and also the most untested.
+
+You have to create a javascript function with the signature `function myFunction(selector, w, h, value, setValue, resizing)`.
+Then you pass this code as a string to the `code` parameter of the widget. 
+The `value` parameter this javascript function receives will be the 
+value you pass to the widget when you create it.
+
+So your javascript function can look like this:
+
+```javascript
+function showMessage(selector, w, h, value, setValue, resizing) {
+    document.querySelector(selector).innerHTML = value;
+}
+```
+
+Then your `render_content` method can look like:
+
+```python
+javascript_code_string = ...
+w = self.widget("javascript", value="Hello, world!", code=javascript_code_string)
+return [w.render()]
+```
+
+Getting javascript code in the form of a string can be a little tricky, but
+the Tile Creator has a feature for making this a somewhat easier.
+
+The Tile Creator as a section on the left where you can create javascript functions. 
+You can create and name them. Then, when the tile is executed, your extract them from an
+attribute of the tile called `jscript`, which is a list of dicts, each with keys "name" and "code". 
+So you can extract the code for a function named "showMessage" like this:
+
+```python
+the_code = None
+for fdict in self.jscript:
+    if fdict["name"] == "showMessage":
+        the_code = fdict["code"]
+        break
+```
+
+That's still a bit clunky, but it's better than trying to write a big chunk of 
+javascript code as a string in python code. I'll make it less clunky eventually.
+
+## Widgets in the notebook
+
+You can use widgets in a notebook pretty much just like in a tile. There is one critical
+different however. Rather than returning `[my_widget.render()]` you instead execute
+`my_widget.show()` from anywhere in a cell as it runs, and the widget will be displayed immediately.

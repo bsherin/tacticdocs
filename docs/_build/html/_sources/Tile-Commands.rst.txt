@@ -16,7 +16,7 @@ allows for code that is easier to read and write.
     All of the commands here are methods of the tile base class, ``TileBase``.
     And you will always be calling them, essentially, from within another
     method of `TileBase <Tile-Structure.html>`__. That means that when you invoke these functions you will
-    almost always be writing ``self.function()``.  In the case of properties, you'll
+    almost always be writing ``self.method()``.  In the case of properties, you'll
     write ``self.property``.
 
 .. py:class:: TileBase()
@@ -36,11 +36,18 @@ Refreshing
 
     .. py:method:: refresh_tile_now(new_html=None)
 
+        :param str new_html: The html to display on the front of the tile.
+
         Updates the front of the tile using the passed html. If new_html is None
         then ``render_content`` is called to generate the html to be displayed.
 
+    .. py:method:: display_status(new_html)
+
         :param str new_html: The html to display on the front of the tile.
 
+        Updates the front of the tile using the passed html. It looks like this
+        might behave differently than :py:meth:`refresh_tile_now` under some circumstances.
+        In particular, it looks like it updates pipe information if necessary.
 
     .. py:method:: spin_and_refresh()
 
@@ -395,6 +402,15 @@ Other TileBase
 
         Synonym: ``cc``
 
+
+    .. py:method:: download_collection(collection_name, file_name=None)
+
+        Downloads the named collection from the user's library to the local client.
+
+    .. py:method:: download_data(text_data, file_name=None)
+
+        Downloads the given text_data to the local client.
+
     .. py:method:: go_to_document(document_name)
 
         Shows the named document in the table.
@@ -435,12 +451,14 @@ Other TileBase
         This is the log file of the container that holds the tile. All error
         messages go to this file. Also and print statements.
 
-    .. py:method:: send_tile_message(tile_name, event_name, data=None)
+    .. py:method:: send_tile_message(tile_name, event_name, data=None, callback_func=None)
 
         Sends a message to a tile with the given name. The event_name and data
         are passed to the named tile, which it can capture by defining a
         handle_tile_message method. (See `Events and
         handlers <Tile-Structure.html#events-and-default-handlers>`__)
+
+        If you specify a callback_func that function will receive whatever value handle_tile_message returns
 
         Synonym: ``stm``
 
@@ -471,7 +489,7 @@ Other TileBase
         Synonyms: ``gulist``, ``gufunc``, ``guclass``, ``gucol`` for ``get_user_list``, ``get_user_function``,
         ``get_user_class``, and ``get_user_collection`` respectively.
 
-    .. py:method:: html_table(data, title=None, click_type="word-clickable", sortable=True, sidebyside=False, has_header=True, max_rows=None, header_style=None, body_style=None, column_order=None, include_row_labels=True)
+    .. py:method:: html_table(data, title=None, click_type="word-clickable", sortable=True, sidebyside=False, has_header=True, max_rows=100, header_style=None, body_style=None, column_order=None, include_row_labels=True)
 
         Returns html for a table.
 
@@ -626,8 +644,8 @@ Plots
 
 .. category_start
 
-Global
-------
+Global and Notebook-Only
+------------------------
 
 .. note::
     The following commands are not called with ``self``.
@@ -642,7 +660,7 @@ Global
 
     :param float top_val: Specify the value range.
 
-    :param str color_palette_name: iT name of the matplotlib
+    :param str color_palette_name: The name of the matplotlib
         color_palette. These can be selected by the user using the
         palette_select option type.
 
@@ -652,6 +670,30 @@ Global
     within ``render_content`` would make ``nltk`` available within all method calls in your tile.
 
     :param str module_name: The name of the module to import as a string.
+
+.. py:method:: ds(text)
+
+    Shortcut for ``self.display_status(text)``
+
+    :param str text: The text to display.
+
+.. py:method:: escape_html(text)
+
+    Returns the text with html characters escaped.
+
+    :param str text: The text to display.
+
+.. py:method:: xh(text)
+
+    Shortcut for ``self.escape_html(text)``
+
+    :param str text: The text to display.
+
+.. py:method:: display(output_string) [notebook only]
+
+    Displays the given string as the output of the current cell, replacing any output that was already there.
+
+    :param str output_string: The name of the module to import as a string.
 
 .. category_end
 
@@ -664,7 +706,7 @@ The libraries listed below are currently available for import from tiles.
 .. note::
     There is one subtlety to be aware of when importing libraries.
     The code that you write for a tile is always executed within a method.
-    If you all of the code you for your tile is in the `render_content`, then
+    If all of the code for your tile is in the `render_content`, then
     you can just import your the library there, and everything is fine.
     However, if your tile includes other methods, then each method would have to separately
     import the library.

@@ -1,28 +1,28 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Matplotlib Tiles &#8212; Tactic .1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=f9fc4ef7" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=c791da20" />
+    <script src="_static/documentation_options.js?v=69a67b7f"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="D3 Tiles" href="D3-Tiles.html" />
-    <link rel="prev" title="Object-Oriented API" href="Object-Oriented-API.html" />
+    <link rel="next" title="Javascript Tiles" href="Javascript-Tiles.html" />
+    <link rel="prev" title="Code Resources" href="Code-Resources.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -35,13 +35,13 @@
           <div class="body" role="main">
             
   <section id="matplotlib-tiles">
-<h1>Matplotlib Tiles<a class="headerlink" href="#matplotlib-tiles" title="Permalink to this headline">¶</a></h1>
+<h1>Matplotlib Tiles<a class="headerlink" href="#matplotlib-tiles" title="Link to this heading">¶</a></h1>
 <p>Tactic includes support for building tiles that display matplotlib
 images.</p>
-<p>The <a class="reference external" href="Tile-Creator.html#creating-matplotlib-tiles">Tile Creator</a> knows how
+<p>The <a class="reference internal" href="#Tile-Creator.html#creating-matplotlib-tiles"><span class="xref myst">Tile Creator</span></a> knows how
 to deal with MatplotlibTiles. This is what that looks like.</p>
 <figure class="align-default">
-<img alt="_images/list_plotter_creator.png" src="_images/list_plotter_creator.png" />
+<img alt="_images/list_plotter.png" src="_images/list_plotter.png" />
 </figure>
 <p>Unlike other tiles, matplotlib tiles are subclasses of both
 <code class="docutils literal notranslate"><span class="pre">TileBase</span></code> and <code class="docutils literal notranslate"><span class="pre">MplFigure</span></code>. <code class="docutils literal notranslate"><span class="pre">MplFigure</span></code> is a subclass of
@@ -51,24 +51,23 @@ must define a method <code class="docutils literal notranslate"><span class="pre
 as it would a matplotlib figure. <code class="docutils literal notranslate"><span class="pre">render_content</span></code> can do other work,
 but it must call ‘draw_plot’, and then ‘create_figure_html’ to generate
 the html for the tile. Note that ‘draw_plot’ will also be called each
-time the user resizes the tile. Note that ‘draw_plot’ will also be called each
 time the user resizes the tile.</p>
 <p>In most cases, you’ll want the first line of <code class="docutils literal notranslate"><span class="pre">draw_plot</span></code> to be
-<a class="reference external" href="Tile-Commands.html#plots">self.init_mpl_figure()</a>. This initializes
+<a class="reference internal" href="#Tile-Commands.html#plots"><span class="xref myst">self.init_mpl_figure()</span></a>. This initializes
 the Figure class and must be called at least once before drawing into
 the Figure. If you draw into the Figure without initializing again then
 you’ll be adding to an existing figure. So, since <code class="docutils literal notranslate"><span class="pre">draw_plot</span></code> is
 supposed to redraw the figure for new conditions (i.e., a new tile size)
 you’ll normally want to reinitialize at the top of <code class="docutils literal notranslate"><span class="pre">draw_plot</span></code>.</p>
 <section id="matplotlib-tiles-and-dark-theme">
-<h2>Matplotlib Tiles and Dark Theme<a class="headerlink" href="#matplotlib-tiles-and-dark-theme" title="Permalink to this headline">¶</a></h2>
+<h2>Matplotlib Tiles and Dark Theme<a class="headerlink" href="#matplotlib-tiles-and-dark-theme" title="Link to this heading">¶</a></h2>
 <p>Matplotlib tiles can look ugly if you’re using the Tactic dark theme.
 If, like me, you are bothered by such things, you can write your tile so
 that it automagically uses different colors depending on the theme.
 Adding this code to your <code class="docutils literal notranslate"><span class="pre">draw_plot</span></code> method <em>should</em> do it, but it doesn’t quite.
 Note that I’ve created a matplotlib style called “tactic_dark” that is specifically
 designed for the Tactic dark theme.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">use_dark</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">[</span><span class="s2">&quot;theme&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;dark&quot;</span>
 <span class="k">if</span> <span class="n">use_dark</span><span class="p">:</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;tactic_dark&#39;</span><span class="p">)</span>
@@ -82,15 +81,15 @@ colors manually to get perfect behavior, if you want. The commands you’ll want
 are things like <code class="docutils literal notranslate"><span class="pre">self.patch.set_facecolor(&quot;#5c7080&quot;)</span></code> and <code class="docutils literal notranslate"><span class="pre">ax.set_facecolor(&quot;#5c7080&quot;)</span></code>.</p>
 </section>
 <section id="raw-code-for-a-matplotlib-tile">
-<h2>Raw Code for a Matplotlib Tile<a class="headerlink" href="#raw-code-for-a-matplotlib-tile" title="Permalink to this headline">¶</a></h2>
+<h2>Raw Code for a Matplotlib Tile<a class="headerlink" href="#raw-code-for-a-matplotlib-tile" title="Link to this heading">¶</a></h2>
 <p>In case you’re in interested in such things, this is what the same tile
-looks like viewed in the <a class="reference external" href="Module-Viewer.html">Module Viewer</a>.</p>
+looks like viewed in the <a class="reference internal" href="#Module-Viewer.html"><span class="xref myst">Module Viewer</span></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@user_tile</span>
-<span class="k">class</span> <span class="nc">ListPlotter</span><span class="p">(</span><span class="n">TileBase</span><span class="p">,</span> <span class="n">MplFigure</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ListPlotter</span><span class="p">(</span><span class="n">TileBase</span><span class="p">,</span> <span class="n">MplFigure</span><span class="p">):</span>
     <span class="n">category</span> <span class="o">=</span> <span class="s2">&quot;plot&quot;</span>
     <span class="n">exports</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">main_id</span><span class="p">,</span> <span class="n">tile_id</span><span class="p">,</span> <span class="n">tile_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">main_id</span><span class="p">,</span> <span class="n">tile_id</span><span class="p">,</span> <span class="n">tile_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">TileBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">main_id</span><span class="p">,</span> <span class="n">tile_id</span><span class="p">,</span> <span class="n">tile_name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">save_attrs</span> <span class="o">+=</span> <span class="p">[</span><span class="n">exp</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">exports</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value_list_source</span> <span class="o">=</span> <span class="kc">None</span>
@@ -98,13 +97,13 @@ looks like viewed in the <a class="reference external" href="Module-Viewer.html"
         <span class="k">return</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span>  <span class="p">[</span>
         <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;value_list_source&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pipe_select&quot;</span><span class="p">},</span>
         <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">}</span>
         <span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">draw_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">init_mpl_figure</span><span class="p">()</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -114,7 +113,7 @@ looks like viewed in the <a class="reference external" href="Module-Viewer.html"
         <span class="bp">self</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
         <span class="k">return</span>
 
-    <span class="k">def</span> <span class="nf">render_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">render_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value_list</span> <span class="o">=</span> <span class="n">Pipes</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">value_list_source</span><span class="p">][:</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">draw_plot</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_figure_html</span><span class="p">()</span>
@@ -128,7 +127,7 @@ looks like viewed in the <a class="reference external" href="Module-Viewer.html"
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="index.html">Tactic</a></h1>
 
@@ -149,20 +148,25 @@ looks like viewed in the <a class="reference external" href="Module-Viewer.html"
 
 
 <h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Using Tactic</span></p>
+<p class="caption" role="heading"><span class="caption-text">Using Tactic3</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Getting-Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Account-Interface.html">Settings and Themes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Library-Interface.html">Library Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pool.html">The Pool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Uploading-Data.html">Uploading Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main-interface.html">The Main Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working-With-Tiles.html">Working with tile instances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Log-And-Notebook.html">The Log and Notebook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Working-With-Tags.html">Working With Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Omnibar.html">The Omnibar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AI-Features.html">AI Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Which-tiles-are-available-when.html">Tile Availability and Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reports-and-Presentations.html">Reports and Presentations</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tile Creation Tools</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tile Creation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Intro to the tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Creator.html">The Tile Creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html">Keyboard Shortcuts</a></li>
@@ -170,17 +174,20 @@ looks like viewed in the <a class="reference external" href="Module-Viewer.html"
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tile Reference</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Tile-Reference-Introduction.html">Tile Reference Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Structure.html">Tile Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tile-Commands.html">The Tile API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Plot-Stuff.html">Plot Stuff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-Resources.html">Code Resources</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Matplotlib Tiles</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#matplotlib-tiles-and-dark-theme">Matplotlib Tiles and Dark Theme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#raw-code-for-a-matplotlib-tile">Raw Code for a Matplotlib Tile</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="D3-Tiles.html">D3 Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Working-With-Code-Resources.html">Code Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Javascript-Tiles.html">Javascript Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -192,8 +199,8 @@ looks like viewed in the <a class="reference external" href="Module-Viewer.html"
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Running-your-own-Tactic-server.html">Running a Tactic Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Developing-Tactic.html">Developing Tactic</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
@@ -203,12 +210,12 @@ looks like viewed in the <a class="reference external" href="Module-Viewer.html"
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Object-Oriented-API.html" title="previous chapter">Object-Oriented API</a></li>
-      <li>Next: <a href="D3-Tiles.html" title="next chapter">D3 Tiles</a></li>
+      <li>Previous: <a href="Code-Resources.html" title="previous chapter">Code Resources</a></li>
+      <li>Next: <a href="Javascript-Tiles.html" title="next chapter">Javascript Tiles</a></li>
   </ul></li>
 </ul>
 </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -216,8 +223,8 @@ looks like viewed in the <a class="reference external" href="Module-Viewer.html"
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -231,14 +238,14 @@ looks like viewed in the <a class="reference external" href="Module-Viewer.html"
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Bruce Sherin.
+      &#169;2018, Bruce Sherin.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="_sources/Matplotlib-Tiles.rst.txt"
+      <a href="_sources/Matplotlib-Tiles.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

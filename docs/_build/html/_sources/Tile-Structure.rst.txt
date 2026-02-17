@@ -32,6 +32,13 @@ A more elaborate tile might look like this:
 
 .. code-block:: python
 
+        import re
+        import nltk
+
+        my_global_var = 7
+        def my_global_func(txt):
+            Tile.display_status(txt)
+
         @user_tile
         class MyTile(TileBase):
 
@@ -70,7 +77,8 @@ and ``type`` is the type. Obviously. At present the option types are:
 -  *collection_select*. Displays a popup list of the users data
    collection.
 -  *palette_select*. Displays a popup list of available matplotlib color
-   palettes. These can be used in tandem with with ColorMapper.
+   palettes. These can be used in tandem with with ColorMapper or
+   ``matplotlib.colormaps[self.palette_name]``.
 -  *pipe_select*. Displays a popup list of available variables exported
    by other tiles.
 -  *custom_list*. Displays a popup list of special list. Requires an
@@ -87,6 +95,13 @@ and ``type`` is the type. Obviously. At present the option types are:
 -  *divider*. Creates a separator and section heading in the option list
    on the back of a tile.
 
+.. _pool-select:
+
+- *pool_select*. Displays a tree view of the user's Pool from which
+  they can select a particular file, folder, or both. It returns the
+  full path to the selected item. The Pool is discussed `here <Pool.html>`__.
+  Note that not all users have access to Pool storage.
+
 By default, when the user clicks “submit” on the back of the tile, the
 values in each of the fields will be stored as properties in the tile
 instance. For example, if a user has an option field named
@@ -94,12 +109,32 @@ instance. For example, if a user has an option field named
 in ‘self.participant’ in the tile (when the user clicks submit). More on
 this below.
 
+Globals
+-------
+
+The code above also includes some code outside of the class definition.
+You can do that! This can be convenient in some cases. This code will
+be executed when the tile code is first run in the container.
+
+Because this code is outside of the tile class it doesn't have access to ``self``.
+However, you can access commands from the tile API using ``Tile`` like this:
+``Tile.display_status("some text")``. However, ``Tile`` is not available when the
+global code is initially run. This means you only use ``Tile`` inside a method
+defined in the global space.
+
 Category exports inits save_attrs
 ---------------------------------
 
 A still more elaborate tile might look like this:
 
 .. code:: python
+
+        import re
+        import nltk
+
+        my_global_var = 7
+        def my_global_func(txt):
+            Tile.display_status(txt)
 
         @user_tile
         class MyTile(TileBase):
@@ -156,7 +191,7 @@ of events handled by tiles follows. When each of these events is
 received, a method within the tile is called. Each of these events is
 handled, in some manner, by TileBase (although sometimes it does
 nothing). But they can also be handled by a user tile to introduce
-custom behavior.
+custom behavior. This is also discussed some in :doc:`Handler-Methods`.
 
 -  *RefreshTile*. When a tile receives this event, it calls
    ``render_content()``. This does nothing by default.

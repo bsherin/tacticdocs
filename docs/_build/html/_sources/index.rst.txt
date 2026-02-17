@@ -4,21 +4,26 @@ Tactic Text
 .. toctree::
    :hidden:
    :maxdepth: 4
-   :caption: Using Tactic
+   :caption: Using Tactic2
 
    Getting-Started
    Account-Interface
    Library-Interface
+   Pool
    Uploading-Data
    Main-interface
+   Working-With-Tiles
    Log-And-Notebook
    Working-With-Tags
+   Omnibar
+   AI-Features
    Which-tiles-are-available-when
+   Reports-and-Presentations
 
 .. toctree::
    :hidden:
    :maxdepth: 4
-   :caption: Tile Creation Tools
+   :caption: Tile Creation
 
    Making-Tiles
    Tile-Creator
@@ -31,13 +36,15 @@ Tactic Text
    :maxdepth: 4
    :caption: Tile Reference
 
+   Tile-Reference-Introduction
    Tile-Structure
    Tile-Commands
+   Widgets
    Object-Oriented-API
-   Matplotlib-Tiles
-   D3-Tiles
    Handler-Methods
    Working-With-Code-Resources
+   Matplotlib-Tiles
+   Javascript-Tiles
 
 .. toctree::
    :hidden:
@@ -55,8 +62,8 @@ Tactic Text
    :maxdepth: 4
    :caption: Other
 
-   Running-your-own-Tactic-server
    open-source-resources
+   Developing-Tactic
 
 .. toctree::
    :hidden:
@@ -65,7 +72,7 @@ Tactic Text
 
 Welcome to the TacticText documentation, a place of wonder and
 enjoyment. This is the *documentation* for Tactic. If you want to access tactic itself, then you
-should go to https://tactic.northwestern.edu
+should go to https://tactictext.net
 
 New to Tactic?
 --------------

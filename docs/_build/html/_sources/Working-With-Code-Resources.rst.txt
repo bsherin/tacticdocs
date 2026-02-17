@@ -24,6 +24,9 @@ A code resource can contain multiple functions and classes, if you like.
 As shown above, you use the decorator ``@user_function`` to declare a
 user function, and ``@user_class`` for classes.
 
+Also, you can not use any decorators, and access the code in the code resource
+as raw text. Then you can exec the code with something like ``exec(code, globals())``.
+
 At this point, none of the class-related code has been tested.
 
 The `tile commands <tile-commands.html>`__ section of this documentation

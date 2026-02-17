@@ -29,7 +29,7 @@ Once you have created your app, make sure that you are back at the `Twitter apps
 select the "Details" button to the right of your app. Then, navigate to the "Keys and Tokens" section to get your API
 keys and access tokens (I know, big surprise there). You will need these in a moment.
 
-Now it's time to head over to `Tactic <https://tactic.northwestern.edu/>`_ and create a new notebook. We will be using
+Now it's time to head over to `Tactic <https://tactictext.net/>`_ and create a new notebook. We will be using
 the library Tweepy, which you can read more about `here <https://docs.tweepy.org/en/stable/>`_.
 
 In your notebook, execute these commands once::
