@@ -37,6 +37,11 @@ The `widget_kind` is a string that specifies the type of widget you want to crea
 dictionary that contains parameters that define the widget. You can also specify parameters as keyword arguments. 
 Under the hood, `widget_data` and `**kwargs` are merged together, so you can use either one to specify any parameters.
 
+Actually, you can dynamically set properties other than `value` as well.
+So for example, you could change the `options` property of a select widget to change the options that are displayed in the dropdown menu.
+To do those other properties you have to do it using the more general set command, which takes a dict of properties to set. 
+So for example, you could do `my_select_widget.set({"options": new_options_list})` to change the options of a select widget.
+
 :::{note}
 Where styles are specified, they can be in camel case or in kebab case. 
 So for example, you could specify a background color like this: `{"background-color": "red"}` or 
