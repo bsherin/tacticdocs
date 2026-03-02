@@ -35,5 +35,13 @@ This is because pandas uses s3fs under the hood when it sees a path that starts 
 Note that your paths will always start with "s3://tactic-user-storage/users/yourusername" and you can
 only access files within that directory (though you can create subdirectories within it).
 
+For convenience, you can also access the s3fs file system with `self.pool`. When you do that, you don't have to include 
+the "s3://tactic-user-storage/users/yourusername" part of the path. So you can do something like this:
+
+```python
+with self.pool.open('myfile.txt', 'r') as f:
+    contents = f.read()
+```
+
 There is also a tile option called {ref}`pool_select. <pool-select>` which allows
 the user to select a file or folder from their pool.
