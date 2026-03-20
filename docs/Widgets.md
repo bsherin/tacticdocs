@@ -120,7 +120,8 @@ the given style is applied.
   - _style_ (default={}): A dictionary of styles to be applied.
 - **matplotlib**. Displays a matplotlib figure. See below for a full discussion.
   - _style_ (default={}): A dictionary of styles to be applied.
-  - _use_svg_ (default=True): Whether to render the figure as an svg.
+  - _use_svg_ (default=False): Whether to render the figure as an svg.
+  - _dpi_ (default=96): The dpi to use when rendering the figure, is use_svg is False.
 - **javascript**. Displays a widget with executing javascript code. See below for a full discussion.
   - _value_: A value, typically a dict, that will be passed to the javascript code.
   - _code_: A string of javascript code to execute. This code should define a function.
