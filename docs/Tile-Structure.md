@@ -52,7 +52,7 @@ class MyTile(TileBase):
         # user code here
         return new_html
 ```
-
+(options)=
 ## Options
 
 The new ingredient here is options. Each tile can include a property

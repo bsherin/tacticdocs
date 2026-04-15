@@ -48,15 +48,15 @@ the button to be styled in the manner of blueprint.
 
 In writing your tile, you have access to a number of tactic-specific
 commands that, for example, give you access to your data. These are
-described in some detail in {doc}`Tile-Commands` and {doc}`Object-Oriented-API`. Y
+described in some detail in {doc}`Tile-Commands` and {doc}`Object-Oriented-API`.
 
-You can also import and make use of a number of [scientific libraries](Tile-commands.html#scientific-libraries).
+You can also import and make use of a number of {ref}`Scientific Libraries <libraries>`.
 That list is not always kept up to date though. Go to the relevant web sites for documentation on these libraries.
 
 You can use these {doc}`Module-Viewer-Keyboard-Shortcuts` within the box
 containing your code.
 
-### Metadata
+### metadata
 
 The {guilabel}`Metadata` pane is where you specify a bit of metadata for your tile.
 The “Category” field determines the menu under which your tile will
@@ -64,8 +64,7 @@ appear in the main project environment.
 
 ### options
 
-The {guilabel}`options` pane is where you specify [Tile
-Options](Tile-Structure.html#options) that will appear when you click the gear icon on your tile. Click on {guilabel}`options` to 
+The {guilabel}`options` pane is where you specify {ref}`Tile Options <options>` that will appear when you click the gear icon on your tile. Click on {guilabel}`options` to 
 expand that section of the list. You can click the “+” button to add a new option. Then click the new option
 on the list to display its pane and edit it.
 
@@ -91,12 +90,16 @@ you can do is simply to order your options in a sensible way. You can do this by
 the list of option. You can also insert {guilabel}`divider` options.
 These can be used to visually group your options into named categories on your tile.
 
-There are many different types of options as described here: [Tile
-Options](Tile-Structure.html#options). there’s an extra step required in
+There are many different types of options as described here: `Tile Options <options>`. there’s an extra step required in
 making use of some of these options (e.g., `list_select`, `pipe_select`,
 `function_select`, `class_select`). In these options, the variable
 you get contains only the name of the selected resource. To extract the
 value you have to use {doc}`Tile-Commands` or the {doc}`Object-Oriented-API`.
+
+### widgets
+
+You can similarly add widgets to your tile that will be created when the tile is loaded. The mechanics
+are similar to adding options and exports. You can read more about this {ref}`here <widgets-in-creator>`.
 
 ### exports
 

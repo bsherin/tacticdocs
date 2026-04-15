@@ -19,7 +19,7 @@ The first line here creates a text widget.
 The second line renders the widget and returns it as an element in a list.
 You can also return multiple widgets in a list, and they will be displayed one above the other.
 
-The power comes from the fact that one a widget is created, you can easily change it's `value` property from code
+The power comes from the fact that once a widget is created, you can easily change it's `value` property from code
 in a way that will be reflected dynamically. For example:
 
 ```python
@@ -48,12 +48,26 @@ So for example, you could specify a background color like this: `{"background-co
 like this: `{"backgroundColor": "red"}`. Both will work.
 :::
 
+(widgets-in-creator)=
+## Creating widgets in the Tile Creator
+
+If you define widgets in the Tile Creator, that creates a set of widget specs that are saved in your tile definition.
+Then, when the tile is loaded, widgets are created for each of those specs and attached to the tile instance.
+So if you define a widget in the Tile Creator with the name`my_widget`, you can access that in your code 
+with `self.my_widget`. 
+
+You can then render one of these widgets manually in your code as usual. Also, if you call `self.render_all_widgets()`
+in your code, all of the widgets defined in the Tile Creator that have `to_render=True` will be rendered.
+
 ## Widget kinds
 
 These are the currently available widgets, along with the parameters they accept. 
 Note that the blueprintjs library is used to render the
 widgets in the browser. So you might learn more in some cases by referring to the documentation for that 
 library for the corresponding widget: <https://blueprintjs.com/docs/>.
+
+All widgets also accept a `to_render` parameter that is a boolean that determines whether the widget will
+be rendered when `self.render_all_widgets()` is called.
 
 - **text**. Display a string of text.
   - _value_: The text to display.
@@ -83,11 +97,13 @@ library for the corresponding widget: <https://blueprintjs.com/docs/>.
     - _intent_ (default="primary"): The intent of the progress bar. This can be one of None, "primary", "success", "warning", or "danger".
     - _style_ (default={}): A dictionary of styles to be applied.
 - **html**. Displays raw htmls.
-  - _value_: The html string to display.
   - _style_ (default={}): A dictionary of styles to be applied.
 - **iframe**. Creates an iframe with data.
   - _value_: A inline string containing html that will be the srcDoc for the iframe.
   - _style_ (default={}): A dictionary of styles to be applied.
+- **divider**. Creates a horizontal divider.
+  _compact_: Passes the compact parameter to blueprintjs. But doesn't seem to do anything.
+  - _style_ (default={}):
 - **button**. Crates a button.
   - _value_: The value that will be provided when the button is pressed.
   - _text_ (default="Button"): The text to display on the button.
@@ -117,6 +133,12 @@ library for the corresponding widget: <https://blueprintjs.com/docs/>.
 - **box**. A widget that organizes other widgets. It takes a list of widgets and displays them in a div element to which th
 the given style is applied.
   - _widgets_: A list of widgets to display.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **collapse**. A widget that organizes other widgets into a collapsible section.
+  - _widgets_: A list of widgets to display.
+  - _label_: The label that will appear on the button that expands the section.
+  - _startOpen_ (default=True): Whether the section should be expanded by default.
+  - _intent_ (default="primary"): The intent of the button that expands the section.
   - _style_ (default={}): A dictionary of styles to be applied.
 - **matplotlib**. Displays a matplotlib figure. See below for a full discussion.
   - _style_ (default={}): A dictionary of styles to be applied.

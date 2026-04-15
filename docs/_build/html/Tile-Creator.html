@@ -72,21 +72,20 @@ if there is a button on the front of your tile, giving that button the class “
 the button to be styled in the manner of blueprint.</p>
 <p>In writing your tile, you have access to a number of tactic-specific
 commands that, for example, give you access to your data. These are
-described in some detail in <a class="reference internal" href="Tile-Commands.html"><span class="doc">The Tile API</span></a> and <a class="reference internal" href="Object-Oriented-API.html"><span class="doc">Object-Oriented API</span></a>. Y</p>
-<p>You can also import and make use of a number of <a class="reference internal" href="#Tile-commands.html#scientific-libraries"><span class="xref myst">scientific libraries</span></a>.
+described in some detail in <a class="reference internal" href="Tile-Commands.html"><span class="doc">The Tile API</span></a> and <a class="reference internal" href="Object-Oriented-API.html"><span class="doc">Object-Oriented API</span></a>.</p>
+<p>You can also import and make use of a number of <a class="reference internal" href="Tile-Commands.html#libraries"><span class="std std-ref">Scientific Libraries</span></a>.
 That list is not always kept up to date though. Go to the relevant web sites for documentation on these libraries.</p>
 <p>You can use these <a class="reference internal" href="Module-Viewer-Keyboard-Shortcuts.html"><span class="doc">Keyboard Shortcuts</span></a> within the box
 containing your code.</p>
 <section id="metadata">
-<h3>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">¶</a></h3>
+<h3>metadata<a class="headerlink" href="#metadata" title="Link to this heading">¶</a></h3>
 <p>The <span class="guilabel">Metadata</span> pane is where you specify a bit of metadata for your tile.
 The “Category” field determines the menu under which your tile will
 appear in the main project environment.</p>
 </section>
 <section id="options">
 <h3>options<a class="headerlink" href="#options" title="Link to this heading">¶</a></h3>
-<p>The <span class="guilabel">options</span> pane is where you specify <a class="reference internal" href="#Tile-Structure.html#options"><span class="xref myst">Tile
-Options</span></a> that will appear when you click the gear icon on your tile. Click on <span class="guilabel">options</span> to
+<p>The <span class="guilabel">options</span> pane is where you specify <a class="reference internal" href="Tile-Structure.html#options"><span class="std std-ref">Tile Options</span></a> that will appear when you click the gear icon on your tile. Click on <span class="guilabel">options</span> to
 expand that section of the list. You can click the “+” button to add a new option. Then click the new option
 on the list to display its pane and edit it.</p>
 <p>Here I have  created two options, a text option <code class="docutils literal notranslate"><span class="pre">some_user_text</span></code> and a boolean option <code class="docutils literal notranslate"><span class="pre">normalize</span></code> that has a default value
@@ -106,12 +105,16 @@ on the row in the table of options. Then edit the option in the form at the bott
 you can do is simply to order your options in a sensible way. You can do this by clicking and dragging them in
 the list of option. You can also insert <span class="guilabel">divider</span> options.
 These can be used to visually group your options into named categories on your tile.</p>
-<p>There are many different types of options as described here: <a class="reference internal" href="#Tile-Structure.html#options"><span class="xref myst">Tile
-Options</span></a>. there’s an extra step required in
+<p>There are many different types of options as described here: <code class="docutils literal notranslate"><span class="pre">Tile</span> <span class="pre">Options</span> <span class="pre">&lt;options&gt;</span></code>. there’s an extra step required in
 making use of some of these options (e.g., <code class="docutils literal notranslate"><span class="pre">list_select</span></code>, <code class="docutils literal notranslate"><span class="pre">pipe_select</span></code>,
 <code class="docutils literal notranslate"><span class="pre">function_select</span></code>, <code class="docutils literal notranslate"><span class="pre">class_select</span></code>). In these options, the variable
 you get contains only the name of the selected resource. To extract the
 value you have to use <a class="reference internal" href="Tile-Commands.html"><span class="doc">The Tile API</span></a> or the <a class="reference internal" href="Object-Oriented-API.html"><span class="doc">Object-Oriented API</span></a>.</p>
+</section>
+<section id="widgets">
+<h3>widgets<a class="headerlink" href="#widgets" title="Link to this heading">¶</a></h3>
+<p>You can similarly add widgets to your tile that will be created when the tile is loaded. The mechanics
+are similar to adding options and exports. You can read more about this <a class="reference internal" href="Widgets.html#widgets-in-creator"><span class="std std-ref">here</span></a>.</p>
 </section>
 <section id="exports">
 <h3>exports<a class="headerlink" href="#exports" title="Link to this heading">¶</a></h3>
@@ -199,8 +202,9 @@ There is a little more about this <a class="reference internal" href="Tile-Struc
 <li class="toctree-l1"><a class="reference internal" href="Making-Tiles.html">Making Tiles</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The Tile Creator</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#creating-the-new-tile">Creating the new tile</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metadata">metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#options">options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#widgets">widgets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exports">exports</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#user-methods">user methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handler-methods">handler methods</a></li>
@@ -224,7 +228,6 @@ There is a little more about this <a class="reference internal" href="Tile-Struc
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Code-Resources.html">Code Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Javascript-Tiles.html">Javascript Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -237,7 +240,6 @@ There is a little more about this <a class="reference internal" href="Tile-Struc
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Developing-Tactic.html">Developing Tactic</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>

@@ -122,6 +122,12 @@ In particular, it looks like it updates pipe information if necessary.</p>
 See the widgets docs for details: {doc}`Widgets`.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="render_all_widgets">
+<span class="sig-name descname"><span class="pre">render_all_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#render_all_widgets" title="Link to this definition">¶</a></dt>
+<dd><p>This renders all of the widgets that were created with the Tile Creator and which have <code class="docutils literal notranslate"><span class="pre">to_render=True</span></code></p>
+</dd></dl>
+
 </div></blockquote>
 </section>
 <section id="data-access">
@@ -890,7 +896,7 @@ Imports in the notebook are always global.</p>
 
 </section>
 <section id="scientific-libraries">
-<h2>Scientific libraries<a class="headerlink" href="#scientific-libraries" title="Link to this heading">¶</a></h2>
+<span id="libraries"></span><h2>Scientific libraries<a class="headerlink" href="#scientific-libraries" title="Link to this heading">¶</a></h2>
 <p>It is assumed that tiles will make heavy use of scientific libraries.
 The libraries listed below are currently available for import from tiles.</p>
 <div class="admonition note">
@@ -989,6 +995,7 @@ nltk will be available to all methods.</p>
 <li class="toctree-l3"><a class="reference internal" href="#display_status"><code class="docutils literal notranslate"><span class="pre">display_status()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spin_and_refresh"><code class="docutils literal notranslate"><span class="pre">spin_and_refresh()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#widget"><code class="docutils literal notranslate"><span class="pre">widget()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#render_all_widgets"><code class="docutils literal notranslate"><span class="pre">render_all_widgets()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#data-access">Data Access</a><ul>
@@ -1085,8 +1092,6 @@ nltk will be available to all methods.</p>
 <li class="toctree-l1"><a class="reference internal" href="Object-Oriented-API.html">Object-Oriented API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Handler-Methods.html">Handler Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Code-Resources.html">Code Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Matplotlib-Tiles.html">Matplotlib Tiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Javascript-Tiles.html">Javascript Tiles</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How To</span></p>
 <ul>
@@ -1099,7 +1104,6 @@ nltk will be available to all methods.</p>
 <p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="open-source-resources.html">Open Source Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Developing-Tactic.html">Developing Tactic</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>

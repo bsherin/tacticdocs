@@ -71,6 +71,11 @@ write `self.property`.
 >    See the widgets docs for details: {doc}`Widgets`.
 >
 > ```
+> ```{eval-rst}
+> .. py:method:: render_all_widgets()
+>
+>     This renders all of the widgets that were created with the Tile Creator and which have ``to_render=True``
+> ```
 
 % category_end
 
@@ -825,6 +830,7 @@ The following commands are not called with `self`.
 
 % category_end
 
+(libraries)=
 ## Scientific libraries
 
 It is assumed that tiles will make heavy use of scientific libraries.
