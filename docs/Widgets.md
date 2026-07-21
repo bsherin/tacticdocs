@@ -93,6 +93,7 @@ be rendered when `self.render_all_widgets()` is called.
 - **progressBar**. Display a progress bar.
     - _value_: The current value of the progress bar. This should be a number between 0 and 1.
     - _style_ (default={}): A dictionary of styles to be applied.
+    - _helperText_ (default=None): A string of text that will be displayed under the widget.
     - _stripes_ (default=False): Whether the progress bar should have stripes.
     - _intent_ (default="primary"): The intent of the progress bar. This can be one of None, "primary", "success", "warning", or "danger".
     - _style_ (default={}): A dictionary of styles to be applied.
@@ -109,6 +110,7 @@ be rendered when `self.render_all_widgets()` is called.
   - _text_ (default="Button"): The text to display on the button.
   - _on_click_: A function that will be called when the button is clicked. This function should take a single argument, which will be the value of the button.
   - _icon_ (default=None): The name of a blueprint icon to display on the button. For example, "add" or "delete".
+  - _helperText_ (default=None): A string of text that will be displayed under the widget.
   - _fill_ (default=False): Whether the button should expand to fill its container.
   - _variant_ (default="solid"): The variant of the button. This can be one of "solid", "minimal", or "outlines".
   - _style_ (default={}): A dictionary of styles to be applied.
@@ -123,12 +125,41 @@ be rendered when `self.render_all_widgets()` is called.
   - _options_: A list of options to display in the select menu. Each option can be a string or a dict with "label" and "value" keys.
   - _label_ (default="select"): The label to display next to the select menu.
   - _style_ (default={}): A dictionary of styles to be applied.
+- **multi_select**. Displays a menu where users can select multiple options.
+  - _value_: The list of select items.
+  - _on_change_: A function that will be called when the select value changes. This function should take a single argument, which will be the new value of the select menu.
+  - _options_: A list of options to display in the select menu. Each option can be a string or a dict with "label" and "value" keys.
+  - _label_ (default="select"): The label to display next to the select menu.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **pool_select**. Displays an interface for selecting an item from the pool.
+  - _value_: The path to the selected item..
+  - _on_change_: A function that will be called when the select value changes. This function should take a single argument, which will be the new value of the select menu.
+  - _select_type_: (default="both") This can be "both", "file", or "folder". It determines what types of items can be selected.
+  - _label_ (default="pool select"): The label to display next to the select menu.
+  - _style_ (default={}): A dictionary of styles to be applied.
 - **input**. Displays an input box where users can type text.
   - _value_: The current value of the input box. This should be a string.
   - _fill_: (default=False): Whether the input box should expand to fill its container.
   - _inline_: (default=False): Whether the input box should be displayed inline with its label.
   - _on_change_: A function that will be called when the input value changes. This function should take a single argument, which will be the new value of the input box.
+  - _helperText_ (default=None): A string of text that will be displayed under the widget.
   - _label_ (default="input"): The label to display next to the input box.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **integer**. Displays an input box where users can type an integer.
+  - _value_: The current value of the input box. This will be an integer.
+  - _fill_: (default=False): Whether the input box should expand to fill its container.
+  - _inline_: (default=False): Whether the input box should be displayed inline with its label.
+  - _helperText_ (default=None): A string of text that will be displayed under the widget.
+  - _on_change_: A function that will be called when the input value changes. This function should take a single argument, which will be the new value of the input box.
+  - _label_ (default="integer"): The label to display next to the input box.
+  - _style_ (default={}): A dictionary of styles to be applied.
+- **float**. Displays an input box where users can type a float.
+  - _value_: The current value of the input box. This will be an float.
+  - _fill_: (default=False): Whether the input box should expand to fill its container.
+  - _helperText_ (default=None): A string of text that will be displayed under the widget.
+  - _inline_: (default=False): Whether the input box should be displayed inline with its label.
+  - _on_change_: A function that will be called when the input value changes. This function should take a single argument, which will be the new value of the input box.
+  - _label_ (default="float"): The label to display next to the input box.
   - _style_ (default={}): A dictionary of styles to be applied.
 - **box**. A widget that organizes other widgets. It takes a list of widgets and displays them in a div element to which th
 the given style is applied.

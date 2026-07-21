@@ -604,7 +604,7 @@ write `self.property`.
 > ```
 >
 > ```{eval-rst}
-> .. py:method:: html_table(data, title=None, click_type="word-clickable", sortable=True, sidebyside=False, has_header=True, max_rows=100, header_style=None, body_style=None, column_order=None, include_row_labels=True)
+> .. py:method:: html_table(data, title=None, click_type="word-clickable", sortable=True, sidebyside=False, has_header=True, max_rows=100, header_style=None, body_style=None, column_order=None, include_row_labels=False)
 >
 >     Returns html for a table.
 >

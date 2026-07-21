@@ -101,6 +101,9 @@ value you have to use {doc}`Tile-Commands` or the {doc}`Object-Oriented-API`.
 You can similarly add widgets to your tile that will be created when the tile is loaded. The mechanics
 are similar to adding options and exports. You can read more about this {ref}`here <widgets-in-creator>`.
 
+Divider widgets can be used to visually group your widgets in the list of widgets.
+If you don't want the divider to be visible in the tile, you can set "render" to False.
+
 ### exports
 
 You can also specify the name of parameters that will be {guilabel}`exports` for
@@ -125,6 +128,10 @@ def my_method(self, avar):
 
 All methods that you define need to have `self` as the first argument.
 
+If you define a method here with "divider" in its name, this will create a divider within the list of user methods. 
+This is a way to visually group your methods. For the tile to save propertly, you'll need to give the function a body
+that is valid python code. For example, you could use `pass` as the body of the function.
+
 ### handler methods
 
 {doc}`Handler-Methods` are methods that have special meaning in tactic. Creating one is a two-step
@@ -136,6 +143,11 @@ The {guilabel}`globals` tab provides a place where you can enter code
 to be in the global namespace when the tile class is created.
 There is a little more about this {doc}`here <Tile-Structure>`.
 
-## javascript
+### javascript
 
 You can also add javascript code to your tile. More on this is in [](#javascript-widgets).
+
+### using the omnibar with the tile creator
+
+When the tile creator is visible, you can use the omnibar to search of anything that appears in the navigator 
+pane on the left.

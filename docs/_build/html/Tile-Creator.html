@@ -115,6 +115,8 @@ value you have to use <a class="reference internal" href="Tile-Commands.html"><s
 <h3>widgets<a class="headerlink" href="#widgets" title="Link to this heading">¶</a></h3>
 <p>You can similarly add widgets to your tile that will be created when the tile is loaded. The mechanics
 are similar to adding options and exports. You can read more about this <a class="reference internal" href="Widgets.html#widgets-in-creator"><span class="std std-ref">here</span></a>.</p>
+<p>Divider widgets can be used to visually group your widgets in the list of widgets.
+If you don’t want the divider to be visible in the tile, you can set “render” to False.</p>
 </section>
 <section id="exports">
 <h3>exports<a class="headerlink" href="#exports" title="Link to this heading">¶</a></h3>
@@ -136,6 +138,9 @@ For example, you could define a method <code class="docutils literal notranslate
 </pre></div>
 </div>
 <p>All methods that you define need to have <code class="docutils literal notranslate"><span class="pre">self</span></code> as the first argument.</p>
+<p>If you define a method here with “divider” in its name, this will create a divider within the list of user methods.
+This is a way to visually group your methods. For the tile to save propertly, you’ll need to give the function a body
+that is valid python code. For example, you could use <code class="docutils literal notranslate"><span class="pre">pass</span></code> as the body of the function.</p>
 </section>
 <section id="handler-methods">
 <h3>handler methods<a class="headerlink" href="#handler-methods" title="Link to this heading">¶</a></h3>
@@ -148,10 +153,15 @@ process: (1) Select the handler method from the list. (2) Click the plus symbolo
 to be in the global namespace when the tile class is created.
 There is a little more about this <a class="reference internal" href="Tile-Structure.html"><span class="doc">here</span></a>.</p>
 </section>
-</section>
 <section id="javascript">
-<h2>javascript<a class="headerlink" href="#javascript" title="Link to this heading">¶</a></h2>
+<h3>javascript<a class="headerlink" href="#javascript" title="Link to this heading">¶</a></h3>
 <p>You can also add javascript code to your tile. More on this is in <a class="reference internal" href="Widgets.html#javascript-widgets"><span class="std std-ref">Javascript widgets</span></a>.</p>
+</section>
+<section id="using-the-omnibar-with-the-tile-creator">
+<h3>using the omnibar with the tile creator<a class="headerlink" href="#using-the-omnibar-with-the-tile-creator" title="Link to this heading">¶</a></h3>
+<p>When the tile creator is visible, you can use the omnibar to search of anything that appears in the navigator
+pane on the left.</p>
+</section>
 </section>
 </section>
 
@@ -209,9 +219,10 @@ There is a little more about this <a class="reference internal" href="Tile-Struc
 <li class="toctree-l3"><a class="reference internal" href="#user-methods">user methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handler-methods">handler methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#globals">globals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#javascript">javascript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-omnibar-with-the-tile-creator">using the omnibar with the tile creator</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#javascript">javascript</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Module-Viewer.html">The Module Viewer</a></li>
