@@ -177,7 +177,9 @@ the given style is applied.
   - _dpi_ (default=96): The dpi to use when rendering the figure, is use_svg is False.
 - **javascript**. Displays a widget with executing javascript code. See below for a full discussion.
   - _value_: A value, typically a dict, that will be passed to the javascript code.
-  - _code_: A string of javascript code to execute. This code should define a function.
+  - _function_name_: The name of a javascript function, defined in the Tile Creator. When set, the function code will be copied into the `code` parameter.
+  - _code_: A string of javascript code to execute. This is just the body of the code.
+  - _style_ (default={}): A dictionary of styles to be applied.
 
 (matplotlib-widgets)=
 ## Matplotlib widgets
@@ -198,47 +200,26 @@ w.set_html()
 (javascript-widgets)=
 ## Javascript widgets
 
-The javascript widget is the most complicated and also the most untested.
+The javascript widget lets you create a widget that executes javascript code in the browser.
 
-You have to create a javascript function with the signature `function myFunction(selector, w, h, value, setValue, resizing)`.
-Then you pass this code as a string to the `code` parameter of the widget. 
-The `value` parameter this javascript function receives will be the 
-value you pass to the widget when you create it.
+The function will ultimately have the signature `function myFunction(selector, w, h, value, setValue, resizing)`.
+You pass the **body** of this function as a string in the `code` parameter. 
+The `value` parameter this javascript function receives is the value of the `value` parameter of the widget.
 
-So your javascript function can look like this:
+Alternatively, if you define a javascript function in the Tile Creator, you can specify the name of that function in the `function_name` parameter. 
+Then, when the Tile Creator builds the tile, the code for that function will be copied into the `code` parameter of the widget.
+
+You can also set the `function_name` parameter at run time. If you do that, the code for that function will be copied into the `code` parameter of the widget.
+
+The widget will re-render in the browser whenever its `code` changes, its `value` changes, or the tile resizes.
+
+A javascript function might look like this:
 
 ```javascript
 function showMessage(selector, w, h, value, setValue, resizing) {
     document.querySelector(selector).innerHTML = value;
 }
 ```
-
-Then your `render_content` method can look like:
-
-```python
-javascript_code_string = ...
-w = self.widget("javascript", value="Hello, world!", code=javascript_code_string)
-return [w.render()]
-```
-
-Getting javascript code in the form of a string can be a little tricky, but
-the Tile Creator has a feature for making this a somewhat easier.
-
-The Tile Creator as a section on the left where you can create javascript functions. 
-You can create and name them. Then, when the tile is executed, your extract them from an
-attribute of the tile called `jscript`, which is a list of dicts, each with keys "name" and "code". 
-So you can extract the code for a function named "showMessage" like this:
-
-```python
-the_code = None
-for fdict in self.jscript:
-    if fdict["name"] == "showMessage":
-        the_code = fdict["code"]
-        break
-```
-
-That's still a bit clunky, but it's better than trying to write a big chunk of 
-javascript code as a string in python code. I'll make it less clunky eventually.
 
 ## Widgets in the notebook
 
